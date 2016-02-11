@@ -13,6 +13,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import anvel.model.AccountBean;
+import anvel.model.ProductBean;
+import anvel.model.SoldBean;
 import anvel.utility.sql.SQLCommands;
 
 public class SQLOperations implements SQLCommands {
@@ -181,7 +183,7 @@ public class SQLOperations implements SQLCommands {
 					.prepareStatement(UPDATE_PRODUCT);
 			pstmt.setDate(1, product.getDelivery_date());
 			pstmt.setDate(2, product.getDate_recieved());
-			pstmt.setString(3, product.getDelivery_charge());
+			pstmt.setDouble(3, product.getDelivery_charge());
 			pstmt.setInt(4, product.getDR_SI());
 			pstmt.setInt(5, product.getQuantity());
 			pstmt.setString(6, product.getProduct_description());
@@ -254,12 +256,14 @@ public class SQLOperations implements SQLCommands {
 
 			while (rs.next()) {
 				productbean = BeanFactory.getInstance(
-						rs.getInt("product_code"), rs.getInt("quantity"),
+						rs.getInt("product_code"), 
+						rs.getInt("quantity"),
 						rs.getDouble("unit_price"),
 						rs.getDouble("discount_sell"),
 						rs.getDate("delivery_date"),
 						rs.getDate("date_recieved"),
-						rs.getString("delivery_charge"), rs.getString("DR_SI"),
+						rs.getString("delivery_charge"),
+						rs.getInt("DR_SI"),
 						rs.getString("product_description"),
 						rs.getString("mode_of_payment"),
 						rs.getString("supplier"));

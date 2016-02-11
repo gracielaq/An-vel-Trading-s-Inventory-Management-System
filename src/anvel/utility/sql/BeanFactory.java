@@ -1,5 +1,7 @@
 package anvel.utility.sql;
 
+import anvel.model.ProductBean;
+import anvel.model.SoldBean;
 
 public class BeanFactory {
 	/*FOR Products:*/
@@ -23,7 +25,7 @@ public class BeanFactory {
 	public static ProductBean getInstance(int product_code,int quantity,
 	double unit_price, double discount, 
     java.sql.Date delivery_date, java.sql.Date date_recieved,
-	String delivery_charge, String DR_SI,String product_description,
+	String delivery_charge, int string,String product_description,
 	String mode_of_payment, String supplier){
 		
 		ProductBean bean = new ProductBean(); 
@@ -31,7 +33,7 @@ public class BeanFactory {
 		bean.setDate_recieved(date_recieved);
 		bean.setDiscount_add(discount);
 		bean.setMode_of_payment(mode_of_payment);
-		bean.setDR_SI(DR_SI);
+		bean.setDR_SI(string);
 		bean.setProduct_description(product_description);
 		bean.setProduct_code(product_code);
 		bean.setQuantity(quantity);
