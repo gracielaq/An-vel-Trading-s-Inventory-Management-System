@@ -15,9 +15,10 @@
 	<p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum();" id="qty" required="required"/></p>
 	<p>Delivery Charge<input type="number" name="delivery_charge"/></p>
 	<p>Supplier:<input type="text" name="supplier"/></p>
-	<p>Product Description<textarea name="description" rows= "5" cols="10">Enter product description here.</textarea>
+	<p>Product Description</p>
+	<p><textarea name="description" rows= "5" cols="10">Enter product description here.</textarea>
 	<p>Unit Price<input type="number" name="unit_price" value="0" onblur="recalculateSum();" id="prc" required="required"/>
-	<p>Discounts<input type="number" name="discount"/></p>
+	<p>Discounts<input type="number" name="discount" min="0"/></p>
 	<p>Total Amount <input id="Total" value="0"/> </p>
 	<p>Mode of Payment</p>
 	 <input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
