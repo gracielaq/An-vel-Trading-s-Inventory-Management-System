@@ -1,0 +1,92 @@
+CREATE USER 'ics123_user3csc'@'localhost' Identified by 'ics123_user3csc';
+GRANT ALL PRIVILEGES ON * . * TO 'ics123_user3csc'@'localhost';
+
+create database ProductsDB;
+USE ProductsDB;
+
+
+/****** Object:  Table dbo.Product    Script Date: 11/11/2015 22:00:43 ******/
+
+
+/*FOR Products:*/
+CREATE TABLE `Product` (
+  `product_code` int(11) NOT NULL,
+  `supplier` varchar(200) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `date_received` date NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` int(6) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount_add` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `check_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
+/*FOR OLD PRODUCTS:*/
+CREATE TABLE `Product_old` (
+  `product_code` int(11) NOT NULL,
+  `supplier` varchar(200) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `date_received` date NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` int(6) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount_add` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `check_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+/*FOR LOGINS(admin) :*/
+CREATE TABLE `accounts_admin` (
+  `username` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `email` varchar(300) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*FOR LOGINS(staff) :*/
+CREATE TABLE `accounts_staff` (
+  `username` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `email` varchar(300) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*FOR SELL:*/
+	CREATE TABLE `Sell` (
+  `product_code` int(11) NOT NULL,
+  `unit_price` double NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `discount_sell` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `note_quantity` int(11) DEFAULT NULL,
+  `note_description` varchar(999) DEFAULT NULL,
+  `customer_name` varchar(200) NOT NULL,
+  `tin` varchar(200) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `date` datetime NOT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `check_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
