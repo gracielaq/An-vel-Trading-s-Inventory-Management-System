@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+  <Resource name="jdbc/UST-3CSC-DS" auth="Container"
+            type="javax.sql.DataSource" username="ics123_user3csc" password="ics123_user3csc"
+            driverClassName="com.mysql.jdbc.Driver" 
+            url="jdbc:mysql://localhost:3306/PRODUCTSDB"
+            maxActive="50" 
+            />
+
+</Context>

@@ -7,6 +7,33 @@
 <title>Main Menu</title>
 </head>
 <body>
-
+	<form action="AddProduct.jsp" method="post">
+		<input type="Submit" value="Add Product">
+	</form>
+	
+	<form action="AddAccount.jsp" method="post">
+		<input type="Submit" value="Add Account">
+	</form>
+	
+	<form action="SellProducts.html" method="post">
+		<input type="Submit" value="Sell Product">
+	</form>
+	
+	<form action="View.html" method="post">
+		<input type="Submit" value="View Products">
+	</form>
+	
+	<form action="Edit.html" method="post">
+		<input type="Submit" value="Edit Products">
+	</form>
+	
+	<form action="Delivery.jsp" method="post">
+		<input type="Submit" value="Delivery">
+	</form>
+	
+	<form action="Reports.html" method="post">
+		<input type="Submit" value="Reports">
+	</form>
+	
 </body>
 </html>

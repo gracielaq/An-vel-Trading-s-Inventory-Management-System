@@ -51,7 +51,7 @@ public class ValidateLogin extends HttpServlet {
 		}
 		else
 		{
-			getServletContext().getRequestDispatcher("/errorlogin.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/ErrorLogin.jsp").forward(request, response);
 		}
 	}
 
