@@ -1,22 +1,7 @@
 package anvel.model;
 
-/**
- * Created by Jude on 2/13/2016.
- */
 public class BeanFactory {
-    public static AccountBean getInstance(String username, String password, String email, String firstName, String lastName, String isAdmin){
-        //private String username, password, email, firstName, lastName;
-        AccountBean accountBean = new AccountBean();
-        accountBean.setUsername(username);
-        accountBean.setEmail(email);
-        accountBean.setFirstName(firstName);
-        accountBean.setLastName(lastName);
-        accountBean.setPassword(password);
-        accountBean.setIsAdmin(isAdmin);
-        accountBean.encrypt();
-        return accountBean;
-    }
-    /*FOR Products:*/
+	/*FOR Products:*/
 	/*
 	 CREATE TABLE `ProductsDB`.`Product` (
 	 `product_code` INT NOT NULL COMMENT '',
@@ -33,28 +18,28 @@ public class BeanFactory {
 	 `supplier` varchar(200) NOT NULL,
 	 PRIMARY KEY (`product_code`)  COMMENT '');
 	 */
-
-    public static ProductBean getInstance(int product_code,int quantity,
-                                          double unit_price, double discount,
-                                          java.sql.Date delivery_date, java.sql.Date date_recieved,
-                                          String delivery_charge, int string,String product_description,
-                                          String mode_of_payment, String supplier){
-
-        ProductBean bean = new ProductBean();
-        bean.setDelivery_date(delivery_date);
-        bean.setDate_recieved(date_recieved);
-        bean.setDiscount_add(discount);
-        bean.setMode_of_payment(mode_of_payment);
-        bean.setDR_SI(string);
-        bean.setProduct_description(product_description);
-        bean.setProduct_code(product_code);
-        bean.setQuantity(quantity);
-        bean.setUnit_price(unit_price);
-        bean.setSupplier(supplier);
-        bean.compute();
-        return bean;
-    }
-
+	
+	public static ProductBean getInstance(int product_code,int quantity,
+	double unit_price, double discount, 
+    java.sql.Date delivery_date, java.sql.Date date_recieved,
+	String delivery_charge, int string,String product_description,
+	String mode_of_payment, String supplier){
+		
+		ProductBean bean = new ProductBean(); 
+		bean.setDelivery_date(delivery_date);
+		bean.setDate_recieved(date_recieved);
+		bean.setDiscount_add(discount);
+		bean.setMode_of_payment(mode_of_payment);
+		bean.setDR_SI(string);
+		bean.setProduct_description(product_description);
+		bean.setProduct_code(product_code);
+		bean.setQuantity(quantity);
+		bean.setUnit_price(unit_price);
+		bean.setSupplier(supplier);
+		bean.compute();
+		return bean;
+	}
+	
 	/*FOR SELL:
 	  CREATE TABLE `Sell` (
 	  `product_code` int(11) NOT NULL,
@@ -72,28 +57,28 @@ public class BeanFactory {
 	  `mode_of_payment` varchar(45) NOT NULL,
 	  PRIMARY KEY (`product_code`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
-
-    public static SoldBean getInstance(int product_code,double unit_price, int quantity,
-                                       String product_description, double discount_sell,  int note_quantity,
-                                       String note_description, String customer_name, String tin, String address, java.sql.Date date,
-                                       String mode_of_payment){
-
-        SoldBean bean = new SoldBean();
-        bean.setProduct_code(product_code);
-        bean.setUnit_price(unit_price);
-        bean.setQuantity(quantity);
-        bean.setProduct_description(product_description);
-        bean.setDiscount_sell(discount_sell);
-        bean.setNote_quantity(note_quantity);
-        bean.setNote_description(note_description);
-        bean.setCustomer_name(customer_name);
-        bean.setTin(tin);
-        bean.setDate(date);
-        bean.setAddress(address);
-        bean.setMode_of_payment(mode_of_payment);
-
-        bean.setAddress(address);
-        bean.compute();
-        return bean;
-    }
+	
+	public static SoldBean getInstance(int product_code,double unit_price, int quantity,
+			String product_description, double discount_sell,  int note_quantity,
+			String note_description, String customer_name, String tin, String address, java.sql.Date date,
+			String mode_of_payment){
+				
+				SoldBean bean = new SoldBean(); 
+				bean.setProduct_code(product_code);
+				bean.setUnit_price(unit_price);
+				bean.setQuantity(quantity);
+				bean.setProduct_description(product_description);
+				bean.setDiscount_sell(discount_sell);
+				bean.setNote_quantity(note_quantity);
+				bean.setNote_description(note_description);
+				bean.setCustomer_name(customer_name);
+				bean.setTin(tin);
+				bean.setDate(date);
+				bean.setAddress(address);
+				bean.setMode_of_payment(mode_of_payment);
+				
+				bean.setAddress(address);
+				bean.compute();
+				return bean;
+			}
 }

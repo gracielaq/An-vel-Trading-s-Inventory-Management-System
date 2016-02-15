@@ -1,12 +1,16 @@
 package anvel.controller;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import edu.ust.erdbms.utility.sql.SQLOperations;
 
 /**
  * Servlet implementation class editProd
@@ -34,8 +38,22 @@ public class editProd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			if (connection != null) {
+				ResultSet rs = SQLOperations.getAllSold(connection);
+				request.setAttribute("productrecords", rs);
+				getServletContext().getRequestDispatcher("/listSold.jsp")
+						.forward(request, response);
+			} else {
+				System.out.println("Invalid Connection resource");
+			}
+		} catch (NullPointerException npe) {
+			System.err.println("Invalid Connection resource - "
+					+ npe.getMessage());
+		} catch (Exception e) {
+			System.err.println("Exception - " + e.getMessage());
+		}
+	}
 	}
 
 }

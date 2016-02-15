@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import anvel.utility.sql.SQLOperations;
-import edu.ust.erdbms.model.ProductBean;
-import edu.ust.erdbms.utility.ProductBeanFactory;
+import anvel.model.ProductBean;
+import anvel.model.BeanFactory;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -61,7 +61,7 @@ try {
 			int check_no=Integer.parseInt(request.getParameter("check_no"));
 			
 			
-			ProductBean productbean = ProductBeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
+			ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
 					,quantity, delivery_charge, supplier, product_description, unit_price, discount_add, 
 					total_amount, mode_of_payment, check_no);
 

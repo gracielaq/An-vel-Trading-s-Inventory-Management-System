@@ -120,7 +120,7 @@ public class SQLOperations implements SQLCommands {
 		return true;
 
 	}
-
+ 
 	/*
 	 * public static ResultSet searchProducts(String search,Connection
 	 * connection,String[] sortby){ ResultSet rs=null; try { String query =
