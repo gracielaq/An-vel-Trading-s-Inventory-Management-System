@@ -8,6 +8,7 @@ public class AccountBean {
 	private String email;
 	private String firstName;
 	private String lastName;
+	private String isAdmin;
 
 	public String getIsAdmin() {
 		return isAdmin;
@@ -17,7 +18,7 @@ public class AccountBean {
 		this.isAdmin = isAdmin;
 	}
 
-	private String isAdmin;
+
 
 	public String getUsername() {
 		return username;
