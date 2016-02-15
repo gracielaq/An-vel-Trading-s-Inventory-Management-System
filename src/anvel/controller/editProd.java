@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ust.erdbms.utility.sql.SQLOperations;
+import anvel.utility.sql.SQLOperations;
 
 /**
  * Servlet implementation class editProd
@@ -19,9 +19,7 @@ import edu.ust.erdbms.utility.sql.SQLOperations;
 public class editProd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
+	Connection connection;
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
