@@ -50,8 +50,10 @@ public class AddAccountServlet extends HttpServlet {
         AccountBean accountBean = BeanFactory.getInstance(username,password,email,firstName,lastName,isAdmin);
         if(SQLOperations.addAccount(accountBean, connection)){
             directory+="?status=success";
+            System.out.print("ACCOUNT SUCCESSFULLY ADDED!");
         }else{
             directory+="?status=failed";
+            System.out.println("Account add failed");
         }
         getServletContext().getRequestDispatcher(directory).forward(request,response);
 	}

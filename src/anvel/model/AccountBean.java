@@ -18,8 +18,6 @@ public class AccountBean {
 		this.isAdmin = isAdmin;
 	}
 
-
-
 	public String getUsername() {
 		return username;
 	}

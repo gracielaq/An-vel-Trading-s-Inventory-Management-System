@@ -26,11 +26,6 @@ CREATE TABLE `Product` (
   PRIMARY KEY (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
-
-
-
 /*FOR OLD PRODUCTS:*/
 CREATE TABLE `Product_old` (
   `product_code` int(11) NOT NULL,
@@ -79,4 +74,14 @@ CREATE TABLE `accounts` (
   `mode_of_payment` varchar(45) NOT NULL,
   `check_no` int(11) DEFAULT NULL,
   PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `DeliveryDB` (
+  `DeliveryNum` int(11) NOT NULL AUTO_INCREMENT,
+  `Driver` varchar(50) NOT NULL,
+  `Helper` varchar(50) NOT NULL,
+  `PlateNum` varchar(50) NOT NULL,
+  `CodingDay` varchar(50) NOT NULL,
+  `DeliveryDate` datetime NOT NULL,
+  PRIMARY KEY (`DeliveryNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

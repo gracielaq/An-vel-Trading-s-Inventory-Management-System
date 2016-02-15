@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/AddProduct.html")
-public class addProductServlet extends HttpServlet {
+public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection connection;
 
@@ -33,10 +33,8 @@ public class addProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         try {
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             int product_code = Integer.parseInt(request.getParameter("product_code"));
-
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
             java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_received")).getTime());
             int dR_SI=Integer.parseInt(request.getParameter("dr_si"));
