@@ -1,6 +1,7 @@
 package anvel.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletConfig;
@@ -21,15 +22,14 @@ public class editProd extends HttpServlet {
 
 	Connection connection;
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		connection = SQLOperations.getConnection();
+		if(connection==null)System.out.println("CONNECTED");
+        else System.out.println("AWTSUBEBEH, WALA PONG CONNECTION");
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -52,6 +52,6 @@ public class editProd extends HttpServlet {
 			System.err.println("Exception - " + e.getMessage());
 		}
 	}
-	}
+
 
 }

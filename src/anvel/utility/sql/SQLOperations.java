@@ -351,8 +351,8 @@ public class SQLOperations implements SQLCommands {
 
 			PreparedStatement preparedStatement = connection.prepareStatement("Insert into accounts(username, password," +
 					"email," +
-					"firstname" +
-					"lastname" +
+					"firstname," +
+					"lastname," +
 					"isAdmin) VALUES (?,?,?,?,?,?)");
 			preparedStatement.setString(1,accountBean.getUsername());
 			preparedStatement.setString(2,accountBean.getPassword());
@@ -364,7 +364,7 @@ public class SQLOperations implements SQLCommands {
 			return true;
 
 		}catch(SQLException e){
-			System.out.print("addAccount Exception"+e.getStackTrace());
+			System.out.println("addAccount Exception "+e);
 			return false;
 		}
 	}
