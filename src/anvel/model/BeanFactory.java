@@ -1,6 +1,20 @@
 package anvel.model;
 
 public class BeanFactory {
+
+
+    public static AccountBean getInstance(String username,String password, String email,
+                                          String firstName, String lastName, String isAdmin){
+        AccountBean accountBean = new AccountBean();
+        accountBean.setUsername(username);
+        accountBean.setEmail(email);
+        accountBean.setFirstName(firstName);
+        accountBean.setLastName(lastName);
+        accountBean.setIsAdmin(isAdmin);
+        accountBean.setPassword(password);
+        accountBean.encrypt();
+        return accountBean;
+    }
 	/*FOR Products:*/
 	/*
 	 CREATE TABLE `ProductsDB`.`Product` (

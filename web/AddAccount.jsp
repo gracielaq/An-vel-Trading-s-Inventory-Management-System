@@ -12,6 +12,7 @@
 	<p>Last Name<input type="text" name="lastName" required="required"/></p>
 	<p>E-mail<input type="email" name="email" required="required"/></p>
 	<p>Username<input type="text" name="username" required="required"/></p>
+	<h1>account type kulang</h1>
 	<p>Password<input type="password" name="password" required="required"/></p>
 	<p><input type="submit" value="Register"/>
 </form>
