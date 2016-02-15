@@ -32,6 +32,7 @@ public class deliveryProd extends HttpServlet {
         } else {
             System.out.print("Null connection");
         }
+    }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class deliveryProd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             int product_code = Integer.parseInt(request.getParameter("product_code"));
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
             java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_received")).getTime());
@@ -85,6 +86,7 @@ public class deliveryProd extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
 
-        }*/
+        }
 
     }
+}
