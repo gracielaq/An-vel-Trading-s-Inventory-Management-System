@@ -1,7 +1,4 @@
-package anvel.utility.sql;
-
-import anvel.model.ProductBean;
-import anvel.model.SoldBean;
+package anvel.model;
 
 public class BeanFactory {
 	/*FOR Products:*/

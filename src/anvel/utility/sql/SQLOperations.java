@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import anvel.model.AccountBean;
+import anvel.model.BeanFactory;
 import anvel.model.ProductBean;
 import anvel.model.SoldBean;
 import anvel.utility.sql.SQLCommands;
@@ -118,7 +119,7 @@ public class SQLOperations implements SQLCommands {
 		return true;
 
 	}
-
+ 
 	/*
 	 * public static ResultSet searchProducts(String search,Connection
 	 * connection,String[] sortby){ ResultSet rs=null; try { String query =
