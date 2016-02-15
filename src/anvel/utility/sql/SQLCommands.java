@@ -67,8 +67,22 @@ public interface SQLCommands {
 			+ " product_code like ?";
 
 
+	String ADD_DELIVERY_REPORT = "insert into DeliveryDB(" 
+			+ "DeliveryNum,"
+			+ "Driver, " 
+			+ "Helper," 
+			+ "PlateNum, "
+			+ "CodingDay,"
+			+ "DeliveryDate"
+			+ ") values(?,?,?,?,?,?)";
 	
-	
+	String SEARCH_FOR_DELIVERY_REPORT = "select * from DeliveryDB where"
+			+ "DeliveryNum like ? OR "
+			+ "Driver like ? OR "
+			+ "Helper like ? OR "
+			+ "PlateNum like ? OR "
+			+ "CodingDay like ? OR "
+			+ "DeliveryDate like ? ";
 	
 	/*FOR Products:
 	FOR Products:
