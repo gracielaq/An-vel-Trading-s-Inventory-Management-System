@@ -1,7 +1,23 @@
 package anvel.model;
 
+import anvel.utility.Security;
+
 public class AccountBean {
-	private String username, password, email, firstName, lastName;
+	private String username;
+	private String password;
+	private String email;
+	private String firstName;
+	private String lastName;
+
+	public String getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(String isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	private String isAdmin;
 
 	public String getUsername() {
 		return username;
@@ -41,7 +57,11 @@ public class AccountBean {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	} 
+	}
+
+	public void encrypt(){
+        setPassword(Security.encrypt(getPassword()));
+	}
 	
 	
 }

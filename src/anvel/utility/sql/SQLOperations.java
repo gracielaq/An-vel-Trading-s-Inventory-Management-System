@@ -13,8 +13,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import anvel.model.AccountBean;
+import anvel.model.BeanFactory;
 import anvel.model.ProductBean;
 import anvel.model.SoldBean;
+import anvel.utility.Security;
 import anvel.utility.sql.SQLCommands;
 
 public class SQLOperations implements SQLCommands {
@@ -298,7 +300,7 @@ public class SQLOperations implements SQLCommands {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(LOGIN_CHECK);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+			pstmt.setString(2, Security.decrypt(password));
 			rs = pstmt.executeQuery();
 			rs = pstmt.getResultSet();
 			login = rs.first();
@@ -332,6 +334,39 @@ public class SQLOperations implements SQLCommands {
 		}
 		return acc;
 
+	}
+
+	public static boolean addAccount(AccountBean accountBean, Connection connection){
+		try{
+			/*FOR LOGINS(staff)
+			CREATE TABLE `accounts` (
+			`username` varchar(200) NOT NULL,
+			`password` varchar(200) NOT NULL,
+			`email` varchar(300) NOT NULL,
+			`firstName` varchar(100) NOT NULL,
+			`lastName` varchar(100) NOT NULL,
+			`isAdmin` varchar(10) NOT NULL,
+			PRIMARY KEY (`username`)
+			) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+
+			PreparedStatement preparedStatement = connection.prepareStatement("Insert into accounts(username, password," +
+					"email," +
+					"firstname" +
+					"lastname" +
+					"isAdmin) VALUES (?,?,?,?,?,?)");
+			preparedStatement.setString(1,accountBean.getUsername());
+			preparedStatement.setString(2,accountBean.getPassword());
+			preparedStatement.setString(3,accountBean.getEmail());
+			preparedStatement.setString(4,accountBean.getFirstName());
+			preparedStatement.setString(5,accountBean.getLastName());
+			preparedStatement.setString(6,accountBean.getIsAdmin());
+			preparedStatement.execute();
+			return true;
+
+		}catch(SQLException e){
+			System.out.print("addAccount Exception"+e.getStackTrace());
+			return false;
+		}
 	}
 
 }

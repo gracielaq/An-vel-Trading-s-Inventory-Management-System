@@ -51,24 +51,14 @@ CREATE TABLE `Product_old` (
 
 
 
-
-/*FOR LOGINS(admin) :*/
-CREATE TABLE `accounts_admin` (
-  `username` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `email` varchar(300) NOT NULL,
-  `firstName` varchar(100) NOT NULL,
-  `lastName` varchar(100) NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 /*FOR LOGINS(staff) :*/
-CREATE TABLE `accounts_staff` (
+CREATE TABLE `accounts` (
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `email` varchar(300) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
+  `isAdmin` varchar(10) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

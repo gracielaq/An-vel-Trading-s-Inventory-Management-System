@@ -10,21 +10,6 @@
       <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
     </src_description>
   </component>
-  <component name="FacetManager">
-    <facet type="javaeeApplication" name="javaEEApplication">
-      <configuration />
-    </facet>
-    <facet type="web" name="Web">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
-        </webroots>
-      </configuration>
-    </facet>
-  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes" />
     <exclude-output />
@@ -33,24 +18,6 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
-    <orderEntry type="module-library" exported="">
-      <library name="jsp-api.jar">
-        <CLASSES>
-          <root url="file:///Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/jsp-api.jar" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library name="servlet-api.jar">
-        <CLASSES>
-          <root url="file:///Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 8.0.241" level="application_server_libraries" />
     <orderEntry type="module-library" exported="">
       <library>
@@ -64,7 +31,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/for encryption/for encryption/commons-codec-1.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/commons-codec-1.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

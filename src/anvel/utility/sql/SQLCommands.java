@@ -4,8 +4,21 @@ public interface SQLCommands {
 
 	
 	/*LOGIN COMMANDS*/
-	String LOGIN_CHECK="select username, password, email from accounts_admin where username=? and password=?";
-	String SEARCH_ADMIN="select * from accounts_admin where username=?";
+	String LOGIN_CHECK="select username, password, email from accounts where username=? and password=?";
+	String SEARCH_ADMIN="select * from accounts where username=?";
+
+    /*/*FOR LOGINS(staff)
+	CREATE TABLE `accounts` (
+			`username` varchar(200) NOT NULL,
+	`password` varchar(200) NOT NULL,
+	`email` varchar(300) NOT NULL,
+	`firstName` varchar(100) NOT NULL,
+	`lastName` varchar(100) NOT NULL,
+	`isAdmin` varchar(10) NOT NULL,
+	PRIMARY KEY (`username`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+
+	String ADD_ACCOUNT_STAFF= "insert into accounts(username,password,email,firstname,lastname,isAdmin) values (?,?,?,?,?,/) "
 	
 	
 	/*FOR SOLD*/
