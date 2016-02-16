@@ -72,7 +72,7 @@ public class AddProductServlet extends HttpServlet {
             }
 
         } catch (NumberFormatException | ParseException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 

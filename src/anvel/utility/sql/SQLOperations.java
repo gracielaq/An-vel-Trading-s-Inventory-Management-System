@@ -299,10 +299,10 @@ public class SQLOperations implements SQLCommands {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(LOGIN_CHECK);
+
 			pstmt.setString(1, username);
-			pstmt.setString(2, Security.decrypt(password));
+			pstmt.setString(2, Security.encrypt(password));
 			rs = pstmt.executeQuery();
-			rs = pstmt.getResultSet();
 			login = rs.first();
 
 		} catch (SQLException e) {

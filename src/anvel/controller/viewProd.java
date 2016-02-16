@@ -1,6 +1,9 @@
 package anvel.controller;
 
+import anvel.utility.sql.SQLOperations;
+
 import java.io.IOException;
+import java.sql.Connection;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,24 +18,26 @@ import javax.servlet.http.HttpServletResponse;
 public class viewProd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+	Connection connection;
+	public void init() throws ServletException {
+		connection = SQLOperations.getConnection();
+        if(connection == null){
+            System.out.println("NULL CONNECTION");
+        }
+        else{
+            System.out.println("CONNECTED");
+        }
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
 	}
 
 }

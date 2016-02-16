@@ -12,6 +12,7 @@
 	<p>Last Name<input type="text" name="lastName" required="required"/></p>
 	<p>E-mail<input type="email" name="email" required="required"/></p>
 	<p>Username<input type="text" name="username" required="required"/></p>
+	<p>ACCOUNT TYPE:</p>
 	<input type="radio" name="isAdmin" value="true" checked> Admin<br>
 	<input type="radio" name="isAdmin" value="false"> staff<br>
 	<p>Password<input type="password" name="password" required="required"/></p>
