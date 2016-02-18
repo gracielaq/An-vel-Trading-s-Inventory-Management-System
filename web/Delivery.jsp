@@ -33,7 +33,7 @@
         var element = document.getElementById("plateValid");
 
 		var email = document.getElementById("plate");
-
+        email=email.value().toUpperCase()
 		if (validate(email)) {
 
 
