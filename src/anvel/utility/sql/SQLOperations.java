@@ -12,10 +12,7 @@ import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import anvel.model.AccountBean;
-import anvel.model.BeanFactory;
-import anvel.model.ProductBean;
-import anvel.model.SoldBean;
+import anvel.model.*;
 import anvel.utility.Security;
 import anvel.utility.sql.SQLCommands;
 
@@ -368,5 +365,20 @@ public class SQLOperations implements SQLCommands {
 			return false;
 		}
 	}
+
+    //for trucks
+    public static ResultSet getTrucks(Connection connection){
+        ResultSet resultSet;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from trucks");
+            resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        }
+        catch(Exception e){
+            System.out.println("getTrucks Error - "+e.getMessage());
+            return null;
+        }
+    }
+
 
 }

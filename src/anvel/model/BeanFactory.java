@@ -117,4 +117,12 @@ public class BeanFactory {
 
         return pb;
     }
+
+	public static TruckBean getInstance(String plate_no, String coding, String model){
+		TruckBean truckBean = new TruckBean();
+		truckBean.setCoding(coding);
+		truckBean.setModel(model);
+		truckBean.setPlate_no(plate_no);
+		return truckBean;
+	}
 }
