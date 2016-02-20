@@ -139,4 +139,7 @@ public interface SQLCommands {
 			+ "mode_of_payment like ? OR "
 			+ "supplier like ? OR"
 			+ " product_code like ?";
+
+
+	String ADD_TRUCK = "insert into product(plate_no,coding,model) values (?,?,?)";
 }

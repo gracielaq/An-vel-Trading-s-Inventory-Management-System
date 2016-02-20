@@ -380,5 +380,18 @@ public class SQLOperations implements SQLCommands {
         }
     }
 
+    public static boolean addTruck(TruckBean truckBean, Connection connection){
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TRUCK);
+            preparedStatement.setString(1,truckBean.getPlate_no());
+            preparedStatement.setString(2,truckBean.getCoding());
+            preparedStatement.setString(3,truckBean.getModel());
+            return true;
+        }catch(Exception e){
+            System.out.println("ADD TRUCK ERROR-"+ e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }
