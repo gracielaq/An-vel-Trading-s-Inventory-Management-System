@@ -85,3 +85,10 @@ CREATE TABLE `DeliveryDB` (
   `DeliveryDate` datetime NOT NULL,
   PRIMARY KEY (`DeliveryNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `trucks` (
+  `plate_no` VARCHAR(10) NOT NULL,
+  `coding` VARCHAR(20) NOT NULL,
+  `model` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`plate_no`))
+ENGINE = InnoDB;
