@@ -43,9 +43,9 @@
     <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum()" id="qty" required="required"/>
     </p>
     <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
-    <p>Supplier:<input type="text" name="supplier[]"/></p>
+    <p>Supplier:<input type="text" name="supplier"/></p>
     <p>Product Description</p>
-    <p><textarea name="description" rows="5" cols="10">Enter product description here.</textarea>
+    <p><textarea name="product_description" rows="5" cols="10">Enter product description here.</textarea>
     <p>Unit Price<input type="number" name="unit_price" value="0.00"  onblur="recalculateSum()" id="prc"
                         required="required"/>
     <p>Discount<input type="number" name="discount_add" onblur="recalculateSum()" value="0" id="disc"/>%</p>

@@ -213,11 +213,9 @@ public class SQLOperations implements SQLCommands {
 	public static boolean addProduct(ProductBean product, Connection connection) {
 		try {
 			/*
-			 * String ADD_PRODUCT = "insert into Product(" + "delivery_date," +
-			 * "date_recieved, " + "delivery_charge," + "DR_SI, " + "quantity,"
-			 * + "product_description," + "unit_price," + "discount," +
-			 * "total_amount," + "mode_of_payment," + "supplier," +
-			 * "product_code" + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String ADD_PRODUCT = "insert into Product(delivery_date, date_recieved, delivery_charge, 
+			DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,
+			product_code) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			 */
 			PreparedStatement pstmt = connection.prepareStatement(ADD_PRODUCT);
 
