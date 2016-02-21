@@ -18,7 +18,14 @@
         function recalculateSum() {
             var num1 = parseInt(document.getElementById("qty").value);
             var num2 = parseInt(document.getElementById("prc").value);
-            document.getElementById("Total").value = num1 * num2;
+            var num3 = parseInt(document.getElementById("delC").value);
+            var num4 = parseInt(document.getElementById("disc").value);
+            var discPercent = num4 * 0.01;
+            var total = (num1*num2) + num3;
+            var discount = discPercent*total;
+            
+            var amount = total - discount;
+            document.getElementById("Total").value = amount;
 
         }
 
@@ -33,15 +40,15 @@
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
     <p>Date Received<input type="date" name="date_received" required="required"/></p>
     <p>DR/SI #<input type="number" name="dr_si" required="required"/>
-    <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum();" id="qty" required="required"/>
+    <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum()" id="qty" required="required"/>
     </p>
-    <p>Delivery Charge<input type="number" name="delivery_charge"/></p>
+    <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
     <p>Supplier:<input type="text" name="supplier[]"/></p>
     <p>Product Description</p>
     <p><textarea name="description" rows="5" cols="10">Enter product description here.</textarea>
-    <p>Unit Price<input type="number" name="unit_price" value="0" onblur="recalculateSum()" id="prc"
+    <p>Unit Price<input type="number" name="unit_price" value="0.00"  onblur="recalculateSum()" id="prc"
                         required="required"/>
-    <p>Discounts<input type="number" name="discount" min="0"/></p>
+    <p>Discounts<input type="number" name="discount" onblur="recalculateSum()" value="0" id="disc"/></p>
     <p>Total Amount <input id="Total" value="0"/></p>
     <p>Mode of Payment</p>
    	<input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
@@ -49,8 +56,7 @@
 	<div id="ifYes" style="visibility:hidden">
    	 	<p>Check Number:<input type="text" name="check"/></p>
 	 </div>
-
-
+	 <input type="submit" value="Submit"  />
 </form>
 <a href="MainMenu.jsp">back to Main Menu</a>
 
