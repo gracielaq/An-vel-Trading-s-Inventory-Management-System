@@ -167,6 +167,19 @@ public class SQLOperations implements SQLCommands {
 		}
 
 	}
+	public static ResultSet getAllAccounts(Connection connection) {
+		try {
+			PreparedStatement statement = connection
+					.prepareStatement(GET_ALL_ACCOUNTS);
+			ResultSet rs = statement.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			System.out.print("getAllProducts Method Error:");
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	public static ResultSet getAllOldProducts(Connection connection) {
 		try {
 			PreparedStatement statement = connection

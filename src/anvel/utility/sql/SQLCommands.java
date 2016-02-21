@@ -83,6 +83,7 @@ public interface SQLCommands {
 			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
 	String GET_ALL_PRODUCTS = "select * from product";
 	String GET_ALL_OLD_PRODUCTS = "select * from Product_old";
+	String GET_ALL_ACCOUNTS = "select * from accounts";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 
 	String ADD_PRODUCT = "insert into Product(delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
