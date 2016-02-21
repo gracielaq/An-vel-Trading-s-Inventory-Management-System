@@ -51,8 +51,8 @@ public class ValidateLogin extends HttpServlet {
 			else{
 				request.setAttribute("error","Invalid Username or Password");
 				System.out.println("Invalid username or password");
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				rd.include(request, response);
+				RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
+				rd.forward(request, response);
 			}
 			
 		}
