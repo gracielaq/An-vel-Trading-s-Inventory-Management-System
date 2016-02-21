@@ -18,7 +18,7 @@ public interface SQLCommands {
 	PRIMARY KEY (`username`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
 
-	String ADD_ACCOUNT_STAFF= "insert into accounts(username,password,email,firstname,lastname,isAdmin) values (?,?,?,?,?,/) ";
+	//String ADD_ACCOUNT_STAFF= "insert into accounts(username,password,email,firstname,lastname,isAdmin) values (?,?,?,?,?,/) ";
 	
 	
 	/*FOR SOLD*/
