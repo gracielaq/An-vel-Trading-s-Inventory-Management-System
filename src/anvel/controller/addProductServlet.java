@@ -43,7 +43,7 @@ public class addProductServlet extends HttpServlet {
             String supplier=request.getParameter("supplier");
             String product_description=request.getParameter("product_description");
             Double unit_price=Double.parseDouble(request.getParameter("unit_price"));
-            Double discount_add=Double.parseDouble(request.getParameter("discount_add"));
+            Integer discount_add=Integer.parseInt((request.getParameter("discount_add")));
             Double total_amount= Double.parseDouble(request.getParameter("total_amount"));
             String mode_of_payment=request.getParameter("mode_of_payment");
             int check_no=Integer.parseInt(request.getParameter("check_no"));
