@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/AddProduct.html")
-public class AddProductServlet extends HttpServlet {
+public class addProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection connection;
 

@@ -7,6 +7,11 @@
 <title>Login</title>
 </head>
 <body>
+	<%
+		String login_msg=(String)request.getAttribute("error");  
+		if(login_msg!=null)
+		out.println("<font color=red size=4px>"+login_msg+"</font>");
+	%>
 <form action="uservalidation.html" method="post">
 	<p>Username:<input type="text" name="username" required="required"/></p>	
 	<p>Password:<input type="password" name="password" required="required"/></p>

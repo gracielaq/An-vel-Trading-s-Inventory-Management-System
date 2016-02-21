@@ -17,7 +17,7 @@
 	<div style="height:200px;overflow:auto;">
 	<table border="1" width="100%" cellpadding="3" cellspacing="3">
 		<tr>
-			<th align="center"></th><!--for checkbox-->
+			
 			<th align="center">Product Code</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>

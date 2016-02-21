@@ -2,7 +2,7 @@ package anvel.utility;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.commons.codec.binary.*;
+import org.apache.tomcat.util.codec.binary.*;
 
 public class Security {
 

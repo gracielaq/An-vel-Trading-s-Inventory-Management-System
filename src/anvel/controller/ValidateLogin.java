@@ -3,6 +3,7 @@ package anvel.controller;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,11 +48,16 @@ public class ValidateLogin extends HttpServlet {
 				
 				getServletContext().getRequestDispatcher("/MainMenu.jsp").forward(request, response);
 			}
+			else{
+				request.setAttribute("error","Invalid Username or Password");
+				System.out.println("Invalid username or password");
+				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+				rd.include(request, response);
+			}
 			
 		}
 		else
 		{
-			//TODO
 			getServletContext().getRequestDispatcher("/ErrorLogin.jsp").forward(request, response);
 		}
 	}
