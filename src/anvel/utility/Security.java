@@ -1,8 +1,10 @@
 package anvel.utility;
 
+import org.apache.commons.codec.binary.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.tomcat.util.codec.binary.*;
+
 
 public class Security {
 

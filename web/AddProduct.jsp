@@ -62,8 +62,8 @@
     <p>Discounts<input type="number" name="discount" min="0"/></p>
     <p>Total Amount <input id="Total" value="0"/></p>
     <p>Mode of Payment</p>
-    <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
-    <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck">Check<br>
+    <input type="radio" onclick="yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
+    <input type="radio" onclick="yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck">Check<br>
     <div id="ifYes" style="visibility:hidden">
         <p>Check Number:<input type="text" name="check"/></p>
     </div>
