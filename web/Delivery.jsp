@@ -37,7 +37,7 @@
             return true;
 
 		} else {
-            window.alert("Wrong plate number "+ plateNo.value);
+            window.alert("Wrong plate number");
             return false;
         }
 	}
