@@ -77,7 +77,7 @@ public interface SQLCommands {
 
 
 	String UPDATE_PRODUCT = "update product set "
-			+ "supplier=?," + "delivery_date=?," + "date_recieved=?,"
+			+ "supplier=?," + "delivery_date=?," + "date_received=?,"
 			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
 			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
 			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";

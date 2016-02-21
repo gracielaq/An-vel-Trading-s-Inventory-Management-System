@@ -183,7 +183,7 @@ public class SQLOperations implements SQLCommands {
 					.prepareStatement(UPDATE_PRODUCT);
 			pstmt.setString(1, product.getSupplier());
 			pstmt.setString(2, ""+product.getDelivery_date());
-			pstmt.setString(3, ""+product.getDate_recieved());
+			pstmt.setString(3, ""+product.getDate_received());
 			pstmt.setString(4, ""+product.getDelivery_charge());
 			pstmt.setString(5, ""+product.getDR_SI());
 			pstmt.setString(6, ""+product.getQuantity());
@@ -221,7 +221,7 @@ public class SQLOperations implements SQLCommands {
 			PreparedStatement pstmt = connection.prepareStatement(ADD_PRODUCT);
 
 			pstmt.setDate(1, product.getDelivery_date());
-			pstmt.setDate(2, product.getDate_recieved());
+			pstmt.setDate(2, product.getDate_received());
 			pstmt.setDouble(3, product.getDelivery_charge());
 			pstmt.setInt(4, product.getDR_SI());
 			pstmt.setInt(5, product.getQuantity());

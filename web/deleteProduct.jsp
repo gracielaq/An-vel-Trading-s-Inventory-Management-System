@@ -19,9 +19,9 @@
 <p>mode of payment: ${productBean.mode_of_payment}</p>
 <p>supplier:${productBean.supplier}</p>
 
-<form action="deleteProduct.html">
+<form action="deleteProductMe.html" method="post">
     <p>delete this product?</p>
-    <input type="hidden" value="${productBean.product_code}"/>
+    <input type="hidden" name="id" value="${productBean.product_code}"/>
     <p>Yes<input type="radio" name="action" value="yes"/></p>
     <p>No<input type="radio" name="action" value="no"/></p>
 <input type="submit"/>

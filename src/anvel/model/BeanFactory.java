@@ -42,7 +42,7 @@ public class BeanFactory {
 		
 		ProductBean bean = new ProductBean(); 
 		bean.setDelivery_date(delivery_date);
-		bean.setDate_recieved(date_recieved);
+		bean.setDate_received(date_recieved);
 		bean.setDiscount_add(discount);
 		bean.setMode_of_payment(mode_of_payment);
 		bean.setDR_SI(string);
@@ -103,7 +103,7 @@ public class BeanFactory {
         ProductBean pb = new ProductBean();
         pb.setProduct_code(product_code);
         pb.setDelivery_date(delivery_date);
-        pb.setDate_recieved(date_received);
+        pb.setDate_received(date_received);
         pb.setDR_SI(dR_SI);
         pb.setQuantity(quantity);
         pb.setDelivery_charge(delivery_charge);

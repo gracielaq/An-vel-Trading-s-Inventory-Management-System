@@ -21,7 +21,7 @@ package anvel.model;
 public class ProductBean {
     private int product_code, quantity, DR_SI, check_no;
     private double unit_price, discount_add, total_amount, delivery_charge;
-    private java.sql.Date delivery_date, date_recieved;
+    private java.sql.Date delivery_date, date_received;
     private String product_description,
             mode_of_payment, supplier;
 
@@ -72,15 +72,15 @@ public class ProductBean {
         this.delivery_date = delivery_date;
     }
 
-    public java.sql.Date getDate_recieved() {
-        return date_recieved;
-    }
+    public java.sql.Date getDate_received() {
+		return date_received;
+	}
 
-    public void setDate_recieved(java.sql.Date date_recieved) {
-        this.date_recieved = date_recieved;
-    }
+	public void setDate_received(java.sql.Date date_received) {
+		this.date_received = date_received;
+	}
 
-    public double getDelivery_charge() {
+	public double getDelivery_charge() {
         return delivery_charge;
     }
 

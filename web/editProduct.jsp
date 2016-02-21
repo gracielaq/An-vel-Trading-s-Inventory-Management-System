@@ -25,13 +25,13 @@
     <p>quantity:<input type="number" name="check_no" value="${productBean.quantity}"/></p>
     <p>unit price:<input type="number" name="unit_price" value="${productBean.unit_price}" /></p>
     <p>Discount:<input type="number" name="discount_add" value="${productBean.discount_add}" /></p>
-    <p>total_amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
+    <p>total amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
     <p>delivery charge:<input type="number" name="delivery_charge" value="${productBean.delivery_charge}" /></p>
     <p>delivery date:<input type="date" name="delivery_date" value="${productBean.delivery_date}"/></p>
-    <p>date_recieved:<input type="date" name="date_recieved" value="${productBean.date_recieved}}"/> </p>
-    <p>product description:<input name="product_description" value="${productBean.product_description}"/></p>
-    <p>mode of payment: <input name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
-    <p>supplier:<input  name="supplier" value="${productBean.supplier}" ></p>
+    <p>Date Received:<input type="date" name="date_received" value="${productBean.date_recieved}}"/> </p>
+    <p>product description:<input type="text" name="product_description" value="${productBean.product_description}"/></p>
+    <p>mode of payment: <input type="text" name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
+    <p>supplier:<input type="text"  name="supplier" value="${productBean.supplier}" ></p>
     <p><input type="submit"/></p>
 </form>
 </body>

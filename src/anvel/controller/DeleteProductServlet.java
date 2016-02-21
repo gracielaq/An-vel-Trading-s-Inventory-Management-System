@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 /**
  * Created by Jude on 2/22/2016.
  */
-@WebServlet("deleteProduct.html")
+@WebServlet("/deleteProductMe.html")
 public class DeleteProductServlet extends HttpServlet {
     Connection connection;
     public void init() throws ServletException {
@@ -27,29 +27,28 @@ public class DeleteProductServlet extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try{
-    	RequestDispatcher dispatcher = null; 
-    	if(request.getParameter("action").equals("yes")){
-           int product_code=Integer.parseInt((String)request.getAttribute("productBean"));
-           
-           SQLOperations.transferProduct(product_code, connection);
-			SQLOperations.deleteProduct(product_code, connection);
-			ResultSet rs = 
-					  SQLOperations.getAllProducts(connection);
-			request.setAttribute("recordAdmins", rs);
-			dispatcher = 
-			 getServletContext().getRequestDispatcher("/View.html");	
-           
-        }else{
-            response.sendRedirect("/View.html");
-        }
-    }catch (Exception e) {
-		System.err.println("Exception e - " + e.getMessage());
-		e.printStackTrace();
-	} 
+    	doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+    	  try{
+    	    	RequestDispatcher dispatcher = null; 
+    	    	String directory = "/deleteProductStatus.jsp";
+    	    	if(request.getParameter("action").equals("yes")){
+    	    	   System.out.println(request.getAttribute("productBean"));
+    	           int product_code=Integer.parseInt(request.getParameter("id"));
+    	           
+    	           SQLOperations.transferProduct(product_code, connection);
+    	           SQLOperations.deleteProduct(product_code, connection);
+    	           directory+="?status=success";
+    	           getServletContext().getRequestDispatcher(directory).forward(request,response);
+    	           
+    	        }else{
+    	            response.sendRedirect("View.html");
+    	        }
+    	    }catch (Exception e) {
+    			System.err.println("Exception e - " + e.getMessage());
+    			e.printStackTrace();
+    		} 
     }
 }

@@ -30,7 +30,7 @@
 			<th align="center">Unit Price</th>
 			<th align="center">Discount</th>
 			<th align="center">Total Amount</th>
-			<th align="center">Mode of Pyt</th>
+			<th align="center">Mode of Payment</th>
 			<th align="center">Check Number</th>
 			<th align="center">Action-Edit</th>
 			<th align="center">Action-Delete</th>
@@ -68,5 +68,6 @@
 	<% } %>
 		
 	</table></div>
+	<a href="MainMenu.jsp">Back to Main Menu</a>
 </body>
 </html>
