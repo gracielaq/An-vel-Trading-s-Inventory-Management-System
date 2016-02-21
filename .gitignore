@@ -2,3 +2,6 @@ out/
 .classpath
 .idea/
 *.class
+*.class
+build/classes/anvel/controller/viewProd.class
+*.class
