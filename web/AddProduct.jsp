@@ -24,6 +24,20 @@
             insertHere.parentNode.insertBefore(newFields, insertHere);
         }
         window.onload = moreFields;
+        
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.visibility = 'visible';
+            } else {
+                document.getElementById('ifYes').style.visibility = 'hidden';
+            }
+        }
+        function recalculateSum() {
+            var num1 = parseInt(document.getElementById("qty").value);
+            var num2 = parseInt(document.getElementById("prc").value);
+            document.getElementById("Total").value = num1 * num2;
+
+        }
 
     </script>
 </head>
@@ -64,24 +78,6 @@
     <input type="button"onclick="moreFields()" value="Add Field!"/>
     <p><input type="submit" value="add"/>
 </form>
-<script type="text/javascript">
-
-
-    function yesnoCheck() {
-        if (document.getElementById('yesCheck').checked) {
-            document.getElementById('ifYes').style.visibility = 'visible';
-        } else {
-            document.getElementById('ifYes').style.visibility = 'hidden';
-        }
-    }
-    function recalculateSum() {
-        var num1 = parseInt(document.getElementById("qty").value);
-        var num2 = parseInt(document.getElementById("prc").value);
-        document.getElementById("Total").value = num1 * num2;
-
-    }
-</script>
-
 <a href="index.html">back to index</a>
 </body>
 </html>
