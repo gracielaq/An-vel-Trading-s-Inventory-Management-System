@@ -20,7 +20,7 @@ public class SoldBean{
 	  PRIMARY KEY (`product_code`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
 	
-	private int product_code;
+	private int product_code,check_no;
 	private double unit_price;
 	private int quantity;
 	private String product_description;
@@ -119,6 +119,12 @@ public class SoldBean{
 	}
 	public void setMode_of_payment(String mode_of_payment) {
 		this.mode_of_payment = mode_of_payment;
+	}
+	public int getCheck_no() {
+		return check_no;
+	}
+	public void setCheck_no(int check_no) {
+		this.check_no = check_no;
 	}
 	
 	

@@ -39,7 +39,12 @@ public class ProductMaintenanceServlet extends HttpServlet {
         		directory="/deleteProduct.jsp";
         		ProductBean productBean = SQLOperations.findProduct(product_code,connection);
         		request.setAttribute("productBean",productBean);
-        	}else{
+        	}else if(request.getParameter("action").equals("sell")){
+        		directory="/sellProductDetails.jsp";
+        		ProductBean productBean = SQLOperations.findProduct(product_code,connection);
+        		request.setAttribute("productBean",productBean);
+        	}
+        	else{
         		directory="/MainMenu.jsp";
         	}
         

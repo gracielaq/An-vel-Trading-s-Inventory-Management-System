@@ -76,7 +76,7 @@ public class BeanFactory {
 	public static SoldBean getInstance(int product_code,double unit_price, int quantity,
 			String product_description, double discount_sell,  int note_quantity,
 			String note_description, String customer_name, String tin, String address, java.sql.Date date,
-			String mode_of_payment){
+			String mode_of_payment, int check_no){
 				
 				SoldBean bean = new SoldBean(); 
 				bean.setProduct_code(product_code);
@@ -91,6 +91,7 @@ public class BeanFactory {
 				bean.setDate(date);
 				bean.setAddress(address);
 				bean.setMode_of_payment(mode_of_payment);
+				bean.setCheck_no(check_no);
 				
 				bean.setAddress(address);
 				bean.compute();

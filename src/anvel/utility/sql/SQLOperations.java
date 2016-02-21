@@ -94,8 +94,7 @@ public class SQLOperations implements SQLCommands {
 
 			PreparedStatement pstmt = connection
 					.prepareStatement(ADD_SOLD_PRODUCT);
-			// java.sql.Date date = new
-			// java.sql.Date(Calendar.getInstance().getTime().getTime());
+			
 			pstmt.setInt(1, soldBean.getProduct_code());
 			pstmt.setDouble(2, soldBean.getUnit_price());
 			pstmt.setInt(3, soldBean.getQuantity());
@@ -109,6 +108,8 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(11, soldBean.getAddress());
 			pstmt.setDate(12, soldBean.getDate());
 			pstmt.setString(13, soldBean.getMode_of_payment());
+			pstmt.setInt(14, soldBean.getCheck_no());
+			
 			pstmt.executeUpdate(); // execute insert statement
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - addSoldProduct: "
