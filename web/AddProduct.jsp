@@ -52,7 +52,7 @@
 
 
 </form>
-<a href="index.html">back to index</a>
+<a href="MainMenu.jsp">back to Main Menu</a>
 
 </body>
 </html>
