@@ -26,21 +26,18 @@
 
 <script type="text/javascript">
 	function validate(plateNo) {
-		var re = /(^[A-Z][A-Z][A-Z] [0-9][0-9][0-9])\b|(^[A-Z][A-Z][A-Z] [0-9][0-9][0-9][0-9])\b/;
+		var re = "/(^[a-zA-Z][a-zA-Z][a-zA-Z] [0-9][0-9][0-9]$)|(^[a-zA-Z][a-zA-Z][a-zA-Z] [0-9][0-9][0-9][0-9]$)/";
 		return re.test(plateNo);
 	}
 	function validatePlate(){
-        var element = document.getElementById("plateValid");
 
-		var email = document.getElementById("plate");
-        email=email.value().toUpperCase()
-		if (validate(email)) {
+		var plateNo = document.getElementById("plate");
 
-
+		if (validate(plateNo)) {
             return true;
 
 		} else {
-            window.alert("Wrong plate number");
+            window.alert("Wrong plate number "+ plateNo.value);
             return false;
         }
 	}

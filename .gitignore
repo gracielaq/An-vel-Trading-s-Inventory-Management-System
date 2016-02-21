@@ -6,3 +6,5 @@ out/
 build/classes/anvel/controller/viewProd.class
 *.class
 *.class
+*.class
+build/classes/anvel/utility/sql/SQLOperations.class
