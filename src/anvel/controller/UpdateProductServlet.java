@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Jude on 2/22/2016.
  */
-@WebServlet(name = "UpdateProductServlet")
+@WebServlet("/updateProduct.html")
 public class UpdateProductServlet extends HttpServlet {
     Connection connection;
 
