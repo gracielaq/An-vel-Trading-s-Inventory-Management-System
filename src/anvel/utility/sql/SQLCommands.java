@@ -100,30 +100,32 @@ public interface SQLCommands {
 			+ "DeliveryDate like ? ";
 	
 	/*FOR Products:
-	FOR Products:
-		CREATE TABLE `Product` (
-		  `product_code` int(11) NOT NULL,
-		  `supplier` varchar(200) NOT NULL,
-		  `delivery_date` datetime NOT NULL,
-		  `date_received` datetime NOT NULL,
-		  `delivery_charge` varchar(45) NOT NULL,
-		  `DR_SI` varchar(100) NOT NULL,
-		  `quantity` int(11) NOT NULL,
-		  `product_description` varchar(999) DEFAULT NULL,
-		  `unit_price` double NOT NULL,
-		  `discount_add` double DEFAULT NULL,
-		  `total_amount` double DEFAULT NULL,
-		  `mode_of_payment` varchar(45) NOT NULL,
-		  PRIMARY KEY (`product_code`)
-		) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+	CREATE TABLE `Product` (
+  `product_code` int(11) NOT NULL,
+  `supplier` varchar(200) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `date_received` date NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` int(6) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount_add` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `check_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+*/
 
+	String UPDATE_PRODUCT = "update product set "
+			+ "supplier=?," + "delivery_date=?," + "date_recieved=?,"
+			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
+			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
+			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
 	String GET_ALL_PRODUCTS = "select * from product";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
-	String UPDATE_PRODUCT = "update product set delivery_date=?,"
-			+ "date_received=?," + "delivery_charge=?," + "DR_SI=?,"
-			+ "quantity=?," + "product_description=?," + "unit_price=?,"
-			+ "discount_add=?," + "total_amount=?," + "mode_of_payment=?,"
-			+ "supplier=?" + "where product_code=?";
+
 	String ADD_PRODUCT = "insert into Product(" + "delivery_date,"
 			+ "date_recieved, " + "delivery_charge," + "DR_SI, " + "quantity,"
 			+ "product_description," + "unit_price," + "discount_add,"
