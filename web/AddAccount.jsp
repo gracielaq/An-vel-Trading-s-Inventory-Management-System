@@ -17,7 +17,7 @@
 	<input type="radio" name="isAdmin" value="false"> staff<br>
 	<p>Password:<input type="password" name="password" id="txtPassword" required="required"/></p>
 	<p>Confirm Password:<input type="password" name="password" id="txtConfirmPassword"  required="required"/></p>
- <input type="button" id="btnSubmit" value="Submit" onclick="return Validate()" />
+ <input type="submit" id="btnSubmit" value="Submit" onclick="return Validate()" />
 </form>
 <script type="text/javascript">
     function Validate() {
