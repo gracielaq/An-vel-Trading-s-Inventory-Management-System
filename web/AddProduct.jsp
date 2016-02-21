@@ -40,7 +40,7 @@
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
     <p>Date Received<input type="date" name="date_received" required="required"/></p>
     <p>DR/SI #<input type="number" name="dr_si" required="required"/>
-    <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum()" id="qty" required="required"/>
+    <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum() " id="qty" required="required"/>
     </p>
     <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
     <p>Supplier:<input type="text" name="supplier[]"/></p>
