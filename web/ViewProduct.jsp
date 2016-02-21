@@ -12,6 +12,7 @@
 
 <form action="SearchProducts.html">
 	SEARCH:<input type="text" name="searchQuery"/>
+	<input type="submit"/>
 </form>
 <h1>PRODUCTS</h1>
 	<div style="height:200px;overflow:auto;">
