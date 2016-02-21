@@ -5,7 +5,6 @@ var counter = 0;
 
 function moreFields() {
     counter= counter+1;
-    window.alert("added form");
     var newFields = document.getElementById('readroot').cloneNode(true);
     newFields.id = '';
     newFields.style.display = 'block';

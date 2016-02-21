@@ -6,7 +6,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Add Product</title>
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/COPYFORM.js"></script>
+    <script language="JavaScript" type="text/javascript" >
+        var counter = 0;
+
+        function moreFields() {
+            counter= counter+1;
+            var newFields = document.getElementById('readroot').cloneNode(true);
+            newFields.id = '';
+            newFields.style.display = 'block';
+            var newField = newFields.childNodes;
+            for (var i = 0; i < newField.length; i++) {
+                var theName = newField[i].name;
+                if (theName){
+                    newField[i].name = theName + counter;}
+            }
+            var insertHere = document.getElementById('writeroot');
+            insertHere.parentNode.insertBefore(newFields, insertHere);
+        }
+        window.onload = moreFields;
+
+    </script>
 </head>
 <body>
 <!-- eto yung div na cocopyahin/ yung template ng form-->
