@@ -22,7 +22,7 @@ public class editProd extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		connection = SQLOperations.getConnection();
 		if(connection==null)System.out.println("CONNECTED");
-        else System.out.println("AWTSUBEBEH, WALA PONG CONNECTION");
+        else System.out.println("Null COnnection");
 	}
 
 
