@@ -11,25 +11,7 @@
 <head>
     <title>Title</title>
 </head>
-<body><!--
-/*FOR SELL:*/
-CREATE TABLE `Sell` (
-`product_code` int(11) NOT NULL,
-`unit_price` double NOT NULL,
-`quantity` int(11) NOT NULL,
-`product_description` varchar(999) DEFAULT NULL,
-`discount_sell` double DEFAULT NULL,
-`total_amount` double DEFAULT NULL,
-`note_quantity` int(11) DEFAULT NULL,
-`note_description` varchar(999) DEFAULT NULL,
-`customer_name` varchar(200) NOT NULL,
-`tin` varchar(200) NOT NULL,
-`address` varchar(200) NOT NULL,
-`date` datetime NOT NULL,
-`mode_of_payment` varchar(45) NOT NULL,
-`check_no` int(11) DEFAULT NULL,
-PRIMARY KEY (`product_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; -->
+<body>
 </form>
 <h1>PRODUCTS</h1>
 <div style="height:200px;overflow:auto;">

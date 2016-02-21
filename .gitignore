@@ -5,3 +5,4 @@ out/
 *.class
 build/classes/anvel/controller/viewProd.class
 *.class
+*.class
