@@ -9,6 +9,10 @@
 <title>View Products</title>
 </head>
 <body>
+
+<form action="SearchProducts.html">
+	SEARCH:<input type="text" name="searchQuery"/>
+</form>
 <h1>PRODUCTS</h1>
 	<div style="height:200px;overflow:auto;">
 	<table border="1" width="100%" cellpadding="3" cellspacing="3">

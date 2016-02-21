@@ -67,17 +67,19 @@ public interface SQLCommands {
 			+ ") values(?,?,?,?,?,?,?,?,?,?,?)";
 	
 	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where"
-			+ " delivery_date like ? OR "
-			+ "date_received like ? OR "
-			+ "delivery_charge like ? OR "
-			+ "DR_SI like ? OR "
+			+ " product_code like ? OR "
+			+ "unit_price like ? OR "
 			+ "quantity like ? OR "
 			+ "product_description like ? OR "
-			+ "unit_price like ? OR "
 			+ "discount_sell like ? OR "
 			+ "total_amount like ? OR "
-			+ "checkNumber like ? OR "
-			+ " product_code like ?";
+			+ "note_quantity like ? OR "
+			+ "note_description like ? OR "
+			+ "customer_name like ? OR "
+			+ "tin like ? OR "
+			+ "address like ? OR" +
+			"date  like ? OR" +
+			"mode_of_payment like ?";
 
 
 	String ADD_DELIVERY_REPORT = "insert into DeliveryDB(" 

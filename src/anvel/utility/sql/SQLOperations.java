@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 
+import javax.naming.spi.DirStateFactory;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -274,6 +275,19 @@ public class SQLOperations implements SQLCommands {
 			return productbean;
 		}
 		return productbean;
+	}
+
+	public static ResultSet searchProductsDatabase(String searchQuery, Connection connection){
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_FOR_SOLD_PRODUCTS);
+			ResultSet rs = preparedStatement.executeQuery();
+			return rs;
+		}
+		catch (Exception e){
+			System.out.println("searchProductsdatabase error");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	// TO DO
