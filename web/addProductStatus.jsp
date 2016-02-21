@@ -7,6 +7,16 @@
 <title>Add Product Status</title>
 </head>
 <body>
-
+<%
+	if (request.getParameter("success").equals("true")) { %>
+		<h2>Successfully added product! </h2>
+		<br/>
+		<p>Product: ${productbean.product_description}</p>
+		<p>Quantity: ${productbean.quantity}</p>
+		<p>Unit Price: ${productbean.unit_price}</p>
+		<p>Supplier: ${productbean.supplier}</p> 
+	<% } else { %>
+	  <h1>Failed to add product. :(</h1>		
+	<% } %>
 </body>
 </html>
