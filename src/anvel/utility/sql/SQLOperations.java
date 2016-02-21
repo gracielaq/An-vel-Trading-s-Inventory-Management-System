@@ -170,29 +170,29 @@ public class SQLOperations implements SQLCommands {
 	public static int updateProduct(ProductBean product, int product_code,
 			Connection connection) {
 		/*
-		 * String UPDATE_PRODUCT = "update product set delivery_date=?," +
-		 * "date_received=?," + "delivery_charge=?," + "DR_SI=?," +
-		 * "quantity=?," + "product_description=?," + "unit_price=?," +
-		 * "discount=?," + "total_amount=?," + "mode_of_payment=?," +
-		 * "supplier=?" + "where product_code=?";
+		 String UPDATE_PRODUCT = "update product set "
+			+ "supplier=?," + "delivery_date=?," + "date_recieved=?,"
+			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
+			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
+			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
 		 */
 		int updated = 0;
 		try {
 			connection.setAutoCommit(false);
 			PreparedStatement pstmt = connection
 					.prepareStatement(UPDATE_PRODUCT);
-			pstmt.setDate(1, product.getDelivery_date());
-			pstmt.setDate(2, product.getDate_recieved());
-			pstmt.setDouble(3, product.getDelivery_charge());
-			pstmt.setInt(4, product.getDR_SI());
-			pstmt.setInt(5, product.getQuantity());
-			pstmt.setString(6, product.getProduct_description());
-			pstmt.setDouble(7, product.getUnit_price());
-			pstmt.setDouble(8, product.getDiscount_add());
-			pstmt.setDouble(9, product.getTotal_amount());
-			pstmt.setString(10, product.getMode_of_payment());
-			pstmt.setString(11, product.getSupplier());
-			pstmt.setInt(12, product.getProduct_code());
+			pstmt.setString(1, product.getSupplier());
+			pstmt.setString(2, ""+product.getDelivery_date());
+			pstmt.setString(3, ""+product.getDate_recieved());
+			pstmt.setString(4, ""+product.getDelivery_charge());
+			pstmt.setString(5, ""+product.getDR_SI());
+			pstmt.setString(6, ""+product.getQuantity());
+			pstmt.setString(7,product.getProduct_description());
+			pstmt.setString(8, ""+product.getUnit_price());
+			pstmt.setString(9, ""+product.getDiscount_add());
+			pstmt.setString(10, ""+product.getTotal_amount());
+			pstmt.setString(11, product.getMode_of_payment());
+			pstmt.setInt(12, product.getCheck_no());
 			updated = pstmt.executeUpdate();
 			connection.commit();
 		} catch (SQLException sqle) {
@@ -251,21 +251,21 @@ public class SQLOperations implements SQLCommands {
 					.prepareStatement(SEARCH_PRODUCT);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
-
 			while (rs.next()) {
 				productbean = BeanFactory.getInstance(
 						rs.getInt("product_code"), 
-						rs.getInt("quantity"),
-						rs.getDouble("unit_price"),
-						rs.getDouble("discount_sell"),
 						rs.getDate("delivery_date"),
 						rs.getDate("date_recieved"),
-						rs.getString("delivery_charge"),
-						rs.getInt("DR_SI"),
+						rs.getInt("dR_SI"),
+						rs.getInt("quantity"),
+						rs.getDouble("delivery_charge"),
+						rs.getString("supplier"),
 						rs.getString("product_description"),
+						rs.getDouble("unit_price"),
+						rs.getDouble("discount_add"),
+						rs.getDouble("total_amount"),
 						rs.getString("mode_of_payment"),
-						rs.getString("supplier"));
-
+						rs.getInt("check_no"));
 			}
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - findProduct: "
