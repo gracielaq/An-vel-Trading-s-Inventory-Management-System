@@ -17,8 +17,8 @@
     <p>Product Code<input type="number" name="product_code" required="required"/></p>
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
     <p>Date Received<input type="date" name="date_received" required="required"/></p>
-    <p>DR/SI #<input type="number" name="dr_si[]" required="required"/>
-    <p>Quantity<input type="number" name="quantity[]" value="0" onblur="recalculateSum();" id="qty" required="required"/>
+    <p>DR/SI #<input type="number" name="dr_si" required="required"/>
+    <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum();" id="qty" required="required"/>
     </p>
     <p>Delivery Charge<input type="number" name="delivery_charge"/></p>
     <p>Supplier:<input type="text" name="supplier[]"/></p>
