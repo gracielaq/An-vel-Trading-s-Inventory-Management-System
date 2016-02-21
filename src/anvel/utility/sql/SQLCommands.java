@@ -82,6 +82,7 @@ public interface SQLCommands {
 			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
 			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
 	String GET_ALL_PRODUCTS = "select * from product";
+	String GET_ALL_OLD_PRODUCTS = "select * from Product_old";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 
 	String ADD_PRODUCT = "insert into Product(delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -102,5 +103,10 @@ public interface SQLCommands {
 			+ " select delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no "
 			+ "from Product where product_code=?;";
 	String DELETE_PRODUCT = "delete from Product where product_code=?";
+	
+	String TRANSFER_PRODUCT_OLD="insert into Product (delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no)" 
+			+ " select delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no "
+			+ "from Product_old where product_code=?;";
+	String DELETE_PRODUCT_OLD = "delete from Product_old where product_code=?";
 	String ADD_TRUCK = "insert into product(plate_no,coding,model) values (?,?,?)";
 }

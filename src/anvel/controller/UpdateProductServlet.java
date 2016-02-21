@@ -31,7 +31,7 @@ public class UpdateProductServlet extends HttpServlet {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             int product_code = Integer.parseInt(request.getParameter("product_code"));
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
-            java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_recieved")).getTime());
+            java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_received")).getTime());
             int dR_SI = Integer.parseInt(request.getParameter("dr_si"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             double delivery_charge = Double.parseDouble(request.getParameter("delivery_charge"));

@@ -166,6 +166,19 @@ public class SQLOperations implements SQLCommands {
 		}
 
 	}
+	public static ResultSet getAllOldProducts(Connection connection) {
+		try {
+			PreparedStatement statement = connection
+					.prepareStatement(GET_ALL_OLD_PRODUCTS);
+			ResultSet rs = statement.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			System.out.print("getAllOldProducts Method Error:");
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	public static int updateProduct(ProductBean product, int product_code,
 			Connection connection) {
@@ -419,12 +432,47 @@ public class SQLOperations implements SQLCommands {
 			}	
 			return true;
 	}
+    public static boolean transferProductOld(int id, 
+			Connection connection) {
+			
+			try {
+		        PreparedStatement pstmt = connection.prepareStatement(TRANSFER_PRODUCT_OLD);
+		        pstmt.setInt(1, id); 
+		        pstmt.executeUpdate(); // execute insert statement  
+			} catch (SQLException sqle) {
+				System.out.println("SQLException - transferProduct: " + sqle.getMessage());
+				return false; 
+			}	
+			return true;
+	}
     public static synchronized int deleteProduct(int product_code, Connection connection) {
 		int updated = 0;
 		
 		try {
 			connection.setAutoCommit(false);
 	        PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT);
+	        pstmt.setInt(1, product_code);             
+	        updated  = pstmt.executeUpdate();
+	        connection.commit();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - deleteProduct: " + sqle.getMessage());
+			
+			try {
+				connection.rollback();
+			} catch (SQLException sql) {
+				System.err.println("Error on Delete Connection Rollback - " + sql.getMessage());
+			}
+			return updated; 
+		}	
+		
+		return updated;
+	} 
+    public static synchronized int deleteProductOld(int product_code, Connection connection) {
+		int updated = 0;
+		
+		try {
+			connection.setAutoCommit(false);
+	        PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT_OLD);
 	        pstmt.setInt(1, product_code);             
 	        updated  = pstmt.executeUpdate();
 	        connection.commit();

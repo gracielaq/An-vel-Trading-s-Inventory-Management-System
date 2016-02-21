@@ -19,19 +19,20 @@
             mode_of_payment, supplier;
 -->
 <form action="updateProduct.html" title="productform">
-    <p>product_code: ${productBean.product_code}</p>
-    <p>quantity:<input type="number" name="quantity" value="${productBean.quantity}"/></p>
+    <p>Product_code: ${productBean.product_code}</p>
+    <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}"/></p>
+    <p>Supplier:<input type="text"  name="supplier" value="${productBean.supplier}" ></p>
     <p>DR_SI:<input type="number" name="DR_SI" value="${productBean.DR_SI}"/></p>
-    <p>quantity:<input type="number" name="check_no" value="${productBean.quantity}"/></p>
-    <p>unit price:<input type="number" name="unit_price" value="${productBean.unit_price}" /></p>
+    <p>Unit Price:<input type="number" name="unit_price" value="${productBean.unit_price}" /></p>
     <p>Discount:<input type="number" name="discount_add" value="${productBean.discount_add}" /></p>
-    <p>total amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
-    <p>delivery charge:<input type="number" name="delivery_charge" value="${productBean.delivery_charge}" /></p>
-    <p>delivery date:<input type="date" name="delivery_date" value="${productBean.delivery_date}"/></p>
-    <p>Date Received:<input type="date" name="date_received" value="${productBean.date_recieved}}"/> </p>
+    <p>Total Amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
+    <p>Delivery Charge:<input type="number" name="delivery_charge" value="${productBean.delivery_charge}" /></p>
+    <p>Delivery Date:<input type="date" name="delivery_date" value="${productBean.delivery_date}"/></p>
+    <p>Date Received:<input type="date" name="date_received" value="${productBean.date_received}}"/> </p>
     <p>product description:<input type="text" name="product_description" value="${productBean.product_description}"/></p>
     <p>mode of payment: <input type="text" name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
-    <p>supplier:<input type="text"  name="supplier" value="${productBean.supplier}" ></p>
+    <p>Check No:<input type="number" name="check_no" value="${productBean.check_no}"/></p>
+  
     <p><input type="submit"/></p>
 </form>
 </body>
