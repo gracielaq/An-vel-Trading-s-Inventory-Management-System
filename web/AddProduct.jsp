@@ -31,7 +31,7 @@
 <!-- eto yung div na cocopyahin/ yung template ng form-->
 <div id="readroot" style="display: none">
     <input type="button" value="Remove Field"
-           onclick="removeField(this.parentNode)"/><br/><br/>
+           onclick="this.parentNode.parentNode.removeChild(this.parentNode);"/><br/><br/>
 
     <p>Product Code<input type="number" name="product_code" required="required"/></p>
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
