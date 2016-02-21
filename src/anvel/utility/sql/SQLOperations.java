@@ -256,7 +256,7 @@ public class SQLOperations implements SQLCommands {
 				productbean = BeanFactory.getInstance(
 						rs.getInt("product_code"), 
 						rs.getDate("delivery_date"),
-						rs.getDate("date_recieved"),
+						rs.getDate("date_received"),
 						rs.getInt("dR_SI"),
 						rs.getInt("quantity"),
 						rs.getDouble("delivery_charge"),
@@ -406,5 +406,40 @@ public class SQLOperations implements SQLCommands {
             return false;
         }
     }
+    public static boolean transferProduct(int id, 
+			Connection connection) {
+			
+			try {
+		        PreparedStatement pstmt = connection.prepareStatement(TRANSFER_PRODUCT);
+		        pstmt.setInt(1, id); 
+		        pstmt.executeUpdate(); // execute insert statement  
+			} catch (SQLException sqle) {
+				System.out.println("SQLException - transferProduct: " + sqle.getMessage());
+				return false; 
+			}	
+			return true;
+	}
+    public static synchronized int deleteProduct(int product_code, Connection connection) {
+		int updated = 0;
+		
+		try {
+			connection.setAutoCommit(false);
+	        PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT);
+	        pstmt.setInt(1, product_code);             
+	        updated  = pstmt.executeUpdate();
+	        connection.commit();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - deleteProduct: " + sqle.getMessage());
+			
+			try {
+				connection.rollback();
+			} catch (SQLException sql) {
+				System.err.println("Error on Delete Connection Rollback - " + sql.getMessage());
+			}
+			return updated; 
+		}	
+		
+		return updated;
+	}
 
 }

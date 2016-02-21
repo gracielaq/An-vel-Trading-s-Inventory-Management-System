@@ -1,3 +1,4 @@
+package anvel.controller;
 import anvel.utility.sql.SQLOperations;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import java.sql.Connection;
 /**
  * Created by Jude on 2/22/2016.
  */
-@WebServlet("/deleteProduct.html")
+@WebServlet("deleteProduct.html")
 public class DeleteProductServlet extends HttpServlet {
     Connection connection;
     public void init() throws ServletException {

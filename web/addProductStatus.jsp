@@ -18,6 +18,7 @@
 	<% } else { %>
 	  <h1>Failed to add product. :(</h1>		
 	<% } %>
-<a href="MainMenu.jsp">back to main menu</a>
+<a href=AddProduct.jsp>Add another product</a>
+<a href="MainMenu.jsp">Back to main menu</a>
 </body>
 </html>

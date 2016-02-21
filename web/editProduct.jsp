@@ -19,7 +19,7 @@
             mode_of_payment, supplier;
 -->
 <form action="updateProduct.html" title="productform">
-    <p>product_code: ${productBean.product_code}<input type="hidden",</p>
+    <p>product_code: ${productBean.product_code}</p>
     <p>quantity:<input type="number" name="quantity" value="${productBean.quantity}"/></p>
     <p>DR_SI:<input type="number" name="DR_SI" value="${productBean.DR_SI}"/></p>
     <p>quantity:<input type="number" name="check_no" value="${productBean.quantity}"/></p>

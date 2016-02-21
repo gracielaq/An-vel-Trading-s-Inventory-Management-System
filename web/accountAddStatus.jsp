@@ -14,5 +14,6 @@
 	<% } else { %>
 	  <h1>Failed to register. :(</h1>		
 	<% } %>
+<a href="MainMenu.jsp">Back to main menu</a>
 </body>
 </html>
