@@ -193,6 +193,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(10, ""+product.getTotal_amount());
 			pstmt.setString(11, product.getMode_of_payment());
 			pstmt.setInt(12, product.getCheck_no());
+			pstmt.setInt(13, product_code);
 			updated = pstmt.executeUpdate();
 			connection.commit();
 		} catch (SQLException sqle) {
