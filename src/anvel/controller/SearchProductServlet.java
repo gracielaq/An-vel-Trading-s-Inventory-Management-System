@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 @WebServlet("/SearchProduct.html")
 public class SearchProductServlet extends HttpServlet {
     Connection connection;
-    public void init(){
+    public void init() throws ServletException{
         connection= SQLOperations.getConnection();
         if(connection!=null)System.out.println("CONNECTED");
         else System.out.println("NULL CONNECTION");

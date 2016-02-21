@@ -4,6 +4,7 @@ import anvel.utility.sql.SQLOperations;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +36,9 @@ public class viewProd extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		ResultSet rs = SQLOperations.getAllProducts(connection);
+		request.setAttribute("productrecords",rs);
+		getServletContext().getRequestDispatcher("/ViewProduct.jsp").forward(request,response);
 	}
 
 }
