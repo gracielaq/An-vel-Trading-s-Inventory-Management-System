@@ -128,7 +128,7 @@ public interface SQLCommands {
 			+ "date_recieved, " + "delivery_charge," + "DR_SI, " + "quantity,"
 			+ "product_description," + "unit_price," + "discount_add,"
 			+ "total_amount," + "mode_of_payment," + "supplier,"
-			+ "product_code" + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "product_code" + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	String SEARCH_FOR_PRODUCTS = "select * from product where delivery_date like ? OR "
 			+ "date_received like ? OR "
 			+ "delivery_charge like ? OR "

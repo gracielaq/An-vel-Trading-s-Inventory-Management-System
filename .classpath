@@ -13,7 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/pc1/Documents/apache-tomcat-8.0.24/lib/servlet-api.jar">
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
@@ -28,12 +28,12 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/pc1/Documents/GitHub/An-vel-Trading-s-Inventory-Management-System/commons-codec-1.9.jar">
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/for encryption/commons-codec-1.9.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/pc1/Documents/GitHub/An-vel-Trading-s-Inventory-Management-System/mysql-connector-java-5.1.36-bin.jar">
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

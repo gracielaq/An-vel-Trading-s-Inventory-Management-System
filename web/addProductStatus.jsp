@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	if (request.getParameter("success").equals("true")) { %>
+	if (request.getParameter("status").equals("true")) { %>
 		<h2>Successfully added product! </h2>
 		<br/>
 		<p>Product: ${productbean.product_description}</p>

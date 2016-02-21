@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import anvel.utility.sql.SQLOperations;
 
-/**
- * Servlet implementation class editProd
- */
+
 @WebServlet("/Edit.html")
 public class editProd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,9 +30,6 @@ public class editProd extends HttpServlet {
 		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			if (connection != null) {

@@ -43,16 +43,20 @@ public class addProductServlet extends HttpServlet {
             String supplier=request.getParameter("supplier");
             String product_description=request.getParameter("product_description");
             Double unit_price=Double.parseDouble(request.getParameter("unit_price"));
-            Integer discount_add=Integer.parseInt((request.getParameter("discount_add")));
+            Double discount_add=Double.parseDouble((request.getParameter("discount_add")));
             Double total_amount= Double.parseDouble(request.getParameter("total_amount"));
             String mode_of_payment=request.getParameter("mode_of_payment");
-            int check_no=Integer.parseInt(request.getParameter("check_no"));
-
-
-            ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
-                    ,quantity, delivery_charge, supplier, product_description, unit_price, discount_add,
-                    total_amount, mode_of_payment, check_no);
-
+            int check_no=0;
+           try{
+            check_no=Integer.parseInt(request.getParameter("check_no"));
+            }
+           catch(Exception e){
+        	 
+            }
+            	 ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
+                         ,quantity, delivery_charge, supplier, product_description, unit_price, discount_add,
+                         total_amount, mode_of_payment, check_no);
+            
             if (connection != null) {
                 if (SQLOperations.addProduct(productbean, connection)) {
                     System.out.println("item successfully inserted");

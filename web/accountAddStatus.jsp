@@ -7,6 +7,12 @@
 <title>Add Account Status</title>
 </head>
 <body>
-	HI
+	<%
+	if (request.getParameter("status").equals("success")) { %>
+		<h2>Successfully registered account! </h2>
+	
+	<% } else { %>
+	  <h1>Failed to register. :(</h1>		
+	<% } %>
 </body>
 </html>
