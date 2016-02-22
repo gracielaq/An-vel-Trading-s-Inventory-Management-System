@@ -39,7 +39,7 @@ public class SellProductMaintenance extends HttpServlet {
 	            int product_code = Integer.parseInt(request.getParameter("product_code"));
 	            java.sql.Date date = new java.sql.Date(sdf.parse(request.getParameter("date")).getTime());
 	            
-	            String customer_name=request.getParameter("customer");
+	            String customer_name=request.getParameter("customer_name");
 	            int quantity=Integer.parseInt(request.getParameter("quantity"));
 	            String tin=request.getParameter("tin");
 	            String product_description=request.getParameter("product_description");

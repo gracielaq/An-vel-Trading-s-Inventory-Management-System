@@ -38,7 +38,7 @@ public interface SQLCommands {
 	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?," + "quantity=?," + "product_description=?,"
 			+ "discount=?," + "total_amount=?," + "note_quantity=?," + "note_description=?," + "customer_name=?,"
 			+ "tin=?," + "address=?," + "date=?, checkNumber=?" + "where product_code=?";
-	String ADD_SOLD_PRODUCT = "insert into Product(product_code,unit_price, quantity,product_description, discount_sell," 
+	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,unit_price, quantity,product_description, discount_sell," 
 			+ "total_amount,note_quantity,note_description, customer_name,tin,address," 
 			+ "date,mode_of_payment,check_no) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
