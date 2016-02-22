@@ -9,11 +9,11 @@
 <jsp:useBean id="soldrecords" type="java.sql.ResultSet" scope="request"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>View Sold Products</title>
 </head>
 <body>
-</form>
-<h1>PRODUCTS</h1>
+
+<h1>SOLD PRODUCTS</h1>
 <div style="height:200px;overflow:auto;">
     <table border="1" width="100%" cellpadding="3" cellspacing="3">
         <tr>
@@ -30,10 +30,9 @@
             <th align="center">TIN</th>
             <th align="center">Address</th>
             <th align="center">date</th>
-            <th align="center">Mode of Pyt</th>
+            <th align="center">Mode of Payment</th>
             <th align="center">Check Number</th>
-            <th align="center">Action-Edit</th>
-            <th align="center">Action-Delete</th>
+           
         </tr>
 
         <%
@@ -55,16 +54,7 @@
             <td><%=soldrecords.getString("date")%></td>
             <td><%=soldrecords.getString("mode_of_payment")%></td>
             <td><%=soldrecords.getInt("check_no")%></td>
-            <td align="center">
-                <a href="productmaintenance.html?product_code=<%=soldrecords.getInt("product_code")%>&action=edit">
-                    edit
-                </a>
-            </td>
-            <td align="center">
-                <a href="productmaintenance.html?product_code=<%=soldrecords.getInt("product_code")%>&action=delete">
-                    delete
-                </a>
-            </td>
+           
         </tr>
         <% } %>
 
