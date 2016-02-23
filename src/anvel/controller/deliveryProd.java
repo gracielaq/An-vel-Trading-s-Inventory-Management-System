@@ -45,8 +45,6 @@ public class deliveryProd extends HttpServlet {
         try {
             String plate_no = request.getParameter("plate_no").toUpperCase();
 
-
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             int product_code = Integer.parseInt(request.getParameter("product_code"));
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());

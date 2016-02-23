@@ -35,7 +35,7 @@
 
 <form action="AddProduct.html" method="post">
 
-
+<h1>Add Product</h1>
     <p>Product Code<input type="number" name="product_code" required="required"/></p>
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
     <p>Date Received<input type="date" name="date_received" required="required"/></p>
