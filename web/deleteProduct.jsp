@@ -14,7 +14,7 @@
 <p>total_amount:${productBean.total_amount}</p>
 <p>delivery charge:${productBean.delivery_charge}</p>
 <p>delivery date:${productBean.delivery_date}</p>
-<p>date_received:${productBean.date_recieved} </p>
+<p>date_received:${productBean.date_received} </p>
 <p>product description:${productBean.product_description}</p>
 <p>mode of payment: ${productBean.mode_of_payment}</p>
 <p>supplier:${productBean.supplier}</p>

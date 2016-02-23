@@ -34,7 +34,7 @@
 <form action="SellProductMaintenance.html" method="post">
 	 <p>Product Code: ${productBean.product_code}</p>
 	 <input type="hidden" name="product_code" value="${productBean.product_code}"/>
-	 <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}" onblur="recalculateSum()" id="qty"/></p>
+	 <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}" onblur="recalculateSum()" id="qty" max="${productBean.quantity}"/></p>
 	 <p>Unit Price:<input value="${productBean.unit_price}" name="unit_price" onblur="recalculateSum()" id="prc"></p>
 	 <p>Product Description: ${productBean.product_description}</p>
 	 <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
@@ -52,5 +52,6 @@
 </div>
 	<input type="Submit" value="Submit">
 </form>
+<a href="MainMenu.jsp">Go Back to Main Menu</a>
 </body>
 </html>
