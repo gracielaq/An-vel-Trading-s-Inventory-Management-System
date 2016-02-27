@@ -28,17 +28,47 @@
             document.getElementById("Total").value = amount;
 
         }
+        webshims.setOptions('forms-ext', {
+            replaceUI: 'auto',
+            types: 'date'
+        });
+        webshims.polyfill('forms forms-ext');
+
+        $(function(){
+            $('[type="date"].min-today').prop('min', function(){
+                return new Date().toJSON().split('T')[0];
+            });
+        });
 
     </script>
+	<style>
+	.form-row {
+    	padding: 5px 10px;
+	}
+	label {
+   	 display: block;
+    	margin: 3px 0;
+	}
+	.form-row input {
+    	padding: 3px 1px;
+    	width: 220px;
+	}
+	</style>
 </head>
 <body>
 
 <form action="AddProduct.html" method="post">
 
 <h1>Add Product</h1>
-    <p>Product Code<input type="number" name="product_code" required="required"/></p>
-    <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
-    <p>Date Received<input type="date" name="date_received" required="required"/></p>
+    <p>Product Code<input type="number" name="product_code" required="required" min="0"/></p>
+   <div class="form-row">
+    	<p>Delivery Date<input class="min-today" id="min" type="date" data-date-split-input="true" 
+   		 name="delivery_date"required="required" min="2000-01-01"/></p>
+     </div>
+     <div class="form-row">
+    <p>Date Received<input class="min-today" id="min" type="date" data-date-split-input="true" 
+    name="date_received" required="required" min="2000-01-01"/></p>
+   </div>
     <p>DR/SI #<input type="number" name="dr_si" required="required"/>
     <p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum()" id="qty" required="required"/>
     </p>
@@ -48,7 +78,7 @@
     <p><textarea name="product_description" rows="5" cols="10">Enter product description here.</textarea>
     <p>Unit Price<input type="number" name="unit_price" value="0.00"  onblur="recalculateSum()" id="prc"
                         required="required"/>
-    <p>Discount<input type="number" name="discount_add" onblur="recalculateSum()" value="0" id="disc"/>%</p>
+    <p>Discount<input type="number" name="discount_add" onblur="recalculateSum()" value="0" id="disc" max="100"/>%</p>
     <p>Total Amount <input id="Total" value="0" name="total_amount"/></p>
     <p>Mode of Payment</p>
    	<input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>

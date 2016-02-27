@@ -43,7 +43,7 @@
 	 <p>Customer: <input type="text" name="customer_name" required="required"></p>
 	 <p>TIN:<input type="text" name="tin" required="required"></p>
 	 <p>Address: <input type="text" name="address"></p>
-	 <p>Date: <input type="date" name="date" required="required"/></p>
+	 <p>Date: <input type="date" name="date" required="required" min="2000-01-01"/></p>
 	  <p>Mode of Payment</p>
    		<input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
 		<input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck" >Check<br>
