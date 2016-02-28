@@ -7,16 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Products</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+	<script src="js/jquery-1.12.0.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+        $(document).ready(function() {
+            $('#tables').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
+    </script>
 </head>
 <body>
 
-<form action="SearchProducts.html">
-	SEARCH:<input type="text" name="searchQuery"/>
-	<input type="submit"/>
-</form>
+
 <h1>PRODUCTS</h1>
-	<div style="height:200px;overflow:auto;">
-	<table border="1" width="100%" cellpadding="3" cellspacing="3">
+	<div >
+	<table id="tables" border="1" width="100%" cellpadding="3" cellspacing="3">
+		<thead>
 		<tr>
 			
 			<th align="center">Product Code</th>
@@ -35,6 +43,27 @@
 			<th align="center">Action-Edit</th>
 			<th align="center">Action-Delete</th>
 		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+
+			<th align="center">Product Code</th>
+			<th align="center">Supplier</th>
+			<th align="center">Delivery Date</th>
+			<th align="center">Date Received</th>
+			<th align="center">Delivery Charge</th>
+			<th align="center">DR_SI</th><!-- for customer discount -->
+			<th align="center">Quantity</th>
+			<th align="center">Product Description</th>
+			<th align="center">Unit Price</th>
+			<th align="center">Discount</th>
+			<th align="center">Total Amount</th>
+			<th align="center">Mode of Payment</th>
+			<th align="center">Check Number</th>
+			<th align="center">Action-Edit</th>
+			<th align="center">Action-Delete</th>
+		</tr>
+		</tfoot>
 		
 			<% 
 				while(productrecords.next()) {	
@@ -69,5 +98,7 @@
 		
 	</table></div>
 	<a href="MainMenu.jsp">Back to Main Menu</a>
+
+
 </body>
 </html>
