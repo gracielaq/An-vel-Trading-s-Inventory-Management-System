@@ -3,11 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/ICS113_WEBAPP/apache-tomcat-7.0.59/lib/servlet-api.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDBCDriverLib">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -18,20 +13,13 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/ICS113_WEBAPP/eclipse_ws/An-vel-Trading-s-Inventory-Management-System/commons-codec-1.9.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/ICS113_WEBAPP/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/for encryption/commons-codec-1.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
