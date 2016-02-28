@@ -23,7 +23,7 @@
 		<input type="Submit" value="View Products">
 	</form>
 	
-	<form action="Edit.html" method="post">
+	<form action="EditView.html" method="post">
 		<input type="Submit" value="Edit Products">
 	</form>
 	
