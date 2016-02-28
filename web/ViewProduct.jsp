@@ -40,8 +40,7 @@
 			<th align="center">Total Amount</th>
 			<th align="center">Mode of Payment</th>
 			<th align="center">Check Number</th>
-			<th align="center">Action-Edit</th>
-			<th align="center">Action-Delete</th>
+			
 		</tr>
 		</thead>
 		<tfoot>
@@ -60,8 +59,7 @@
 			<th align="center">Total Amount</th>
 			<th align="center">Mode of Payment</th>
 			<th align="center">Check Number</th>
-			<th align="center">Action-Edit</th>
-			<th align="center">Action-Delete</th>
+			
 		</tr>
 		</tfoot>
 		
@@ -83,16 +81,7 @@
 					<td><%=productrecords.getDouble("total_amount")%></td>
 					<td><%=productrecords.getString("mode_of_payment")%></td>
 					<td><%=productrecords.getInt("check_no")%></td>
-					<td align="center">
-					  <a href="productmaintenance.html?product_code=<%=productrecords.getInt("product_code")%>&action=edit">
-					  	edit
-					  </a>
-					</td>
-					<td align="center">
-					  <a href="productmaintenance.html?product_code=<%=productrecords.getInt("product_code")%>&action=delete">
-					  	delete
-					  </a>
-					</td>
+					
 				</tr>		
 	<% } %>
 		
