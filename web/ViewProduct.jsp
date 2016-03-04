@@ -40,7 +40,7 @@
 			<th align="center">Total Amount</th>
 			<th align="center">Mode of Payment</th>
 			<th align="center">Check Number</th>
-			
+				
 		</tr>
 		</thead>
 		<tfoot>

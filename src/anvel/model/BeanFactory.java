@@ -33,7 +33,7 @@ public class BeanFactory {
 	 PRIMARY KEY (`product_code`)  COMMENT '');
 	 */
 
-
+/*
 	public static ProductBean getInstance(int product_code,int quantity,
 	double unit_price, double discount, 
     java.sql.Date delivery_date, java.sql.Date date_recieved,
