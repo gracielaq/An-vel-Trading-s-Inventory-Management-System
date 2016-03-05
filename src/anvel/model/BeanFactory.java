@@ -99,7 +99,7 @@ public class BeanFactory {
 			}
 
     public static ProductBean getInstance(int product_code, java.sql.Date delivery_date, java.sql.Date date_received, int dR_SI
-            ,int quantity, double delivery_charge, String supplier, String product_description, double unit_price,
+            ,int quantity, double delivery_charge, String supplier, String product_description,String size, double unit_price,
                                           double discount_add, double total_amount, String mode_of_payment, int check_no) {
         ProductBean pb = new ProductBean();
         pb.setProduct_code(product_code);
@@ -110,6 +110,7 @@ public class BeanFactory {
         pb.setDelivery_charge(delivery_charge);
         pb.setSupplier(supplier);
         pb.setProduct_description(product_description);
+        pb.setSize(size);
         pb.setUnit_price(unit_price);
         pb.setDiscount_add(discount_add);
         pb.setTotal_amount(total_amount);

@@ -44,6 +44,19 @@
     </p>
     <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
     <p>Supplier:<input type="text" name="supplier"/></p>
+    <p>Category <select name="category"> 
+    <option>Cebu</option>
+    <option>Tenzen</option>
+    <option>Euro</option>
+    <option>Homewise</option>
+    <option>Tiletrim</option>
+    <option>Door</option>
+    <option>Grout</option>
+    <option>Adhesive</option>
+    <option>Water Closet</option>
+    </select></p>
+    <p>Product Size: <input type="text" name="size" placeholder="(e.g. 5x5, 41kg)"/> </p>
+     <p>Product Status: <input type="text" name="status"/> </p>
     <p>Product Description</p>
     <p><textarea name="product_description" rows="5" cols="10">Enter product description here.</textarea>
     <p>Unit Price<input type="number" name="unit_price" value="0.00"  onblur="recalculateSum()" id="prc"

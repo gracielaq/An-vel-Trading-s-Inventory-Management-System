@@ -40,7 +40,7 @@ public interface SQLCommands {
 			+ "tin=?," + "address=?," + "date=?, checkNumber=?" + "where product_code=?";
 	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,unit_price, quantity,product_description, discount_sell," 
 			+ "total_amount,note_quantity,note_description, customer_name,tin,address," 
-			+ "date,mode_of_payment,check_no) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "date,mode_of_payment,check_no,size) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where" + " product_code like ? OR "
 			+ "unit_price like ? OR " + "quantity like ? OR " + "product_description like ? OR "
@@ -80,13 +80,15 @@ public interface SQLCommands {
 			+ "supplier=?," + "delivery_date=?," + "date_received=?,"
 			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
 			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
-			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
+			+ "total_amount=?," +"mode_of_payment=?,check_no=?,size=?,category=?,status=? "+ "where product_code=?";
 	String GET_ALL_PRODUCTS = "select * from product";
 	String GET_ALL_OLD_PRODUCTS = "select * from Product_old";
 	String GET_ALL_ACCOUNTS = "select * from accounts";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 
-	String ADD_PRODUCT = "insert into Product(delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String ADD_PRODUCT = "insert into Product(delivery_date,date_received, delivery_charge,DR_SI, "
+			+ "quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,"
+			+ "supplier,product_code,check_no, size, category, status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	String SEARCH_FOR_PRODUCTS = "select * from product where delivery_date like ? OR "
 			+ "date_received like ? OR "
 			+ "delivery_charge like ? OR "
@@ -100,7 +102,7 @@ public interface SQLCommands {
 			+ "supplier like ? OR"
 			+ " product_code like ?";
 
-	String TRANSFER_PRODUCT="insert into Product_old (delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no)" 
+	String TRANSFER_PRODUCT="insert into Product_old (delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no,size, category, status)" 
 			+ " select delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no "
 			+ "from Product where product_code=?;";
 	String DELETE_PRODUCT = "delete from Product where product_code=?";

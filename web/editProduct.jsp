@@ -30,6 +30,7 @@
     <p>Delivery Date:<input type="date" name="delivery_date" value="${productBean.delivery_date}"/></p>
     <p>Date Received:<input type="date" name="date_received" value="${productBean.date_received}}"/> </p>
     <p>product description:<input type="text" name="product_description" value="${productBean.product_description}"/></p>
+    <p>product description:<input type="text" name="size" value="${productBean.size}"/></p>
     <p>mode of payment: <input type="text" name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
     <p>Check No:<input type="number" name="check_no" value="${productBean.check_no}"/></p>
   

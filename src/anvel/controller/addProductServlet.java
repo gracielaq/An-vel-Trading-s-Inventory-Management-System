@@ -42,6 +42,7 @@ public class addProductServlet extends HttpServlet {
             double delivery_charge=Double.parseDouble(request.getParameter("delivery_charge"));
             String supplier=request.getParameter("supplier");
             String product_description=request.getParameter("product_description");
+            String size =request.getParameter("size");
             Double unit_price=Double.parseDouble(request.getParameter("unit_price"));
             Double discount_add=Double.parseDouble((request.getParameter("discount_add")));
             Double total_amount= Double.parseDouble(request.getParameter("total_amount"));
@@ -54,7 +55,7 @@ public class addProductServlet extends HttpServlet {
         	 
             }
             	 ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
-                         ,quantity, delivery_charge, supplier, product_description, unit_price, discount_add,
+                         ,quantity, delivery_charge, supplier, product_description,size, unit_price, discount_add,
                          total_amount, mode_of_payment, check_no);
             
             if (connection != null) {

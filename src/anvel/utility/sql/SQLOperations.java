@@ -221,6 +221,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(11, product.getMode_of_payment());
 			pstmt.setInt(12, product.getCheck_no());
 			pstmt.setInt(13, product_code);
+			pstmt.setString(14, product.getSize());
 			updated = pstmt.executeUpdate();
 			connection.commit();
 		} catch (SQLException sqle) {
@@ -260,6 +261,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(11, product.getSupplier());
 			pstmt.setInt(12, product.getProduct_code());
 			pstmt.setInt(13, product.getCheck_no());
+			pstmt.setString(14, product.getSize());
 			pstmt.execute();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - addProduct: "
@@ -289,6 +291,7 @@ public class SQLOperations implements SQLCommands {
 						rs.getDouble("delivery_charge"),
 						rs.getString("supplier"),
 						rs.getString("product_description"),
+						rs.getString("size"),
 						rs.getDouble("unit_price"),
 						rs.getDouble("discount_add"),
 						rs.getDouble("total_amount"),

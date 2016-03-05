@@ -41,6 +41,7 @@ public class UpdateProductServlet extends HttpServlet {
             Double discount_add = Double.parseDouble((request.getParameter("discount_add")));
             Double total_amount = Double.parseDouble(request.getParameter("total_amount"));
             String mode_of_payment = request.getParameter("mode_of_payment");
+            String size = request.getParameter("size");
             int check_no = 0;
             try {
                 check_no = Integer.parseInt(request.getParameter("check_no"));
@@ -49,7 +50,7 @@ public class UpdateProductServlet extends HttpServlet {
             }
 
             ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
-                    , quantity, delivery_charge, supplier, product_description, unit_price, discount_add,
+                    , quantity, delivery_charge, supplier, product_description, size, unit_price, discount_add,
                     total_amount, mode_of_payment, check_no);
 
             if(SQLOperations.updateProduct(productbean,product_code,connection)>=1){

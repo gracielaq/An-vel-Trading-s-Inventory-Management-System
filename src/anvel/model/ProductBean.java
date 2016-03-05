@@ -23,7 +23,7 @@ public class ProductBean {
     private double unit_price, discount_add, total_amount, delivery_charge;
     private java.sql.Date delivery_date, date_received;
     private String product_description,
-            mode_of_payment, supplier;
+            mode_of_payment, supplier,size;
 
     public void compute() {
         // (QTY * Unit Price) � (QTY* Unit Price*Discount)
@@ -120,6 +120,14 @@ public class ProductBean {
         this.supplier = supplier;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+    
     public double getDiscount_add() {
         return discount_add;
     }
