@@ -72,43 +72,30 @@ public class SQLOperations implements SQLCommands {
 	}
 
 	// to do!!
-	public static boolean addSoldProduct(int product_code, SoldBean soldBean,
+	public static boolean addSoldProduct(String product_code, SoldBean soldBean,
 			Connection connection) {
-		/*
-		 * String ADD_SOLD_PRODUCT = "insert into Product(" + "1product_code," +
-		 * "2unit_price, " + "3quantity," + "4product_description, " +
-		 * "5discount_sell," + "6total_amount," +"7note_quantity," +
-		 * "8note_description," + "9customer_name," + "10tin," + "11address," +
-		 * "12date," + "13mode_of_payment" + ") values(?,?,?,?,?,?,?,?,?,?,?)";
-		 */
-
-		// ITANONG KAILA MATT AT GQ
-		/*
-		 * ProductBean productBean = findProduct(product_code, connection);
-		 * //update the new quantity to the product
-		 * productBean.setQuantity(productBean
-		 * .getQuantity()-soldBean.getQuantity()); //update to the database
-		 * updateProduct(productBean, productBean.getProduct_code(),connection);
-		 */
+		
 		try {
 
 			PreparedStatement pstmt = connection
 					.prepareStatement(ADD_SOLD_PRODUCT);
 			
-			pstmt.setInt(1, soldBean.getProduct_code());
-			pstmt.setDouble(2, soldBean.getUnit_price());
-			pstmt.setInt(3, soldBean.getQuantity());
-			pstmt.setString(4, soldBean.getProduct_description());
-			pstmt.setDouble(5, soldBean.getDiscount_sell());
-			pstmt.setDouble(6, soldBean.getTotal_amount());
-			pstmt.setInt(7, soldBean.getNote_quantity());
-			pstmt.setString(8, soldBean.getNote_description());
-			pstmt.setString(9, soldBean.getCustomer_name());
-			pstmt.setString(10, soldBean.getTin());
-			pstmt.setString(11, soldBean.getAddress());
-			pstmt.setDate(12, soldBean.getDate());
-			pstmt.setString(13, soldBean.getMode_of_payment());
-			pstmt.setInt(14, soldBean.getCheck_no());
+			pstmt.setString(1, soldBean.getProduct_code());
+			pstmt.setString(2, soldBean.getProduct_name());
+			pstmt.setInt(3, soldBean.getNote_quantity());
+			pstmt.setString(4, soldBean.getNote_description());
+			pstmt.setString(5, soldBean.getProduct_description());
+			pstmt.setDouble(6, soldBean.getUnit_price());
+			pstmt.setDouble(7, soldBean.getDiscount_sell());
+			pstmt.setDouble(8, soldBean.getTotal_amount());
+			pstmt.setString(9, soldBean.getMode_of_payment());
+			pstmt.setInt(10, soldBean.getCheck_no());
+			pstmt.setString(11, soldBean.getCategory());
+			pstmt.setString(12, soldBean.getSize());
+			pstmt.setString(13, soldBean.getCustomer_name());
+			pstmt.setString(14, soldBean.getTin());
+			pstmt.setString(15, soldBean.getAddress());
+			pstmt.setDate(16, soldBean.getDate());	
 			
 			pstmt.executeUpdate(); // execute insert statement
 		} catch (SQLException sqle) {
@@ -194,14 +181,14 @@ public class SQLOperations implements SQLCommands {
 
 	}
 
-	public static int updateProduct(ProductBean product, int product_code,
+	public static int updateProduct(ProductBean product, String product_code,
 			Connection connection) {
 		/*
-		 String UPDATE_PRODUCT = "update product set "
-			+ "supplier=?," + "delivery_date=?," + "date_recieved=?,"
+		String UPDATE_PRODUCT = "update product set "
+			+ "supplier=?,product_name=?"+ "delivery_date=?," + "date_received=?,"
 			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
 			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
-			+ "total_amount=?," +"mode_of_payment=?,check_no=? "+ "where product_code=?";
+			+ "total_amount=?," +"mode_of_payment=?,check_no=?,size=?,category=?,status=? "+ "where product_code=?";
 		 */
 		int updated = 0;
 		try {
@@ -209,19 +196,24 @@ public class SQLOperations implements SQLCommands {
 			PreparedStatement pstmt = connection
 					.prepareStatement(UPDATE_PRODUCT);
 			pstmt.setString(1, product.getSupplier());
-			pstmt.setString(2, ""+product.getDelivery_date());
-			pstmt.setString(3, ""+product.getDate_received());
-			pstmt.setString(4, ""+product.getDelivery_charge());
-			pstmt.setString(5, ""+product.getDR_SI());
-			pstmt.setString(6, ""+product.getQuantity());
-			pstmt.setString(7,product.getProduct_description());
-			pstmt.setString(8, ""+product.getUnit_price());
-			pstmt.setString(9, ""+product.getDiscount_add());
-			pstmt.setString(10, ""+product.getTotal_amount());
-			pstmt.setString(11, product.getMode_of_payment());
-			pstmt.setInt(12, product.getCheck_no());
-			pstmt.setInt(13, product_code);
+			pstmt.setString(2, ""+product.getProduct_name());
+			
+			pstmt.setString(3, ""+product.getDelivery_date());
+			pstmt.setString(4, ""+product.getDate_received());
+			pstmt.setString(5, ""+product.getDelivery_charge());
+			pstmt.setString(6, ""+product.getDR_SI());
+			pstmt.setString(7, ""+product.getQuantity());
+			pstmt.setString(8,product.getProduct_description());
+			pstmt.setString(9, ""+product.getUnit_price());
+			pstmt.setString(10, ""+product.getDiscount_add());
+			pstmt.setString(11, ""+product.getTotal_amount());
+			pstmt.setString(12, product.getMode_of_payment());
+			pstmt.setInt(13, product.getCheck_no());
 			pstmt.setString(14, product.getSize());
+			pstmt.setString(15, product.getCategory());
+			pstmt.setString(16,product.getStatus());
+			pstmt.setString(17, product_code);
+			
 			updated = pstmt.executeUpdate();
 			connection.commit();
 		} catch (SQLException sqle) {
@@ -242,26 +234,30 @@ public class SQLOperations implements SQLCommands {
 	public static boolean addProduct(ProductBean product, Connection connection) {
 		try {
 			/*
-			String ADD_PRODUCT = "insert into Product(delivery_date, date_recieved, delivery_charge, 
-			DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,
-			product_code) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String ADD_PRODUCT = "insert into Product(product_code,product_name, supplier ,delivery_date,date_received, 
+			delivery_charge,DR_SI,quantity,size,product_description,unit_price,discount_add,total_amount,mode_of_payment,
+			check_no,category,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			 */
 			PreparedStatement pstmt = connection.prepareStatement(ADD_PRODUCT);
-
-			pstmt.setDate(1, product.getDelivery_date());
-			pstmt.setDate(2, product.getDate_received());
-			pstmt.setDouble(3, product.getDelivery_charge());
-			pstmt.setInt(4, product.getDR_SI());
-			pstmt.setInt(5, product.getQuantity());
-			pstmt.setString(6, product.getProduct_description());
-			pstmt.setDouble(7, product.getUnit_price());
-			pstmt.setDouble(8, product.getDiscount_add());
-			pstmt.setDouble(9, product.getTotal_amount());
-			pstmt.setString(10, product.getMode_of_payment());
-			pstmt.setString(11, product.getSupplier());
-			pstmt.setInt(12, product.getProduct_code());
-			pstmt.setInt(13, product.getCheck_no());
-			pstmt.setString(14, product.getSize());
+			pstmt.setString(1,product.getProduct_code());
+			pstmt.setString(2, product.getProduct_name());
+			pstmt.setString(3, product.getSupplier());
+			pstmt.setDate(4, product.getDelivery_date());
+			pstmt.setDate(5, product.getDate_received());
+			pstmt.setDouble(6, product.getDelivery_charge());
+			pstmt.setInt(7, product.getDR_SI());
+			pstmt.setInt(8, product.getQuantity());
+			pstmt.setString(9, product.getSize());
+			pstmt.setString(10, product.getProduct_description());
+			pstmt.setDouble(11, product.getUnit_price());
+			pstmt.setDouble(12, product.getDiscount_add());
+			pstmt.setDouble(13, product.getTotal_amount());
+			pstmt.setString(14, product.getMode_of_payment());
+			pstmt.setInt(15, product.getCheck_no());
+			pstmt.setString(16, product.getCategory());
+			pstmt.setString(17, product.getStatus());
+			
+			
 			pstmt.execute();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - addProduct: "
@@ -283,20 +279,23 @@ public class SQLOperations implements SQLCommands {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				productbean = BeanFactory.getInstance(
-						rs.getInt("product_code"), 
+						rs.getString("product_code"), 
+						rs.getString("product_name"),
 						rs.getDate("delivery_date"),
 						rs.getDate("date_received"),
 						rs.getInt("dR_SI"),
 						rs.getInt("quantity"),
 						rs.getDouble("delivery_charge"),
 						rs.getString("supplier"),
+						rs.getString("category"),
 						rs.getString("product_description"),
 						rs.getString("size"),
 						rs.getDouble("unit_price"),
 						rs.getDouble("discount_add"),
 						rs.getDouble("total_amount"),
 						rs.getString("mode_of_payment"),
-						rs.getInt("check_no"));
+						rs.getInt("check_no"),
+						rs.getString("status"));
 			}
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - findProduct: "
@@ -423,15 +422,18 @@ public class SQLOperations implements SQLCommands {
         }
     }
 
-    public static boolean addTruck(TruckBean truckBean, Connection connection){
+    public static boolean addDelivery(DeliveryBean deliveryBean, Connection connection){
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TRUCK);
-            preparedStatement.setString(1,truckBean.getPlate_no());
-            preparedStatement.setString(2,truckBean.getCoding());
-            preparedStatement.setString(3,truckBean.getModel());
+            PreparedStatement pstmt = connection.prepareStatement(ADD_DELIVERY);
+
+           pstmt.setString(1, deliveryBean.getDriver());
+           pstmt.setString(2, deliveryBean.getHelper());
+           pstmt.setString(3, deliveryBean.getPlateNum());
+           pstmt.setString(4, deliveryBean.getCodingDay());
+           pstmt.setDate(5, deliveryBean.getDeliveryDate());
             return true;
         }catch(Exception e){
-            System.out.println("ADD TRUCK ERROR-"+ e.getMessage());
+            System.out.println("ADD DELIVERY ERROR-"+ e.getMessage());
             e.printStackTrace();
             return false;
         }

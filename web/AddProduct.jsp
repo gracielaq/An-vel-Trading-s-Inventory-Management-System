@@ -36,7 +36,9 @@
 <form action="AddProduct.html" method="post">
 
 <h1>Add Product</h1>
-    <p>Product Code<input type="number" name="product_code" required="required"/></p>
+    <p>Product Code<input type="text" name="product_code" required="required"/></p>
+   	<p>Product Name<input type="text" name="product_name" required="required"/></p>
+    
     <p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
     <p>Date Received<input type="date" name="date_received" required="required"/></p>
     <p>DR/SI #<input type="number" name="dr_si" required="required"/>
@@ -45,19 +47,18 @@
     <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
     <p>Supplier:<input type="text" name="supplier"/></p>
     <p>Category <select name="category"> 
-    <option>Cebu</option>
-    <option>Tenzen</option>
-    <option>Euro</option>
-    <option>Homewise</option>
-    <option>Tiletrim</option>
-    <option>Door</option>
-    <option>Grout</option>
-    <option>Adhesive</option>
-    <option>Water Closet</option>
+    <option value="cebu">Cebu</option>
+    <option value="tenzen">Tenzen</option>
+    <option value="euro">Euro</option>
+    <option value="homewise">Homewise</option>
+    <option value="tiletrim">Tiletrim</option>
+    <option value="door">Door</option>
+    <option value="grout">Grout</option>
+    <option value="adhesive">Adhesive</option>
+    <option value="waterCloset">Water Closet</option>
     </select></p>
     <p>Product Size: <input type="text" name="size" placeholder="(e.g. 5x5, 41kg)"/> </p>
-     <p>Product Status: <input type="text" name="status"/> </p>
-    <p>Product Description</p>
+    <p>Product Description:</p>
     <p><textarea name="product_description" rows="5" cols="10">Enter product description here.</textarea>
     <p>Unit Price<input type="number" name="unit_price" value="0.00"  onblur="recalculateSum()" id="prc"
                         required="required"/>

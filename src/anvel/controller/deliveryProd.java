@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import anvel.utility.sql.SQLOperations;
 import anvel.model.ProductBean;
 import anvel.model.BeanFactory;
+import anvel.model.DeliveryBean;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -43,52 +44,43 @@ public class deliveryProd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            String plate_no = request.getParameter("plate_no").toUpperCase();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            int product_code = Integer.parseInt(request.getParameter("product_code"));
-            java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
-            java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_received")).getTime());
-            int dR_SI = Integer.parseInt(request.getParameter("dr_si"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            double delivery_charge = Double.parseDouble(request.getParameter("delivery_charge"));
-            String supplier = request.getParameter("supplier");
-            String product_description = request.getParameter("product_description");
-            Double unit_price = Double.parseDouble(request.getParameter("unit_price"));
-            Double discount_add = Double.parseDouble(request.getParameter("discount_add"));
-            Double total_amount = Double.parseDouble(request.getParameter("total_amount"));
-            String mode_of_payment = request.getParameter("mode_of_payment");
-            int check_no = Integer.parseInt(request.getParameter("check_no"));
-
-
-           /*
-            ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
-                    , quantity, delivery_charge, supplier, product_description, unit_price, discount_add,
-                    total_amount, mode_of_payment, check_no);
+        	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
+        	String driver = request.getParameter("driver");
+            String helper=request.getParameter("helper");
+            String product_code=request.getParameter("product_code");
+            String coding=request.getParameter("Days");
+            java.sql.Date deliveryDate = new java.sql.Date(sdf.parse(request.getParameter("deliveryDate")).getTime());
+            
+            
+            DeliveryBean deliveryBean = BeanFactory.getInstance(driver,helper,product_code,coding,deliveryDate);
 
             if (connection != null) {
-                if (SQLOperations.addProduct(productbean, connection)) {
-                    System.out.println("item successfully inserted");
-                    request.setAttribute("productbean", productbean);
+                if (SQLOperations.addDelivery(deliveryBean, connection)) {
+                    System.out.println("delivery successfully inserted");
+                    request.setAttribute("deliveryBean", deliveryBean);
                     //TODO
                     getServletContext().getRequestDispatcher(
-                            "/addProductStatus.jsp?status=true").forward(request,
-                            response);
+                            "/deliveryStatus.jsp?status=true").forward(request,
+                                    response);
                 } else {
                     //TODO
                     getServletContext().getRequestDispatcher(
-                            "/addProductStatus.jsp?status=false").forward(request,
-                            response);
+                            "/deliveryStatus.jsp?status=false").forward(request,
+                                    response);
                 }
             } else {
                 System.out.print("invalid connection");
-            }*/
-
-        } catch (NumberFormatException | ParseException e) {
+            }
+            
+        } catch (NumberFormatException  e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
 
-        }
+        } catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 }

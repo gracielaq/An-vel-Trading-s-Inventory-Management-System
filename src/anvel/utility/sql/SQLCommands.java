@@ -35,18 +35,21 @@ public interface SQLCommands {
 
 	String GET_ALL_SOLD_PRODUCTS = "select * from sell";
 	String SEARCH_SOLD_PRODUCT = "select * from sell where product_code=?";
-	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?," + "quantity=?," + "product_description=?,"
+	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?," + "quantity=?," + "product_description=?, product_name=?"
 			+ "discount=?," + "total_amount=?," + "note_quantity=?," + "note_description=?," + "customer_name=?,"
 			+ "tin=?," + "address=?," + "date=?, checkNumber=?" + "where product_code=?";
-	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,unit_price, quantity,product_description, discount_sell," 
-			+ "total_amount,note_quantity,note_description, customer_name,tin,address," 
-			+ "date,mode_of_payment,check_no,size) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where" + " product_code like ? OR "
+	
+	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,product_name,"
+			+ "note_quantity,note_description,product_description,unit_price,discount_sell,total_amount,mode_of_payment,"
+			+ "check_no,category,size,customer_name,tin, address, date) "
+			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where" + " product_code like ? OR product_name like ? OR"
 			+ "unit_price like ? OR " + "quantity like ? OR " + "product_description like ? OR "
 			+ "discount_sell like ? OR " + "total_amount like ? OR " + "note_quantity like ? OR "
 			+ "note_description like ? OR " + "customer_name like ? OR " + "tin like ? OR " + "address like ? OR"
-			+ "date  like ? OR" + "mode_of_payment like ?";
+			+ "date  like ? OR category like ? " + "mode_of_payment like ?";
 
 	String ADD_DELIVERY_REPORT = "insert into DeliveryDB(" + "DeliveryNum," + "Driver, " + "Helper," + "PlateNum, "
 			+ "CodingDay," + "DeliveryDate" + ") values(?,?,?,?,?,?)";
@@ -55,29 +58,9 @@ public interface SQLCommands {
 			+ "Driver like ? OR " + "Helper like ? OR " + "PlateNum like ? OR " + "CodingDay like ? OR "
 			+ "DeliveryDate like ? ";
 
-	
-	/*FOR Products:
-	CREATE TABLE `Product` (
-  `product_code` int(11) NOT NULL,
-  `supplier` varchar(200) NOT NULL,
-  `delivery_date` date NOT NULL,
-  `date_received` date NOT NULL,
-  `delivery_charge` varchar(45) NOT NULL,
-  `DR_SI` int(6) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `product_description` varchar(999) DEFAULT NULL,
-  `unit_price` double NOT NULL,
-  `discount_add` double DEFAULT NULL,
-  `total_amount` double DEFAULT NULL,
-  `mode_of_payment` varchar(45) NOT NULL,
-  `check_no` int(11) DEFAULT NULL,
-  PRIMARY KEY (`product_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-*/
-
 
 	String UPDATE_PRODUCT = "update product set "
-			+ "supplier=?," + "delivery_date=?," + "date_received=?,"
+			+ "supplier=?,product_name=?"+ "delivery_date=?," + "date_received=?,"
 			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
 			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
 			+ "total_amount=?," +"mode_of_payment=?,check_no=?,size=?,category=?,status=? "+ "where product_code=?";
@@ -86,9 +69,9 @@ public interface SQLCommands {
 	String GET_ALL_ACCOUNTS = "select * from accounts";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 
-	String ADD_PRODUCT = "insert into Product(delivery_date,date_received, delivery_charge,DR_SI, "
-			+ "quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,"
-			+ "supplier,product_code,check_no, size, category, status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	String ADD_PRODUCT = "insert into Product(product_code,product_name, supplier, delivery_date,date_received, "
+			+ "delivery_charge,DR_SI,quantity,size,product_description,unit_price,discount_add,total_amount,"
+			+ "mode_of_payment,check_no,category,status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	String SEARCH_FOR_PRODUCTS = "select * from product where delivery_date like ? OR "
 			+ "date_received like ? OR "
 			+ "delivery_charge like ? OR "
@@ -100,16 +83,19 @@ public interface SQLCommands {
 			+ "total_amount like ? OR "
 			+ "mode_of_payment like ? OR "
 			+ "supplier like ? OR"
-			+ " product_code like ?";
+			+ " product_code like ? OR "
+			+ "product_name like ? OR "
+			+ "category like ?";
 
-	String TRANSFER_PRODUCT="insert into Product_old (delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no,size, category, status)" 
-			+ " select delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no "
+	String TRANSFER_PRODUCT="insert into Product_old (product_code,product_name, supplier, delivery_date,date_received, delivery_charge,DR_SI,"
+			+ "quantity,size,product_description,unit_price,discount_add,total_amount,mode_of_payment,check_no,category,status "
 			+ "from Product where product_code=?;";
 	String DELETE_PRODUCT = "delete from Product where product_code=?";
 	
-	String TRANSFER_PRODUCT_OLD="insert into Product (delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no)" 
-			+ " select delivery_date,date_received, delivery_charge,DR_SI, quantity,product_description,unit_price,discount_add,total_amount,mode_of_payment,supplier,product_code,check_no "
+	String TRANSFER_PRODUCT_OLD="insert into Product (dproduct_code,product_name, supplier ,delivery_date,date_received, delivery_charge,DR_SI,"
+			+ "quantity,size,product_description,unit_price,discount_add,total_amount,mode_of_payment,check_no,category,status "
 			+ "from Product_old where product_code=?;";
 	String DELETE_PRODUCT_OLD = "delete from Product_old where product_code=?";
-	String ADD_TRUCK = "insert into product(plate_no,coding,model) values (?,?,?)";
+	String ADD_DELIVERY = "insert into DeliveryDB(Driver,Helper,PlateNum,CodingDay,DeliveryDate) values (?,?,?,?,?)";
+	
 }

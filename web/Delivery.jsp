@@ -10,17 +10,18 @@
 	<form action="Delivery.html" onsubmit="return validatePlate()" method="post">
 		<p>Driver:<input type="text" name="driver" required="required"></p>
 		<p>Helper:<input type="text" name="helper" required="required"></p>
-		<p>No. of Boxes:<input type="text" name="boxes" required="required"></p>
-		<p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();" id="plate" name="plateNo" required="required"></p>
+		<p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();"placeholder="(e.g. ABC 1234)" id="plate" name="plateNo" required="required"></p>
 		<p id="plateValid"></p>
 		<p>Coding of Truck: <select name="Days">
-  			<option value="mon">Monday</option>
-  			<option value="tues">Tuesday</option>
- 			<option value="wed">Wednesday</option>
-  			<option value="thurs">Thursday</option>
-  			<option value="fri">Friday</option>
+  			<option value="Monday">Monday</option>
+  			<option value="Tuesday">Tuesday</option>
+ 			<option value="Wednesday">Wednesday</option>
+  			<option value="Thursday">Thursday</option>
+  			<option value="Friday">Friday</option>
 		</select></p>
 		<p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
+		<p>Product code:<input type="text" name="product_code" required="required"></p>
+		
 		<input type="submit" value="Submit">
 	</form>
 

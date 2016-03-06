@@ -17,29 +17,47 @@ package anvel.model;
  `supplier` varchar(200) NOT NULL,
  PRIMARY KEY (`product_code`)  COMMENT '');
  */
-
 public class ProductBean {
-    private int product_code, quantity, DR_SI, check_no;
+
+    private int  quantity, DR_SI, check_no;
     private double unit_price, discount_add, total_amount, delivery_charge;
     private java.sql.Date delivery_date, date_received;
-    private String product_description,
-            mode_of_payment, supplier,size;
+    private String product_code,product_description,product_name,
+            mode_of_payment, supplier, size, category, status;
 
-    public void compute() {
+    public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public void compute() {
         // (QTY * Unit Price) � (QTY* Unit Price*Discount)
         setTotal_amount((getQuantity() * getUnit_price())
                 - (getQuantity() * getUnit_price() * getDiscount_add()));
     }
 
-    public int getProduct_code() {
-        return product_code;
-    }
+  
 
-    public void setProduct_code(int product_code) {
-        this.product_code = product_code;
-    }
+    public String getProduct_code() {
+		return product_code;
+	}
 
-    public int getQuantity() {
+	public void setProduct_code(String product_code) {
+		this.product_code = product_code;
+	}
+
+	public int getQuantity() {
         return quantity;
     }
 
@@ -54,7 +72,6 @@ public class ProductBean {
     public void setUnit_price(double unit_price) {
         this.unit_price = unit_price;
     }
-
 
     public double getTotal_amount() {
         return total_amount;
@@ -73,14 +90,14 @@ public class ProductBean {
     }
 
     public java.sql.Date getDate_received() {
-		return date_received;
-	}
+        return date_received;
+    }
 
-	public void setDate_received(java.sql.Date date_received) {
-		this.date_received = date_received;
-	}
+    public void setDate_received(java.sql.Date date_received) {
+        this.date_received = date_received;
+    }
 
-	public double getDelivery_charge() {
+    public double getDelivery_charge() {
         return delivery_charge;
     }
 
@@ -127,7 +144,7 @@ public class ProductBean {
     public void setSize(String size) {
         this.size = size;
     }
-    
+
     public double getDiscount_add() {
         return discount_add;
     }
@@ -144,5 +161,14 @@ public class ProductBean {
         this.check_no = check_no;
     }
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+    
+    
 
 }

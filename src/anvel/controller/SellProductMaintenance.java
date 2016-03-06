@@ -36,7 +36,7 @@ public class SellProductMaintenance extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 try {
 	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	            int product_code = Integer.parseInt(request.getParameter("product_code"));
+	            String product_code = request.getParameter("product_code");
 	            java.sql.Date date = new java.sql.Date(sdf.parse(request.getParameter("date")).getTime());
 	            
 	            String customer_name=request.getParameter("customer_name");

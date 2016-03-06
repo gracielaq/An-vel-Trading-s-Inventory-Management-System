@@ -28,6 +28,7 @@
 		<tr>
 			
 			<th align="center">Product Code</th>
+			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
 			<th align="center">Date Received</th>
@@ -40,6 +41,7 @@
 			<th align="center">Total Amount</th>
 			<th align="center">Mode of Payment</th>
 			<th align="center">Check Number</th>
+			
 				
 		</tr>
 		</thead>
@@ -47,6 +49,7 @@
 		<tr>
 
 			<th align="center">Product Code</th>
+			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
 			<th align="center">Date Received</th>
@@ -68,7 +71,8 @@
 			%>
 			
 				<tr>
-					<td><%=productrecords.getInt("product_code")%></td>
+					<td><%=productrecords.getString("product_code")%></td>
+					<td><%=productrecords.getString("status") %></td>
 					<td><%=productrecords.getString("supplier")%></td>
 					<td><%=productrecords.getString("delivery_date")%></td>
 					<td><%=productrecords.getString("date_received")%></td>

@@ -29,7 +29,8 @@ public class UpdateProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            int product_code = Integer.parseInt(request.getParameter("product_code"));
+            String product_code = request.getParameter("product_code");
+            String product_name=request.getParameter("product_name");
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
             java.sql.Date date_received = new java.sql.Date(sdf.parse(request.getParameter("date_received")).getTime());
             int dR_SI = Integer.parseInt(request.getParameter("dr_si"));
@@ -37,21 +38,25 @@ public class UpdateProductServlet extends HttpServlet {
             double delivery_charge = Double.parseDouble(request.getParameter("delivery_charge"));
             String supplier = request.getParameter("supplier");
             String product_description = request.getParameter("product_description");
+            String size = request.getParameter("size");
+            String category = request.getParameter("category");
             Double unit_price = Double.parseDouble(request.getParameter("unit_price"));
             Double discount_add = Double.parseDouble((request.getParameter("discount_add")));
             Double total_amount = Double.parseDouble(request.getParameter("total_amount"));
             String mode_of_payment = request.getParameter("mode_of_payment");
-            String size = request.getParameter("size");
+            String status=request.getParameter("status");
+            
             int check_no = 0;
+
             try {
                 check_no = Integer.parseInt(request.getParameter("check_no"));
             } catch (Exception e) {
 
             }
 
-            ProductBean productbean = BeanFactory.getInstance(product_code, delivery_date, date_received, dR_SI
-                    , quantity, delivery_charge, supplier, product_description, size, unit_price, discount_add,
-                    total_amount, mode_of_payment, check_no);
+            ProductBean productbean = BeanFactory.getInstance(product_code, product_name,delivery_date, 
+            		date_received, dR_SI, quantity, delivery_charge,supplier,category, product_description, 
+            		size, unit_price,discount_add, total_amount, mode_of_payment, check_no, status);
 
             if(SQLOperations.updateProduct(productbean,product_code,connection)>=1){
                 getServletContext().getRequestDispatcher("/updateProductStatus.jsp?status=true").forward(request,response);

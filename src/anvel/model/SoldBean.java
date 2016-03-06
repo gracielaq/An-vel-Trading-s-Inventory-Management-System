@@ -20,14 +20,17 @@ public class SoldBean{
 	  PRIMARY KEY (`product_code`)
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
 	
-	private int product_code,check_no;
+	private int check_no;
 	private double unit_price;
 	private int quantity;
 	private String product_description;
 	private double discount_sell;
 	private double total_amount;
 	private int note_quantity;
+	private String product_code;
 	private String note_description;
+	private String product_name;
+	private String size,category;
 	private String customer_name;
 	private String tin;
 	private String address;
@@ -42,12 +45,49 @@ public class SoldBean{
 					- (getQuantity() * getUnit_price() * getDiscount_sell()));
 		
 	}
-	public int getProduct_code() {
+	
+	
+	public String getProduct_name() {
+		return product_name;
+	}
+
+
+	public String getProduct_code() {
 		return product_code;
 	}
-	public void setProduct_code(int product_code) {
+
+
+	public void setProduct_code(String product_code) {
 		this.product_code = product_code;
 	}
+
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+
+	public String getSize() {
+		return size;
+	}
+
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+
 	public double getUnit_price() {
 		return unit_price;
 	}

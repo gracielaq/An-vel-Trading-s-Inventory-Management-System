@@ -18,6 +18,7 @@
 	<p>Password:<input type="password" name="password" id="txtPassword" required="required"/></p>
 	<p>Confirm Password:<input type="password" name="password" id="txtConfirmPassword"  required="required"/></p>
  <input type="submit" id="btnSubmit" value="Submit" onclick="return Validate()" />
+<a href="MainMenu.jsp">Back to Main Menu</a>
 </form>
 <script type="text/javascript">
     function Validate() {

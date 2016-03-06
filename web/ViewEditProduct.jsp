@@ -28,6 +28,7 @@
 		<tr>
 			
 			<th align="center">Product Code</th>
+			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
 			<th align="center">Date Received</th>
@@ -48,6 +49,7 @@
 		<tr>
 
 			<th align="center">Product Code</th>
+			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
 			<th align="center">Date Received</th>
@@ -70,7 +72,8 @@
 			%>
 			
 				<tr>
-					<td><%=productrecords.getInt("product_code")%></td>
+					<td><%=productrecords.getString("product_code")%></td>
+					<td><%=productrecords.getString("status") %></td>
 					<td><%=productrecords.getString("supplier")%></td>
 					<td><%=productrecords.getString("delivery_date")%></td>
 					<td><%=productrecords.getString("date_received")%></td>
@@ -84,12 +87,12 @@
 					<td><%=productrecords.getString("mode_of_payment")%></td>
 					<td><%=productrecords.getInt("check_no")%></td>
 					<td align="center">
-					  <a href="productmaintenance.html?product_code=<%=productrecords.getInt("product_code")%>&action=edit">
+					  <a href="productmaintenance.html?product_code=<%=productrecords.getString("product_code")%>&action=edit">
 					  	edit
 					  </a>
 					</td>
 					<td align="center">
-					  <a href="productmaintenance.html?product_code=<%=productrecords.getInt("product_code")%>&action=delete">
+					  <a href="productmaintenance.html?product_code=<%=productrecords.getString("product_code")%>&action=delete">
 					  	delete
 					  </a>
 					</td>
