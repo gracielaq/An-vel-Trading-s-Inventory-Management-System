@@ -10,7 +10,7 @@
 	<form action="Delivery.html" onsubmit="return validatePlate()" method="post">
 		<p>Driver:<input type="text" name="driver" required="required"></p>
 		<p>Helper:<input type="text" name="helper" required="required"></p>
-		<p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();"placeholder="(e.g. ABC 1234)" id="plate" name="plateNo" required="required"></p>
+		<p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();"placeholder="(e.g. ABC 1234)" id="plate" name="plateNum" required="required"></p>
 		<p id="plateValid"></p>
 		<p>Coding of Truck: <select name="Days">
   			<option value="Monday">Monday</option>

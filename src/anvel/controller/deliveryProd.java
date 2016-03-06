@@ -48,12 +48,13 @@ public class deliveryProd extends HttpServlet {
             
         	String driver = request.getParameter("driver");
             String helper=request.getParameter("helper");
+            String plateNum=request.getParameter("plateNum");
             String product_code=request.getParameter("product_code");
             String coding=request.getParameter("Days");
             java.sql.Date deliveryDate = new java.sql.Date(sdf.parse(request.getParameter("deliveryDate")).getTime());
             
             
-            DeliveryBean deliveryBean = BeanFactory.getInstance(driver,helper,product_code,coding,deliveryDate);
+            DeliveryBean deliveryBean = BeanFactory.getInstance(driver,helper,product_code,plateNum,coding,deliveryDate);
 
             if (connection != null) {
                 if (SQLOperations.addDelivery(deliveryBean, connection)) {

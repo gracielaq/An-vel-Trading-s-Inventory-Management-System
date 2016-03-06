@@ -11,12 +11,12 @@
 	if (request.getParameter("status").equals("true")) { %>
 		<h2>Successfully added delivery! </h2>
 		<br/>
-		<p>Driver ${deliveryBean.Driver}</p>
-		<p>Helper: ${deliveryBean.Helper}</p>
-		<p>Plate Number: ${deliveryBean.PlateNum}</p>
-		<p>Coding Day: ${deliveryBean.CodingDay}</p> 
-		<p>Delivery Date: ${deliveryBean.DeliveryDate}</p> 
-		<p>Product Code:${deliveryBean.product_code}</p>
+		<p>Driver ${deliveryBean.driver}</p>
+		<p>Helper: ${deliveryBean.helper}</p>
+		<p>Plate Number: ${deliveryBean.plateNum}</p>
+		<p>Coding Day: ${deliveryBean.codingDay}</p> 
+		<p>Delivery Date: ${deliveryBean.deliveryDate}</p> 
+		<p>Product Code:${deliveryBean.productCode}</p>
 	<% } else { %>
 	  <h1>Failed to add delivery. :(</h1>		
 	<% } %>

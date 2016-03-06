@@ -123,14 +123,15 @@ public class BeanFactory {
         return bean;
     }
 
-   
-    public static DeliveryBean getInstance(String Driver, String Helper, String PlateNum
+
+    public static DeliveryBean getInstance(String Driver, String Helper, String product_code, String plateNum
     		,String CodingDay, java.sql.Date DeliveryDate) {
 
         DeliveryBean db = new DeliveryBean();
         db.setDriver(Driver);
         db.setHelper(Helper);
-        db.setPlateNum(PlateNum);
+        db.setProductCode(product_code);
+        db.setPlateNum(plateNum);
         db.setCodingDay(CodingDay);
         db.setDeliveryDate(DeliveryDate);
         
