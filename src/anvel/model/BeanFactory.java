@@ -97,13 +97,14 @@ public class BeanFactory {
         return pb;
     }
 
-    public static SoldBean getInstance(String product_code, double unit_price, int quantity,
+    public static SoldBean getInstance(String product_code, String product_name, double unit_price, int quantity,
             String product_description, double discount_sell, int note_quantity,
             String note_description, String customer_name, String tin, String address, java.sql.Date date,
-            String mode_of_payment, int check_no) {
+            String mode_of_payment, int check_no, String size) {
 
         SoldBean bean = new SoldBean();
         bean.setProduct_code(product_code);
+        bean.setProduct_name(product_name);
         bean.setUnit_price(unit_price);
         bean.setQuantity(quantity);
         bean.setProduct_description(product_description);
@@ -116,13 +117,13 @@ public class BeanFactory {
         bean.setAddress(address);
         bean.setMode_of_payment(mode_of_payment);
         bean.setCheck_no(check_no);
+        bean.setSize(size);
         
         
         bean.setAddress(address);
         bean.compute();
         return bean;
     }
-
 
     public static DeliveryBean getInstance(String Driver, String Helper, String product_code, String plateNum
     		,String CodingDay, java.sql.Date DeliveryDate) {
