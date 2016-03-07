@@ -509,9 +509,16 @@ public class SQLOperations implements SQLCommands {
 		return updated;
 	}
 
-	public static ResultSet getEligibleDeliveries(Connection connection2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public static ResultSet getEligibleDeliveries(Connection connection2) {
+    	try{
+    			PreparedStatement pstmt = connection2.prepareStatement("SELECT * FROM SELL WHERE NOTE_DESCRIPTION LIKE %- SOLD%");
+    			ResultSet rs = pstmt.executeQuery();
+    			return rs;
+    		}catch(Exception e){
+    		
+    			e.printStackTrace();
+    			return null;
+    		}
+    		}
 
 }
