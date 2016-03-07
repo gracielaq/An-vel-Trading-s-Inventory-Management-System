@@ -28,7 +28,7 @@ public class ProductMaintenanceOldServlet extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int product_code=Integer.parseInt(request.getParameter("product_code"));
+        String product_code=request.getParameter("product_code");
         System.out.println(request.getParameter("product_code"));
         String directory;
         	if(request.getParameter("action").equals("recover")){

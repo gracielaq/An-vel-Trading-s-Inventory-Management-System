@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-/**
- * Created by Jude on 2/22/2016.
- */
+
 @WebServlet("/deleteProductMe.html")
 public class DeleteProductServlet extends HttpServlet {
     Connection connection;
@@ -36,7 +34,7 @@ public class DeleteProductServlet extends HttpServlet {
     	    	String directory = "/deleteProductStatus.jsp";
     	    	if(request.getParameter("action").equals("yes")){
     	    	   System.out.println(request.getAttribute("productBean"));
-    	           int product_code=Integer.parseInt(request.getParameter("id"));
+    	           String product_code=request.getParameter("id");
     	           
     	           SQLOperations.transferProduct(product_code, connection);
     	           SQLOperations.deleteProduct(product_code, connection);
