@@ -70,19 +70,6 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getEligibleDeliveries(Connection connection){
-		try {
-			PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM from sel"
-					+ "l where note_description Like %- SOLD%");
-			ResultSet rs=pstmt.executeQuery();
-			return rs;
-		} catch (SQLException e) {
-			System.out.println("getEligibleDeliveries Error-");
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	// to do!!
 	public static boolean addSoldProduct(String product_code, SoldBean soldBean,
@@ -95,15 +82,15 @@ public class SQLOperations implements SQLCommands {
 			
 			pstmt.setString(1, soldBean.getProduct_code());
 			pstmt.setString(2, soldBean.getProduct_name());
-			pstmt.setInt(3, soldBean.getNote_quantity());
-			pstmt.setString(4, soldBean.getNote_description());
-			pstmt.setString(5, soldBean.getProduct_description());
-			pstmt.setDouble(6, soldBean.getUnit_price());
-			pstmt.setDouble(7, soldBean.getDiscount_sell());
-			pstmt.setDouble(8, soldBean.getTotal_amount());
-			pstmt.setString(9, soldBean.getMode_of_payment());
-			pstmt.setInt(10, soldBean.getCheck_no());
-			pstmt.setString(11, soldBean.getCategory());
+			pstmt.setInt(3, soldBean.getQuantity());
+			pstmt.setInt(4, soldBean.getNote_quantity());
+			pstmt.setString(5, soldBean.getNote_description());
+			pstmt.setString(6, soldBean.getProduct_description());
+			pstmt.setDouble(7, soldBean.getUnit_price());
+			pstmt.setDouble(8, soldBean.getDiscount_sell());
+			pstmt.setDouble(9, soldBean.getTotal_amount());
+			pstmt.setString(10, soldBean.getMode_of_payment());
+			pstmt.setInt(11, soldBean.getCheck_no());
 			pstmt.setString(12, soldBean.getSize());
 			pstmt.setString(13, soldBean.getCustomer_name());
 			pstmt.setString(14, soldBean.getTin());
@@ -281,14 +268,14 @@ public class SQLOperations implements SQLCommands {
 
 	}
 
-	public static ProductBean findProduct(String id, Connection connection) {
+	public static ProductBean findProduct(int id, Connection connection) {
 
 		ProductBean productbean = null;
 
 		try {
 			PreparedStatement pstmt = connection
 					.prepareStatement(SEARCH_PRODUCT);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				productbean = BeanFactory.getInstance(
@@ -451,12 +438,12 @@ public class SQLOperations implements SQLCommands {
             return false;
         }
     }
-    public static boolean transferProduct(String id, 
+    public static boolean transferProduct(int id, 
 			Connection connection) {
 			
 			try {
 		        PreparedStatement pstmt = connection.prepareStatement(TRANSFER_PRODUCT);
-		        pstmt.setString(1, id); 
+		        pstmt.setInt(1, id); 
 		        pstmt.executeUpdate(); // execute insert statement  
 			} catch (SQLException sqle) {
 				System.out.println("SQLException - transferProduct: " + sqle.getMessage());
@@ -464,12 +451,12 @@ public class SQLOperations implements SQLCommands {
 			}	
 			return true;
 	}
-    public static boolean transferProductOld(String id, 
+    public static boolean transferProductOld(int id, 
 			Connection connection) {
 			
 			try {
 		        PreparedStatement pstmt = connection.prepareStatement(TRANSFER_PRODUCT_OLD);
-		        pstmt.setString(1, id); 
+		        pstmt.setInt(1, id); 
 		        pstmt.executeUpdate(); // execute insert statement  
 			} catch (SQLException sqle) {
 				System.out.println("SQLException - transferProduct: " + sqle.getMessage());
@@ -477,13 +464,13 @@ public class SQLOperations implements SQLCommands {
 			}	
 			return true;
 	}
-    public static synchronized int deleteProduct(String product_code, Connection connection) {
+    public static synchronized int deleteProduct(int product_code, Connection connection) {
 		int updated = 0;
 		
 		try {
 			connection.setAutoCommit(false);
 	        PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT);
-	        pstmt.setString(1, product_code);             
+	        pstmt.setInt(1, product_code);             
 	        updated  = pstmt.executeUpdate();
 	        connection.commit();
 		} catch (SQLException sqle) {
@@ -499,13 +486,13 @@ public class SQLOperations implements SQLCommands {
 		
 		return updated;
 	} 
-    public static synchronized int deleteProductOld(String product_code, Connection connection) {
+    public static synchronized int deleteProductOld(int product_code, Connection connection) {
 		int updated = 0;
 		
 		try {
 			connection.setAutoCommit(false);
 	        PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT_OLD);
-	        pstmt.setString(1, product_code);             
+	        pstmt.setInt(1, product_code);             
 	        updated  = pstmt.executeUpdate();
 	        connection.commit();
 		} catch (SQLException sqle) {

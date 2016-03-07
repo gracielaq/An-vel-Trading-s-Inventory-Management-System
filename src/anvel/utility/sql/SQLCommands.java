@@ -40,9 +40,9 @@ public interface SQLCommands {
 			+ "tin=?," + "address=?," + "date=?, checkNumber=?" + "where product_code=?";
 
 	
-	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,product_name,"
+	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,product_name,quantity,"
 			+ "note_quantity,note_description,product_description,unit_price,discount_sell,total_amount,mode_of_payment,"
-			+ "check_no,category,size,customer_name,tin, address, date) "
+			+ "check_no,size,customer_name,tin, address, date) "
 			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where" + " product_code like ? OR product_name like ? OR"
@@ -92,7 +92,7 @@ public interface SQLCommands {
 			+ "from Product where product_code=?;";
 	String DELETE_PRODUCT = "delete from Product where product_code=?";
 	
-	String TRANSFER_PRODUCT_OLD="insert into Product (product_code,product_name, supplier ,delivery_date,date_received, delivery_charge,DR_SI,"
+	String TRANSFER_PRODUCT_OLD="insert into Product (dproduct_code,product_name, supplier ,delivery_date,date_received, delivery_charge,DR_SI,"
 			+ "quantity,size,product_description,unit_price,discount_add,total_amount,mode_of_payment,check_no,category,status "
 			+ "from Product_old where product_code=?;";
 	String DELETE_PRODUCT_OLD = "delete from Product_old where product_code=?";
