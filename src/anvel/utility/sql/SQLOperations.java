@@ -70,6 +70,19 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getEligibleDeliveries(Connection connection){
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM from sel"
+					+ "l where note_description Like %- SOLD%");
+			ResultSet rs=pstmt.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			System.out.println("getEligibleDeliveries Error-");
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	// to do!!
 	public static boolean addSoldProduct(String product_code, SoldBean soldBean,

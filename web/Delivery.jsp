@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <jsp:useBean id="productrecords" type="java.sql.ResultSet" scope="request"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +13,14 @@
 		<p>Helper:<input type="text" name="helper" required="required"></p>
 		<p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();"placeholder="(e.g. ABC 1234)" id="plate" name="plateNum" required="required"></p>
 		<p id="plateValid"></p>
+		<!--  
 		<p>Coding of Truck: <select name="Days">
   			<option value="Monday">Monday</option>
   			<option value="Tuesday">Tuesday</option>
  			<option value="Wednesday">Wednesday</option>
   			<option value="Thursday">Thursday</option>
   			<option value="Friday">Friday</option>
-		</select></p>
+		</select></p>-->
 		<p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
 		<p>Product code:<input type="text" name="product_code" required="required"></p>
 		

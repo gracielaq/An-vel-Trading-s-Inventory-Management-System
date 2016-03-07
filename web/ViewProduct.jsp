@@ -28,6 +28,7 @@
 		<tr>
 			
 			<th align="center">Product Code</th>
+			<th align="center">Product Name</th>
 			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
@@ -49,6 +50,7 @@
 		<tr>
 
 			<th align="center">Product Code</th>
+			<th align="center">Product Name</th>
 			<th align="center">Status</th>
 			<th align="center">Supplier</th>
 			<th align="center">Delivery Date</th>
@@ -72,6 +74,7 @@
 			
 				<tr>
 					<td><%=productrecords.getString("product_code")%></td>
+					<td><%=productrecords.getString("product_name")%></td>
 					<td><%=productrecords.getString("status") %></td>
 					<td><%=productrecords.getString("supplier")%></td>
 					<td><%=productrecords.getString("delivery_date")%></td>
