@@ -25,7 +25,8 @@
             var discount = discPercent * total;
 
             var amount = total - discount;
-            document.getElementById("Total").value = amount;
+            //for rounding off numbers
+            document.getElementById("Total").value = amount.toFixed(2);
         }
 
     </script>
