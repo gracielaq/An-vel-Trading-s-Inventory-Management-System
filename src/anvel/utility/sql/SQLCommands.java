@@ -60,10 +60,22 @@ public interface SQLCommands {
 
 
 	String UPDATE_PRODUCT = "update product set "
-			+ "supplier=?,product_name=?"+ "delivery_date=?," + "date_received=?,"
-			+ "delivery_charge=?," + "DR_SI=?," + "quantity=?,"
-			+ "product_description=?," + "unit_price=?," + "discount_add=?,"
-			+ "total_amount=?," +"mode_of_payment=?,check_no=?,size=?,category=?,status=? "+ "where product_code=?";
+			+ "supplier=?," +
+			"product_name=?,"+
+			"delivery_date=?," +
+			"date_received=?,"
+			+ "delivery_charge=?," +
+			"DR_SI=?," +
+			"quantity=?," +
+			"product_description=?," +
+			"unit_price=?," +
+			"discount_add=?," +
+			"total_amount=?," +
+			"mode_of_payment=?," +
+			"check_no=?," +
+			"size=?," +
+			"category=?," +
+			"status=? "+ "where product_code=?";
 	String GET_ALL_PRODUCTS = "select * from product";
 	String GET_ALL_OLD_PRODUCTS = "select * from Product_old";
 	String GET_ALL_ACCOUNTS = "select * from accounts";

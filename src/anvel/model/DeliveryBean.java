@@ -15,8 +15,6 @@ public class DeliveryBean {
 	public void setDriver(String driver) {
 		Driver = driver;
 	}
-	
-	
 	public String getProductCode() {
 		return productCode;
 	}

@@ -19,45 +19,44 @@ package anvel.model;
  */
 public class ProductBean {
 
-    private int  quantity, DR_SI, check_no;
+    private int quantity, DR_SI, check_no;
     private double unit_price, discount_add, total_amount, delivery_charge;
     private java.sql.Date delivery_date, date_received;
-    private String product_code,product_description,product_name,
+    private String product_code, product_description, product_name,
             mode_of_payment, supplier, size, category, status;
 
     public String getProduct_name() {
-		return product_name;
-	}
+        return product_name;
+    }
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public void compute() {
+    public void compute() {
         // (QTY * Unit Price) � (QTY* Unit Price*Discount)
         setTotal_amount((getQuantity() * getUnit_price())
                 - (getQuantity() * getUnit_price() * getDiscount_add()));
     }
 
-  
 
     public String getProduct_code() {
-		return product_code;
-	}
+        return product_code;
+    }
 
-	public void setProduct_code(String product_code) {
-		this.product_code = product_code;
-	}
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
+    }
 
-	public int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -161,14 +160,13 @@ public class ProductBean {
         this.check_no = check_no;
     }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-    
-    
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
 }
