@@ -2,8 +2,8 @@ package anvel.model;
 
 public class BeanFactory {
 
-    public static AccountBean getInstance(String username, String password, String email,
-            String firstName, String lastName, String isAdmin) {
+    public static AccountBean getAccountBeanInstance(String username, String password, String email,
+                                                     String firstName, String lastName, String isAdmin) {
         AccountBean accountBean = new AccountBean();
         accountBean.setUsername(username);
         accountBean.setEmail(email);
@@ -33,7 +33,7 @@ public class BeanFactory {
      */
 
     /*
-     public static ProductBean getInstance(int product_code,int quantity,
+     public static ProductBean getProductBeanInstance(int product_code,int quantity,
      double unit_price, double discount, 
      java.sql.Date delivery_date, java.sql.Date date_recieved,
      String delivery_charge, int string,String product_description,
@@ -71,10 +71,10 @@ public class BeanFactory {
      `mode_of_payment` varchar(45) NOT NULL,
      PRIMARY KEY (`product_code`)
      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
-    public static ProductBean getInstance(String product_code, String product_name,java.sql.Date delivery_date, 
-    		java.sql.Date date_received, int dR_SI, int quantity, double delivery_charge, 
-    		String supplier,String category, String product_description, String size, double unit_price,
-            double discount_add, double total_amount, String mode_of_payment, int check_no, String status) {
+    public static ProductBean getProductBeanInstance(String product_code, String product_name, java.sql.Date delivery_date,
+                                                     java.sql.Date date_received, int dR_SI, int quantity, double delivery_charge,
+                                                     String supplier, String category, String product_description, String size, double unit_price,
+                                                     double discount_add, double total_amount, String mode_of_payment, int check_no, String status) {
         ProductBean pb = new ProductBean();
         pb.setProduct_code(product_code);
         pb.setProduct_name(product_name);
@@ -97,10 +97,10 @@ public class BeanFactory {
         return pb;
     }
 
-    public static SoldBean getInstance(String product_code, String product_name, double unit_price, int quantity,
-            String product_description, double discount_sell, int note_quantity,
-            String note_description, String customer_name, String tin, String address, java.sql.Date date,
-            String mode_of_payment, int check_no, String size) {
+    public static SoldBean getSoldBeanInstance(String product_code, String product_name, double unit_price, int quantity,
+                                               String product_description, double discount_sell, int note_quantity,
+                                               String note_description, String customer_name, String tin, String address, java.sql.Date date,
+                                               String mode_of_payment, int check_no, String size,String delivery_pickup_status) {
 
         SoldBean bean = new SoldBean();
         bean.setProduct_code(product_code);
@@ -118,6 +118,7 @@ public class BeanFactory {
         bean.setMode_of_payment(mode_of_payment);
         bean.setCheck_no(check_no);
         bean.setSize(size);
+        bean.setDelivery_pickup_status(delivery_pickup_status);
         
         
         bean.setAddress(address);
@@ -125,8 +126,8 @@ public class BeanFactory {
         return bean;
     }
 
-    public static DeliveryBean getInstance(String Driver, String Helper, String product_code, String plateNum
-    		,String CodingDay, java.sql.Date DeliveryDate) {
+    public static DeliveryBean getDeliveryBeanInstance(String Driver, String Helper, String product_code, String plateNum
+    		, String CodingDay, java.sql.Date DeliveryDate) {
 
         DeliveryBean db = new DeliveryBean();
         db.setDriver(Driver);

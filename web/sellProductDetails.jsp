@@ -37,11 +37,11 @@
     <input type="hidden" name="product_code" value="${productBean.product_code}"/>
     <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}" onblur="recalculateSum()" id="qty"
                        max="${productBean.quantity}"/></p>
-    <p>Unit Price:<input value="${productBean.unit_price}" name="unit_price" onblur="recalculateSum()" id="prc"></p>
+    <p>Unit Price:<input value="${productBean.unit_price}" name="unit_price" onclick="recalculateSum()" onblur="recalculateSum()" id="prc"></p>
     <p>Product Description: ${productBean.product_description}</p>
     <p>Delivery Charge<input type="number" name="delivery_charge" value="0.00" onblur="recalculateSum()" id="delC"/></p>
-    <p>Discount: <input type="number" name="discount_sell" onblur="recalculateSum()" min="0" step="0.01" value="0" id="disc" max="100">%</p>
-    <p>Total Amount: <input type="number" name="total_amount" step="0.01" value="0" id="Total"></p>
+    <p>Discount: <input type="number" name="discount_sell" onclick="recalculateSum()" onblur="recalculateSum()" min="0" step="0.01" value="0" id="disc" max="100">%</p>
+    <p>Total Amount: <input type="number" name="total_amount" step="0.01" value="0" id="Total" ></p>
     <p>Customer: <input type="text" name="customer_name" required="required"></p>
     <p>TIN:<input type="text" name="tin" required="required"></p>
     <p>Address: <input type="text" name="address"></p>
@@ -49,6 +49,10 @@
     <p>Mode of Payment</p>
     <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
     <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck">Check<br>
+
+    <p>PICKUP/DELIVERY:</p>
+    <p>delivery<input type="radio" name="delivery_pickup_status" value="fordelivery" required/> </p>
+    <p>pickup<input type="radio" name="delivery_pickup_status" value="forpickup" required/> </p>
     <div id="ifYes" style="visibility:hidden">
         <p>Check Number:<input type="text" name="check"/></p>
     </div>

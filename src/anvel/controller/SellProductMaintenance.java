@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +43,12 @@ public class SellProductMaintenance extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            //getting all the infos from the jsps
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String product_code = request.getParameter("product_code");
             String product_name = request.getParameter("product_name");
             java.sql.Date date = new java.sql.Date(sdf.parse(request.getParameter("date")).getTime());
-
+            String product_delivery_status = request.getParameter("delivery_pickup_status");
             String customer_name = request.getParameter("customer_name");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
@@ -63,6 +63,9 @@ public class SellProductMaintenance extends HttpServlet {
             String address = request.getParameter("address");
             int check_no = 0;
 
+
+
+            //getting the ResultSet from the database with the respective product code
             String query = "Select * from product where product_code=?";
             PreparedStatement pstmt = connection
                     .prepareStatement(query);
@@ -79,13 +82,13 @@ public class SellProductMaintenance extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ProductBean productbean = BeanFactory.getInstance(product_code, rs.getString("product_name"), rs.getDate("delivery_date"),
+                ProductBean productbean = BeanFactory.getProductBeanInstance(product_code, rs.getString("product_name"), rs.getDate("delivery_date"),
                         rs.getDate("date_received"), rs.getInt("DR_SI"), newQty, rs.getDouble("delivery_charge"), rs.getString("supplier"), rs.getString("category"), rs.getString("product_description"),
                         rs.getString("size"), rs.getDouble("unit_price"), rs.getDouble("discount_add"), rs.getDouble("total_amount"), rs.getString("mode_of_payment"), rs.getInt("check_no"), rs.getString("status"));
 
 
-                SoldBean soldbean = BeanFactory.getInstance(product_code, rs.getString("product_name"), unit_price, quantity, product_description, discount_sell,
-                        note_quantity, note_description+"- SOLD", customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"));
+                SoldBean soldbean = BeanFactory.getSoldBeanInstance(product_code, rs.getString("product_name"), unit_price, quantity, product_description, discount_sell,
+                        note_quantity, note_description, customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"),product_delivery_status);
 
 
                 if (connection != null) {
@@ -116,6 +119,7 @@ public class SellProductMaintenance extends HttpServlet {
         }
 
     }
+
 }
 
 

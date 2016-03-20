@@ -4,19 +4,16 @@ import anvel.utility.sql.SQLOperations;
 
 import java.io.IOException;
 import java.sql.Connection;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import anvel.utility.sql.SQLOperations;
 import anvel.model.ProductBean;
 import anvel.model.BeanFactory;
 import anvel.model.DeliveryBean;
 
-import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +41,7 @@ public class deliveryProd extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        try {
+        //try {
             String product_code[]=request.getParameterValues("productsOrdered[]");
             ArrayList<ProductBean> tempproductbeans= new ArrayList<ProductBean>();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -54,13 +51,13 @@ public class deliveryProd extends HttpServlet {
             String plateNum=request.getParameter("plateNum");
 
             String coding=request.getParameter("Days");
-            java.sql.Date deliveryDate = new java.sql.Date(sdf.parse(request.getParameter("deliveryDate")).getTime());
-
+         //   java.sql.Date deliveryDate = new java.sql.Date(sdf.parse(request.getParameter("deliveryDate")).getTime());
 
 /*
+
             for(String x: product_code){
-                DeliveryBean deliveryBean=BeanFactory.getInstance(driver,helper,x,plateNum,"",deliveryDate);
-                tempproductbeans.add(SQLOperations.findProduct(x,connection);
+                DeliveryBean deliveryBean=BeanFactory.getDeliveryBeanInstance(driver,helper,x,plateNum,"",deliveryDate);
+              //  tempproductbeans.add(SQLOperations.findProduct(x,connection);
                 SQLOperations.addDelivery(deliveryBean,connection);
             }
 
@@ -68,17 +65,17 @@ public class deliveryProd extends HttpServlet {
             //for every product na inorder
 
             for(ProductBean product:productBean){
-                DeliveryBean deliverybean= BeanFactory.getInstance(driver,)
-                SQLOperations.addDelivery()
+                DeliveryBean deliverybean= BeanFactory.getAccountBeanInstance(driver,)
+                SQLOperations.addDelivery();
             }
 
+
+
 */
-
-
             
             
-            //DeliveryBean deliveryBean = BeanFactory.getInstance(driver,helper,product_code,plateNum,coding,deliveryDate);
-
+            //DeliveryBean deliveryBean = BeanFactory.getProductBeanInstance(driver,helper,product_code,plateNum,coding,deliveryDate);
+/*
             if (connection != null) {
                 if (SQLOperations.addDelivery(deliveryBean, connection)) {
                     System.out.println("delivery successfully inserted");
@@ -96,7 +93,7 @@ public class deliveryProd extends HttpServlet {
             } else {
                 System.out.print("invalid connection");
             }
-            
+
         } catch (NumberFormatException  e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -104,7 +101,7 @@ public class deliveryProd extends HttpServlet {
         } catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
     }
 }

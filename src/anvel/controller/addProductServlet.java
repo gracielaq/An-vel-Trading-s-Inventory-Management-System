@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,7 +56,7 @@ public class addProductServlet extends HttpServlet {
             } catch (Exception e) {
 
             }
-            ProductBean productbean = BeanFactory.getInstance(product_code, product_name,delivery_date, 
+            ProductBean productbean = BeanFactory.getProductBeanInstance(product_code, product_name,delivery_date,
             		date_received, dR_SI, quantity, delivery_charge,supplier,category, product_description, 
             		size, unit_price,discount_add, total_amount, mode_of_payment, check_no, status);
 

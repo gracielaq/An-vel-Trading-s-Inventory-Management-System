@@ -46,7 +46,7 @@ public class AddAccountServlet extends HttpServlet {
 
         //pupunta sa status ng page
         String directory = "/accountAddStatus.jsp";
-        AccountBean accountBean = BeanFactory.getInstance(username,password,email,firstName,lastName,isAdmin);
+        AccountBean accountBean = BeanFactory.getAccountBeanInstance(username,password,email,firstName,lastName,isAdmin);
         if(SQLOperations.addAccount(accountBean, connection)){
             directory+="?status=success";
             System.out.print("ACCOUNT SUCCESSFULLY ADDED!");

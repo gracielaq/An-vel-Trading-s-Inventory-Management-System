@@ -3,6 +3,8 @@ package anvel.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import anvel.model.BeanFactory;
+import anvel.model.SoldBean;
 import anvel.utility.sql.SQLOperations;
 
 /**
@@ -32,7 +36,21 @@ public class DeliveryServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ResultSet rs = SQLOperations.getEligibleDeliveries(connection);
-		request.setAttribute("rs", rs);
+        //sabi raw online mas safe daw na gamitin yung Arraylist, kasi database cursor
+        //daw yun e, madalas magkaerror
+        ArrayList<SoldBean> productsForDelivery= new ArrayList<SoldBean>();
+        try {
+            while(rs.next()){
+                productsForDelivery.add(BeanFactory.getSoldBeanInstance(rs.getString("product_code"), rs.getString("product_name"), rs.getDouble("unit_price")
+                        , rs.getInt("quantity"), rs.getString("product_description"), rs.getDouble("discount_sell")
+                        , rs.getInt("note_quantity"), rs.getString("note_description"), rs.getString("customer_name")
+                        , rs.getString("tin"), rs.getString("address"), rs.getDate("date"),rs.getString("mode_of_payment"),
+                        rs.getInt("check_no"), rs.getString("size"),rs.getString("delivery_pickup_status")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute("productsForDelivery", productsForDelivery);
 		getServletContext().getRequestDispatcher("/Delivery.jsp").forward(request, response);
 		
 	}

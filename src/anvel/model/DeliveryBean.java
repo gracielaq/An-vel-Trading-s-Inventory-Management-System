@@ -8,7 +8,17 @@ public class DeliveryBean {
 	private String PlateNum;
 	private String CodingDay;
 	private java.sql.Date DeliveryDate;
-	
+
+
+
+	private int batch_no;
+
+	public int getBatch_no() {
+		return batch_no;
+	}
+	public void setBatch_no(int batch_no) {
+		this.batch_no = batch_no;
+	}
 	public String getDriver() {
 		return Driver;
 	}

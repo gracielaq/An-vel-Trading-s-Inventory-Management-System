@@ -27,7 +27,7 @@
 		<input type="Submit" value="Edit Products">
 	</form>
 	
-	<form action="Delivery.jsp">
+	<form action="DeliveryPage.html">
 		<input type="Submit" value="Delivery">
 	</form>
 	

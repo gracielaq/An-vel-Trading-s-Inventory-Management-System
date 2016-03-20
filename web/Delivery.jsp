@@ -1,6 +1,15 @@
+<%@ page import="anvel.model.SoldBean" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<jsp:useBean id="rs" type="java.sql.ResultSet" scope="request"/>
+<%--<jsp:useBean id="rs" type="java.sql.ResultSet" scope="request"/>--%>
+<%!%>
+<%
+    ArrayList<SoldBean> productsForSelling = new ArrayList<SoldBean>();
+    if(request.getAttribute("productsForDelivery")!=null){
+        productsForSelling=(ArrayList)request.getAttribute("productsForDelivery");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +42,13 @@
 
 
     <p>CHOOSE PRODUCTS YOU WANT TO ORDER:</p>
-
+    <%
+        for(int x=0;x<productsForSelling.size();x++){
+    %>
+    <p><%=productsForSelling.get(x).getProduct_name()%>--<%=productsForSelling.get(x).getQuantity()%><input type="checkbox" value="<%=productsForSelling.get(x).getProduct_code()%>"/></p>
+    <%}
+    %>
+<%--
     <%while (rs.next()) {%>
     <p>
         <input type="checkbox" class="products" name="productsOrdered[]"
@@ -43,6 +58,7 @@
         }
     %>
 
+--%>
 
 
     <!--

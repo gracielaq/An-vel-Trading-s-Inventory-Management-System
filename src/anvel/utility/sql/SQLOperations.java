@@ -6,16 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Statement;
-import java.util.Calendar;
 
-import javax.naming.spi.DirStateFactory;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import anvel.model.*;
 import anvel.utility.Security;
-import anvel.utility.sql.SQLCommands;
 
 public class SQLOperations implements SQLCommands {
 
@@ -96,6 +93,7 @@ public class SQLOperations implements SQLCommands {
             pstmt.setString(14, soldBean.getTin());
             pstmt.setString(15, soldBean.getAddress());
             pstmt.setDate(16, soldBean.getDate());
+            pstmt.setString(17,soldBean.getDelivery_pickup_status());
 
             pstmt.executeUpdate(); // execute insert statement
         } catch (SQLException sqle) {
@@ -280,7 +278,7 @@ public class SQLOperations implements SQLCommands {
             pstmt.setString(1, product_code);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                productbean = BeanFactory.getInstance(
+                productbean = BeanFactory.getProductBeanInstance(
                         rs.getString("product_code"),
                         rs.getString("product_name"),
                         rs.getDate("delivery_date"),
@@ -517,7 +515,7 @@ public class SQLOperations implements SQLCommands {
         try {
             Statement pstmt = connection2.createStatement();
 
-            ResultSet rs = pstmt.executeQuery("SELECT * FROM SELL WHERE NOTE_DESCRIPTION LIKE '%- SOLD%'");
+            ResultSet rs = pstmt.executeQuery("SELECT * FROM SELL WHERE delivery_pickup_status LIKE 'fordelivery'");
             return rs;
         } catch (Exception e) {
 

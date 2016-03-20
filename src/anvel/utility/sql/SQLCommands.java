@@ -42,8 +42,8 @@ public interface SQLCommands {
 	
 	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,product_name,quantity,"
 			+ "note_quantity,note_description,product_description,unit_price,discount_sell,total_amount,mode_of_payment,"
-			+ "check_no,size,customer_name,tin, address, date) "
-			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "check_no,size,customer_name,tin, address, date,delivery_pickup_status) "
+			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where" + " product_code like ? OR product_name like ? OR"
 			+ "unit_price like ? OR " + "quantity like ? OR " + "product_description like ? OR "

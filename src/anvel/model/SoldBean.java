@@ -1,25 +1,29 @@
 package anvel.model;
 
 public class SoldBean{
-	
-	 /*FOR SELL:
-	  CREATE TABLE `Sell` (
-	  `product_code` int(11) NOT NULL,
-	  `unit_price` double NOT NULL,
-	  `quantity` int(11) NOT NULL,
-	  `product_description` varchar(999) DEFAULT NULL,
-	  `discount_sell` double DEFAULT NULL,
-	  `total_amount` double DEFAULT NULL,
-	  `note_quantity` int(11) DEFAULT NULL,
-	  `note_description` varchar(999) DEFAULT NULL,
-	  `customer_name` varchar(200) NOT NULL,
-	  `tin` varchar(200) NOT NULL,
-	  `address` varchar(200) NOT NULL,
-	  `date` datetime NOT NULL,
-	  `mode_of_payment` varchar(45) NOT NULL,
-	  PRIMARY KEY (`product_code`)
-	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
-	
+
+
+
+	/*FOR SELL:
+          CREATE TABLE `Sell` (
+          `product_code` int(11) NOT NULL,
+          `unit_price` double NOT NULL,
+          `quantity` int(11) NOT NULL,
+          `product_description` varchar(999) DEFAULT NULL,
+          `discount_sell` double DEFAULT NULL,
+          `total_amount` double DEFAULT NULL,
+          `note_quantity` int(11) DEFAULT NULL,
+          `note_description` varchar(999) DEFAULT NULL,
+          `customer_name` varchar(200) NOT NULL,
+          `tin` varchar(200) NOT NULL,
+          `address` varchar(200) NOT NULL,
+          `date` datetime NOT NULL,
+          `mode_of_payment` varchar(45) NOT NULL,
+          PRIMARY KEY (`product_code`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+	private int sell_no;
+
+	private String delivery_pickup_status;
 	private int check_no;
 	private double unit_price;
 	private int quantity;
@@ -45,8 +49,23 @@ public class SoldBean{
 					- (getQuantity() * getUnit_price() * getDiscount_sell()));
 		
 	}
-	
-	
+
+	public int getSell_no() {
+		return sell_no;
+	}
+
+	public void setSell_no(int sell_no) {
+		this.sell_no = sell_no;
+	}
+
+	public String getDelivery_pickup_status() {
+		return delivery_pickup_status;
+	}
+
+	public void setDelivery_pickup_status(String delivery_pickup_status) {
+		this.delivery_pickup_status = delivery_pickup_status;
+	}
+
 	public String getProduct_name() {
 		return product_name;
 	}
