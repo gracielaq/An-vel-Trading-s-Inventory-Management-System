@@ -129,7 +129,7 @@ public class BeanFactory {
     }
 
     public static DeliveryBean getDeliveryBeanInstance(int batch_no, String Driver, String Helper, String sell_no, String plateNum
-    		, String CodingDay, java.sql.Date DeliveryDate) {
+    		, java.sql.Date DeliveryDate) {
 
         DeliveryBean db = new DeliveryBean();
         db.setBatch_no(batch_no);
@@ -137,7 +137,6 @@ public class BeanFactory {
         db.setHelper(Helper);
         db.setSell_no(sell_no);
         db.setPlateNum(plateNum);
-        db.setCodingDay(CodingDay);
         db.setDeliveryDate(DeliveryDate);
 
 
