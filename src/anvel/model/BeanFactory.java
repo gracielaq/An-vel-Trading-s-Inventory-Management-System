@@ -128,17 +128,34 @@ public class BeanFactory {
         return bean;
     }
 
-    public static DeliveryBean getDeliveryBeanInstance(String Driver, String Helper, String product_code, String plateNum
+    public static DeliveryBean getDeliveryBeanInstance(int batch_no, String Driver, String Helper, String sell_no, String plateNum
     		, String CodingDay, java.sql.Date DeliveryDate) {
 
         DeliveryBean db = new DeliveryBean();
+        db.setBatch_no(batch_no);
         db.setDriver(Driver);
         db.setHelper(Helper);
-        db.setProductCode(product_code);
+        db.setSell_no(sell_no);
         db.setPlateNum(plateNum);
         db.setCodingDay(CodingDay);
         db.setDeliveryDate(DeliveryDate);
-        
+
+
+        switch(plateNum.charAt(plateNum.length()-1)){
+            case '1':
+            case '2':db.setCodingDay("MONDAY");break;
+            case '3':
+            case '4':db.setCodingDay("TUESDAY");break;
+            case '5':
+            case '6':db.setCodingDay("WEDNESDAY");break;
+            case '7':
+            case '8':db.setCodingDay("THURSDAY");break;
+            case '9':
+            case '0':db.setCodingDay("FRIDAY");break;
+
+
+        }
         return db;
     }
+
 }

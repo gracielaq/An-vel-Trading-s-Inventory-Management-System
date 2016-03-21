@@ -16,7 +16,7 @@
 		<p>Plate Number: ${deliveryBean.plateNum}</p>
 		<p>Coding Day: ${deliveryBean.codingDay}</p> 
 		<p>Delivery Date: ${deliveryBean.deliveryDate}</p> 
-		<p>Product Code:${deliveryBean.productCode}</p>
+		<p>Product Code:${deliveryBean.sell_no}</p>
 	<% } else { %>
 	  <h1>Failed to add delivery. :(</h1>		
 	<% } %>

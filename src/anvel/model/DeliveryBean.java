@@ -3,7 +3,7 @@ package anvel.model;
 public class DeliveryBean {
 	
 	private String Driver;
-	private String productCode;
+	private String sell_no;
 	private String Helper;
 	private String PlateNum;
 	private String CodingDay;
@@ -16,6 +16,7 @@ public class DeliveryBean {
 	public int getBatch_no() {
 		return batch_no;
 	}
+
 	public void setBatch_no(int batch_no) {
 		this.batch_no = batch_no;
 	}
@@ -25,11 +26,11 @@ public class DeliveryBean {
 	public void setDriver(String driver) {
 		Driver = driver;
 	}
-	public String getProductCode() {
-		return productCode;
+	public String getSell_no() {
+		return sell_no;
 	}
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
+	public void setSell_no(String sell_no) {
+		this.sell_no = sell_no;
 	}
 	public String getHelper() {
 		return Helper;

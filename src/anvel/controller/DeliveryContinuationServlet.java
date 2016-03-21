@@ -47,7 +47,7 @@ public class DeliveryContinuationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
-    public SoldBean findSoldProduct(int number, Connection connection){
+    public static SoldBean findSoldProduct(int number, Connection connection){
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM SELL WHERE sell_no=?");
             preparedStatement.setInt(1,number);
@@ -57,7 +57,7 @@ public class DeliveryContinuationServlet extends HttpServlet {
             ,rs.getInt("quantity"),rs.getString("product_description"), rs.getDouble("discount_sell"),rs.getInt("note_quantity")
                     ,rs.getString("note_description"),rs.getString("customer_name"),rs.getString("tin"),rs.getString("address")
                     ,rs.getDate("date"),rs.getString("mode_of_payment"),rs.getInt("check_no"),rs.getString("size")
-                    ,rs.getString("delivery_pickup_status"),rs.getInt("sell_no"));
+                    ,rs.getString("delivery_pickup_status"),rs.getInt("sell_no"),rs.getString("category"));
 
             return soldBean;
 
