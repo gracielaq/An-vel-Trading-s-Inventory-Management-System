@@ -5,9 +5,9 @@
 <%--<jsp:useBean id="rs" type="java.sql.ResultSet" scope="request"/>--%>
 <%!%>
 <%
-    ArrayList<SoldBean> productsForSelling = new ArrayList<SoldBean>();
-    if (request.getAttribute("productsForDelivery") != null) {
-        productsForSelling = (ArrayList) request.getAttribute("productsForDelivery");
+    ArrayList<SoldBean> selectedProducts = new ArrayList<SoldBean>();
+    if (request.getAttribute("selectedProducts") != null) {
+        productsForSelling = (ArrayList) request.getAttribute("selectedProducts");
     }
 %>
 <!DOCTYPE html>
@@ -41,34 +41,41 @@
     <p id="plateValid"></p>
 
 
-    <p>CHOOSE PRODUCTS YOU WANT TO ORDER:</p>
-    <%if (productsForSelling.isEmpty()) {%>
-    <p>THERE ARE NO PRODUCTS AVAILABLE FOR DELIVERY</p>
+    <p>PRODUCTS ORDERED</p>
+        <table  cellspacing="0" align="left" width="30%" cellpadding="2">
+            <thead>
+            <tr>
+
+                <th>SELL NO.</th>
+                <th>PRODUCT CODE</th>
+                <th>PRODUCT NAME</th>
+                <th>QUANTITY</th>
+                <th>CUSTOMER NAME</th>
+                <th>ADDRESS</th>
+            </tr>
+            </thead>
     <%
-    } else {
-        for (int x = 0; x < productsForSelling.size(); x++) {
+        for(SoldBean sold: selectedProducts){
     %>
-    <p><%=productsForSelling.get(x).getProduct_name()%>--<%=productsForSelling.get(x).getQuantity()%><input
-            type="checkbox" value="<%=productsForSelling.get(x).getProduct_code()%>"/></p>
-    <%
-            }
-        }
-    %>
+            <tr>
+                <td><%=sold.getSell_no()%>
+                </td>
+                <td><%=sold.getProduct_code()%>
+                </td>
+                <td><%=sold.getProduct_name()%>
+                </td>
+                <td><%=sold.getQuantity()%>
+                </td>
+                <td><%=sold.getCustomer_name()%>
+                </td>
+                <td><%=sold.getAddress()%>
+                </td>
+            </tr>
+
+    </table>
     <p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
     <p>Product code:<input type="text" name="product_code" required="required"></p>
-
-
-    <%if(productsForSelling.isEmpty()){%>
-    <!-- IF NO AVAILABLE ITEMS -->
-    <input type=submit disabled>
-    <%
-        }else{
-    %>
-
     <input type=submit>
-    <%
-        }
-    %>
 </form>
 
 <script type="text/javascript">

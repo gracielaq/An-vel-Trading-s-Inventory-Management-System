@@ -20,7 +20,7 @@
 	<% } else { %>
 	  <h1>Failed to add delivery. :(</h1>		
 	<% } %>
-<a href=Delivery.jsp>Add another delivery</a>
+<a href=DeliveriesPageContinuation.jsp>Add another delivery</a>
 <a href="MainMenu.jsp">Back to main menu</a>
 </body>
 </html>

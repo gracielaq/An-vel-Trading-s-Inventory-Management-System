@@ -12,7 +12,7 @@
 	<script type="text/javascript" class="init">
         $(document).ready(function() {
             $('#tables').DataTable( {
-                "order": [[ 3, "desc" ]]
+                "order": [[ 1, "desc" ]]
             } );
         } );
     </script>

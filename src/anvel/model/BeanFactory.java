@@ -100,9 +100,10 @@ public class BeanFactory {
     public static SoldBean getSoldBeanInstance(String product_code, String product_name, double unit_price, int quantity,
                                                String product_description, double discount_sell, int note_quantity,
                                                String note_description, String customer_name, String tin, String address, java.sql.Date date,
-                                               String mode_of_payment, int check_no, String size,String delivery_pickup_status) {
+                                               String mode_of_payment, int check_no, String size,String delivery_pickup_status, int sell_no) {
 
         SoldBean bean = new SoldBean();
+        bean.setSell_no(sell_no);
         bean.setProduct_code(product_code);
         bean.setProduct_name(product_name);
         bean.setUnit_price(unit_price);
