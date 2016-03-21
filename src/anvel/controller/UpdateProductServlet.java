@@ -4,6 +4,7 @@ import anvel.model.BeanFactory;
 import anvel.model.ProductBean;
 import anvel.utility.sql.SQLOperations;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,22 +14,27 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jude on 2/22/2016.
- */
-@WebServlet("/updateProduct.html")
+@WebServlet("/update.html")
 public class UpdateProductServlet extends HttpServlet {
-    Connection connection;
+	private static final long serialVersionUID = 1L;
+	Connection connection;
 
     public void init() throws ServletException {
         connection = SQLOperations.getConnection();
-        if (connection != null) System.out.println("CONNECTED");
-        else System.out.println("NULL CONNECTION");
+        if (connection != null) {
+        	System.out.println("CONNECTED");
+        //	System.out.println("i'm here at update product");
+        }
+        else {System.out.println("NULL CONNECTION");}
     }
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+    	RequestDispatcher dispatcher= null;
+    	try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            
             String product_code = request.getParameter("product_code");
             String product_name=request.getParameter("product_name");
             java.sql.Date delivery_date = new java.sql.Date(sdf.parse(request.getParameter("delivery_date")).getTime());
@@ -51,29 +57,33 @@ public class UpdateProductServlet extends HttpServlet {
             try {
                 check_no = Integer.parseInt(request.getParameter("check_no"));
             } catch (Exception e) {
-
+            	e.printStackTrace();
             }
 
             ProductBean productbean = BeanFactory.getProductBeanInstance(product_code, product_name,delivery_date,
             		date_received, dR_SI, quantity, delivery_charge,supplier,category, product_description, 
             		size, unit_price,discount_add, total_amount, mode_of_payment, check_no, status);
-
-            if(SQLOperations.updateProduct(productbean,product_code,connection)>=1){
-                getServletContext().getRequestDispatcher("/updateProductStatus.jsp?status=true").forward(request,response);
+            
+            int recordsAffected=
+					SQLOperations.updateProduct(productbean,product_code,connection);
+            
+            request.setAttribute("product", productbean);
+            
+            if(recordsAffected >0){
+            	dispatcher = getServletContext().getRequestDispatcher("/updateProductStatus.jsp?status=true");
             }
             else{
-                getServletContext().getRequestDispatcher("/updateProductStatus.jsp?status=false").forward(request,response);
+            	dispatcher = getServletContext().getRequestDispatcher("/updateProductStatus.jsp?status=false");
             }
+            dispatcher.forward(request, response);
 
         } catch (Exception e) {
-
+        	e.printStackTrace();
         }
 
 
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
+   
 }

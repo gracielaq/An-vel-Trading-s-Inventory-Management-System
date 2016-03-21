@@ -11,9 +11,11 @@
     private String product_description,
             mode_of_payment, supplier;
 -->
-<form action="updateProduct.html" title="productform">
+<form action="update.html" title="productform" method="post">
     <p>Product code: ${productBean.product_code}</p>
+    <input type="hidden" name="product_code"value="${productBean.product_code}">
     <p>Product Name: ${productBean.product_name}</p>
+    <input type="hidden" name="product_name" value="${productBean.product_name}">
     <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}"/></p>
     <p>Supplier:<input type="text"  name="supplier" value="${productBean.supplier}" ></p>
    	<p>Category:<select name="category" selected="${productBean.category}"> 
@@ -29,7 +31,7 @@
     </select>
    	</p>
    	<p>Size:<input type="text" name="size" value="${productBean.size }"></p>
-    <p>DR_SI:<input type="number" name="DR_SI" value="${productBean.DR_SI}"/></p>
+    <p>DR_SI:<input type="number" name="dr_si" value="${productBean.DR_SI}"/></p>
     <p>Unit Price:<input type="number" name="unit_price" value="${productBean.unit_price}" /></p>
     <p>Discount:<input type="number" name="discount_add" value="${productBean.discount_add}" /></p>
     <p>Total Amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
@@ -40,7 +42,7 @@
     <p>mode of payment: <input type="text" name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
     <p>Check No:<input type="number" name="check_no" value="${productBean.check_no}"/></p>
    	<p>Status:<input type="text" name="status" value="${productBean.status}"/></p>
-    <p><input type="submit"/></p>
+    <p><input type="submit" value="Update"/></p>
    	<a href="EditView.html">Go Back</a>
 </form>
 </body>

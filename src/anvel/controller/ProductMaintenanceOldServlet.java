@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 
-/**
- * Created by GQ on 2/22/2016.
- */
 @WebServlet("/productmaintenanceOld.html")
 public class ProductMaintenanceOldServlet extends HttpServlet {
     Connection connection;
