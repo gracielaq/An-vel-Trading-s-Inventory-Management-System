@@ -32,13 +32,15 @@ public interface SQLCommands {
 	 * ENGINE=InnoDB DEFAULT CHARSET=latin1;
 	 * 
 	 */
-
+	String CHECK_USER="select username, email, password from accounts where username=?";
+	String SELECT_USER="select username, email, password, firstname, lastname, isadmin from accounts where username=?";
 	String GET_ALL_SOLD_PRODUCTS = "select * from sell";
 	String SEARCH_SOLD_PRODUCT = "select * from sell where product_code=?";
 	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?," + "quantity=?," + "product_description=?, product_name=?"
 			+ "discount=?," + "total_amount=?," + "note_quantity=?," + "note_description=?," + "customer_name=?,"
 			+ "tin=?," + "address=?," + "date=?, checkNumber=?" + "where product_code=?";
 
+	
 	
 	String ADD_SOLD_PRODUCT = "insert into Sell(product_code,product_name,quantity,"
 			+ "note_quantity,note_description,product_description,unit_price,discount_sell,total_amount,mode_of_payment,"
