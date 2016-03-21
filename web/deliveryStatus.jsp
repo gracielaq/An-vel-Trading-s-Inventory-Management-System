@@ -14,7 +14,7 @@
     }
 
     if (request.getAttribute("selectedProducts") != null) {
-        selectedProducts = (ArrayList)request.getAttribute("selectedProducts");
+        selectedProducts = (ArrayList) request.getAttribute("selectedProducts");
     } else {
         selectedProducts = null;
     }
@@ -45,22 +45,25 @@
 <table>
     <thead>
     <tr>
-    <th>
-        SELL NO.
-    </th>
-    <th>
-        PRODUCTS
-    </th>
-    <th>
-        QUANTITY
-    </th>
+        <th>
+            SELL NO.
+        </th>
+        <th>
+            PRODUCTS
+        </th>
+        <th>
+            QUANTITY
+        </th>
     </tr>
     </thead>
-    <%for(SoldBean sold: selectedProducts ){%>
+    <%for (SoldBean sold : selectedProducts) {%>
     <tr>
-        <td><%=sold.getSell_no()%></td>
-        <td><%=sold.getProduct_name()%></td>
-        <td><%=sold.getQuantity()%></td>
+        <td><%=sold.getSell_no()%>
+        </td>
+        <td><%=sold.getProduct_name()%>
+        </td>
+        <td><%=sold.getQuantity()%>
+        </td>
     </tr>
     <%}%>
 </table>
@@ -70,7 +73,7 @@
 } else { %>
 <h1>Failed to add delivery. :(</h1>
 <% } %>
-<a href=DeliveriesPageContinuation.jsp>Add another delivery</a>
+<a href=DeliveriesPage.html>Add another delivery</a>
 <a href="MainMenu.jsp">Back to main menu</a>
 </body>
 </html>
