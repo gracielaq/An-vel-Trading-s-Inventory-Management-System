@@ -35,12 +35,13 @@
     <p>Total Amount:<input type="number" name="total_amount" value="${productBean.total_amount}" /></p>
     <p>Delivery Charge:<input type="number" name="delivery_charge" value="${productBean.delivery_charge}" /></p>
     <p>Delivery Date:<input type="date" name="delivery_date" value="${productBean.delivery_date}"/></p>
-    <p>Date Received:<input type="date" name="date_received" value="${productBean.date_received}}"/> </p>
+    <p>Date Received:<input type="date" name="date_received" value="${productBean.date_received}"/> </p>
     <p>product description:<input type="text" name="product_description" value="${productBean.product_description}"/></p>
     <p>mode of payment: <input type="text" name="mode_of_payment" value="${productBean.mode_of_payment}"/></p>
     <p>Check No:<input type="number" name="check_no" value="${productBean.check_no}"/></p>
    	<p>Status:<input type="text" name="status" value="${productBean.status}"/></p>
     <p><input type="submit"/></p>
+   	<a href="EditView.html">Go Back</a>
 </form>
 </body>
 </html>
