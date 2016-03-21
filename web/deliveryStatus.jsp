@@ -33,13 +33,13 @@
 </p>
 <p>DRIVER:<%=deliveryBean.getBatch_no()%>
 </p>
-<p>HELPER:<%=deliveryBean.getBatch_no()%>
+<p>HELPER:<%=deliveryBean.getHelper()%>
 </p>
-<p>PLATE NUMBER:<%=deliveryBean.getBatch_no()%>
+<p>PLATE NUMBER:<%=deliveryBean.getPlateNum()%>
 </p>
-<p>CODING DAY:<%=deliveryBean.getBatch_no()%>
+<p>CODING DAY:<%=deliveryBean.getCodingDay()%>
 </p>
-<p>DELIVERY DATE:<%=deliveryBean.getBatch_no()%>
+<p>DELIVERY DATE:<%=deliveryBean.getDeliveryDate()%>
 </p>
 <p>PRODUCTS DELIVERED</p>
 <table>
