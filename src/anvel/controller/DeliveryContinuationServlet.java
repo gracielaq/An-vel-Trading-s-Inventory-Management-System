@@ -53,16 +53,18 @@ public class DeliveryContinuationServlet extends HttpServlet {
             preparedStatement.setString(1,number);
             ResultSet rs = preparedStatement.executeQuery();
             //paginitialize ng soldbean
-            SoldBean soldBean= BeanFactory.getSoldBeanInstance(rs.getString("product_code"),rs.getString("product_name"),rs.getDouble("unit_price")
-            ,rs.getInt("quantity"),rs.getString("product_description"), rs.getDouble("discount_sell"),rs.getInt("note_quantity")
-                    ,rs.getString("note_description"),rs.getString("customer_name"),rs.getString("tin"),rs.getString("address")
-                    ,rs.getDate("date"),rs.getString("mode_of_payment"),rs.getInt("check_no"),rs.getString("size")
-                    ,rs.getString("delivery_pickup_status"),rs.getInt("sell_no"),rs.getString("category"));
-
+            SoldBean soldBean=new SoldBean();
+            while(rs.next()) {
+                 soldBean = BeanFactory.getSoldBeanInstance(rs.getString("product_code"), rs.getString("product_name"), rs.getDouble("unit_price")
+                        , rs.getInt("quantity"), rs.getString("product_description"), rs.getDouble("discount_sell"), rs.getInt("note_quantity")
+                        , rs.getString("note_description"), rs.getString("customer_name"), rs.getString("tin"), rs.getString("address")
+                        , rs.getDate("date"), rs.getString("mode_of_payment"), rs.getInt("check_no"), rs.getString("size")
+                        , rs.getString("delivery_pickup_status"), rs.getInt("sell_no"), rs.getString("category"));
+            }
             return soldBean;
 
         } catch (SQLException e) {
-            System.out.println("FINDSOLDPRODUCT-- CANNOT FIND SELL_NO"+number);
+            System.out.println("FINDSOLDPRODUCT-- CANNOT FIND SELL_NO "+number);
             e.printStackTrace();
             return null;
         }

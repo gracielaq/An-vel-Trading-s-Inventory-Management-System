@@ -43,7 +43,7 @@ public class DeliveryLastServlet extends HttpServlet {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date DeliveryDate;
         try {
-            DeliveryDate = new java.sql.Date(sdf.parse(request.getParameter("DeliveryDate")).getTime());
+            DeliveryDate = new java.sql.Date(sdf.parse(request.getParameter("deliveryDate")).getTime());
         } catch (ParseException e) {
             DeliveryDate = null;
             e.printStackTrace();
@@ -51,14 +51,14 @@ public class DeliveryLastServlet extends HttpServlet {
 
 
         //get all selected na checkbox
-        String[] tempSellNoArray = request.getParameterValues("selectedProducts");
+        String[] tempSellNoArray = request.getParameterValues("sell_no");
 
         DeliveryBean deliveryBean = BeanFactory.getDeliveryBeanInstance(batch_no, driver, helper, "", plateNum, DeliveryDate);
 
         //initialize arraylist at ilagay na ang mga bean ng mga nakuhang soldproducts
         ArrayList<SoldBean> selectedProducts = new ArrayList<>();
 
-        String directory = "/DeliveryStatus.jsp";
+        String directory = "/deliveryStatus.jsp";
 
         try {
             for (String x : tempSellNoArray) {
@@ -67,7 +67,7 @@ public class DeliveryLastServlet extends HttpServlet {
                 insertDeliveryBean(BeanFactory.getDeliveryBeanInstance(batch_no, driver, helper, x, plateNum, DeliveryDate)
                         , connection);
                 //lalagay sa arraylist for output
-                selectedProducts.add(DeliveryContinuationServlet.findSoldProduct(Integer.parseInt(x), connection));
+                selectedProducts.add(DeliveryContinuationServlet.findSoldProduct(x, connection));
                 //update na delivery status sa sell
                 updateDeliveredStatus(Integer.parseInt(x), connection);
             }
@@ -95,7 +95,7 @@ public class DeliveryLastServlet extends HttpServlet {
         try {
             int x = 0;
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * from delivery");
+            ResultSet rs = statement.executeQuery("SELECT * from deliverydb");
             while (rs.next()) {
                 x = rs.getInt("batch_no");
             }
@@ -113,7 +113,7 @@ public class DeliveryLastServlet extends HttpServlet {
         try {
             Statement statement = connection.createStatement();
 
-            statement.execute("UPDATE sell SET delivery_pickup_status='delivered'WHEre sell_no=" + sell_no);
+            statement.execute("UPDATE sell SET delivery_pickup_status='delivered' WHEre sell_no=" + sell_no);
             System.out.println(sell_no + " product has been updated to sold");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,7 +123,7 @@ public class DeliveryLastServlet extends HttpServlet {
 
     public static void insertDeliveryBean(DeliveryBean deliveryBean, Connection connection) throws SQLException {
         String query = "INSERT INTO `deliverydb` (`batch_no`,`Driver`,`Helper`,`PlateNum`,`CodingDay`,`DeliveryDate`,`sell_no`)" +
-                "VALUES (?, ?, ?, ?, ?,?,?,?)";
+                "VALUES (?, ?, ?, ?, ?,?,?)";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, deliveryBean.getBatch_no());

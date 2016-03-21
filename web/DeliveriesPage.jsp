@@ -60,7 +60,7 @@
 
         <%for (SoldBean bean : productsForSelling) {%>
         <tr>
-            <td><input type="checkbox" name="selectedProducts" value="<%=bean.getProduct_code()%>"onclick="updateCheckedNumbers()"/></td>
+            <td><input type="checkbox" name="selectedProducts" value="<%=bean.getSell_no()%>"onclick="updateCheckedNumbers()"/></td>
             <td><%=bean.getSell_no()%>
             </td>
             <td><%=bean.getProduct_code()%>
