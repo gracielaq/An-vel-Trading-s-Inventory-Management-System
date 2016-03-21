@@ -44,6 +44,7 @@
 <p>PRODUCTS DELIVERED</p>
 <table>
     <thead>
+    <tr>
     <th>
         SELL NO.
     </th>
@@ -53,17 +54,19 @@
     <th>
         QUANTITY
     </th>
+    </tr>
     </thead>
     <%for(SoldBean sold: selectedProducts ){%>
-    <td>
-        <tr><%=sold.getSell_no()%></tr>
-        <tr><%=sold.getProduct_name()%></tr>
-        <tr><%=sold.getQuantity()%></tr>
-    </td>
+    <tr>
+        <td><%=sold.getSell_no()%></td>
+        <td><%=sold.getProduct_name()%></td>
+        <td><%=sold.getQuantity()%></td>
+    </tr>
+    <%}%>
 </table>
 
 
-<%}
+<%
 } else { %>
 <h1>Failed to add delivery. :(</h1>
 <% } %>
