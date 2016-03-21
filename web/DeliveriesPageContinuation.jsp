@@ -7,7 +7,7 @@
 <%
     ArrayList<SoldBean> selectedProducts = new ArrayList<SoldBean>();
     if (request.getAttribute("selectedProducts") != null) {
-        productsForSelling = (ArrayList) request.getAttribute("selectedProducts");
+        selectedProducts = (ArrayList) request.getAttribute("selectedProducts");
     }
 %>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<form action="Delivery.html" id="deliveryform" onsubmit="return validatePlate()" method="post">
+<form action="DeliveryPageLastPart.html" id="deliveryform" onsubmit="return validatePlate()" method="post">
     <p>Driver:<input type="text" name="driver" required="required"></p>
     <p>Helper:<input type="text" name="helper" required="required"></p>
     <p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();" placeholder="(e.g. ABC 1234)" id="plate"
@@ -60,6 +60,7 @@
             <tr>
                 <td><%=sold.getSell_no()%>
                 </td>
+                <input type="hidden" value="<%=sold.getSell_no()%>" name="sell_no"/>
                 <td><%=sold.getProduct_code()%>
                 </td>
                 <td><%=sold.getProduct_name()%>
@@ -71,11 +72,15 @@
                 <td><%=sold.getAddress()%>
                 </td>
             </tr>
-
+            <input type="hidden" value="<%=sold.getSell_no()%>" name="orderedProducts"/>
+            <%
+                }
+            %>
+    <p>something wrong? go back to deliveries page<a href="/DeliveryPage.html">here</a></p>
     </table>
     <p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
     <p>Product code:<input type="text" name="product_code" required="required"></p>
-    <input type=submit>
+    <input type="submit" value="submit"/>
 </form>
 
 <script type="text/javascript">
@@ -91,7 +96,7 @@
             return true;
 
         } else {
-            window.alert("Wrong plate number");
+            document.getElementById('plateValid').innerHTML="invalid plate number";
             return false;
         }
     }

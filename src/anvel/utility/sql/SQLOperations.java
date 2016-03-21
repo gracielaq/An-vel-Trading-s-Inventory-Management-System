@@ -94,6 +94,7 @@ public class SQLOperations implements SQLCommands {
             pstmt.setString(15, soldBean.getAddress());
             pstmt.setDate(16, soldBean.getDate());
             pstmt.setString(17,soldBean.getDelivery_pickup_status());
+            pstmt.setString(18,soldBean.getCategory());
 
             pstmt.executeUpdate(); // execute insert statement
         } catch (SQLException sqle) {

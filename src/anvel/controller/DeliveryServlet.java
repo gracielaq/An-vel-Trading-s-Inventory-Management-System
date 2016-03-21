@@ -45,7 +45,7 @@ public class DeliveryServlet extends HttpServlet {
                         , rs.getInt("quantity"), rs.getString("product_description"), rs.getDouble("discount_sell")
                         , rs.getInt("note_quantity"), rs.getString("note_description"), rs.getString("customer_name")
                         , rs.getString("tin"), rs.getString("address"), rs.getDate("date"),rs.getString("mode_of_payment"),
-                        rs.getInt("check_no"), rs.getString("size"),rs.getString("delivery_pickup_status"), rs.getInt("sell_no")));
+                        rs.getInt("check_no"), rs.getString("size"),rs.getString("delivery_pickup_status"), rs.getInt("sell_no"),rs.getString("category")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

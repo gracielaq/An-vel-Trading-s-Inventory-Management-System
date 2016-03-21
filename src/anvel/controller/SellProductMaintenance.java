@@ -88,7 +88,7 @@ public class SellProductMaintenance extends HttpServlet {
 
 
                 SoldBean soldbean = BeanFactory.getSoldBeanInstance(product_code, rs.getString("product_name"), unit_price, quantity, product_description, discount_sell,
-                        note_quantity, note_description, customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"),product_delivery_status, 0);
+                        note_quantity, note_description, customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"),product_delivery_status, 0, rs.getString("category"));
 
 
                 if (connection != null) {
