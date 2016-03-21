@@ -18,8 +18,25 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/for encryption/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/for encryption/commons-codec-1.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/javax.mail.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

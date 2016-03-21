@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.sql.Statement;
 
 import javax.sql.DataSource;
@@ -94,7 +93,6 @@ public class SQLOperations implements SQLCommands {
             pstmt.setString(15, soldBean.getAddress());
             pstmt.setDate(16, soldBean.getDate());
             pstmt.setString(17,soldBean.getDelivery_pickup_status());
-            pstmt.setString(18,soldBean.getCategory());
 
             pstmt.executeUpdate(); // execute insert statement
         } catch (SQLException sqle) {
@@ -167,6 +165,44 @@ public class SQLOperations implements SQLCommands {
         }
 
     }
+    
+    public static boolean checkUser(String uname, Connection connection)
+	{
+		boolean login = false;
+		ResultSet rs = null;
+		
+		try{
+			PreparedStatement pstmt = connection.prepareStatement(CHECK_USER);
+			pstmt.setString(1, uname);
+			rs=pstmt.executeQuery();
+			rs=pstmt.getResultSet();
+			login=rs.next();
+			}
+		catch(SQLException e)
+		{
+			System.out.println("hayss");
+			e.printStackTrace();
+		}return login;
+		
+	}
+    public static ResultSet getUser(String username, Connection connection)
+	{
+		ResultSet rs = null;
+		
+		try{
+			PreparedStatement pstmt = connection.prepareStatement(SELECT_USER);
+			pstmt.setString(1, username);
+			rs=pstmt.executeQuery();
+			rs=pstmt.getResultSet();
+			
+			}
+		catch(SQLException e)
+		{
+			System.out.println("hayss");
+			e.printStackTrace();
+		}return rs;
+		
+	}
 
     public static ResultSet getAllOldProducts(Connection connection) {
         try {
