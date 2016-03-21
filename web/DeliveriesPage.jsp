@@ -18,7 +18,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <title>DELIVER PAGE</title>
+    <title>DELIVERY PAGE</title>
     <script src="js/jquery-1.12.0.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.select.min.js"></script>
@@ -32,7 +32,7 @@
 </head>
 <h1>SELECT ITEMS FOR DELIVERY</h1>
 <body>
-<form action="DeliveryProcess.html">
+<form action="DeliveryPagePart2.html">
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -60,7 +60,7 @@
 
         <%for (SoldBean bean : productsForSelling) {%>
         <tr>
-            <td><input type="checkbox" name="selectedproducts" value="<%=bean.getProduct_code()%>"onclick="updateCheckedNumbers()"/></td>
+            <td><input type="checkbox" name="selectedProducts" value="<%=bean.getProduct_code()%>"onclick="updateCheckedNumbers()"/></td>
             <td><%=bean.getSell_no()%>
             </td>
             <td><%=bean.getProduct_code()%>
@@ -77,6 +77,7 @@
         <%}%>
     </table>
     <input type="submit" value="submit"/>
+    <a href="MainMenu.jsp">Go Back to Main Menu</a>
 </form>
 <p id="checkedNumbers"></p>
 </body>

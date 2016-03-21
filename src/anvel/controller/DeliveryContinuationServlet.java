@@ -37,7 +37,7 @@ public class DeliveryContinuationServlet extends HttpServlet {
         //initialize arraylist at ilagay na ang mga bean ng mga nakuhang soldproducts
         ArrayList<SoldBean> selectedProducts= new ArrayList<>();
         for(String x: tempProductCodeArray){
-            selectedProducts.add(findSoldProduct(Integer.parseInt(x),connection));
+            selectedProducts.add(findSoldProduct(x,connection));
         }
         request.setAttribute("selectedProducts",selectedProducts);
         getServletContext().getRequestDispatcher("/DeliveriesPageContinuation.jsp").forward(request,response);
@@ -47,10 +47,10 @@ public class DeliveryContinuationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
-    public static SoldBean findSoldProduct(int number, Connection connection){
+    public static SoldBean findSoldProduct(String number, Connection connection){
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM SELL WHERE sell_no=?");
-            preparedStatement.setInt(1,number);
+            preparedStatement.setString(1,number);
             ResultSet rs = preparedStatement.executeQuery();
             //paginitialize ng soldbean
             SoldBean soldBean= BeanFactory.getSoldBeanInstance(rs.getString("product_code"),rs.getString("product_name"),rs.getDouble("unit_price")
