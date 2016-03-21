@@ -49,13 +49,15 @@
     <p>Mode of Payment</p>
     <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
     <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck">Check<br>
-
-    <p>PICKUP/DELIVERY:</p>
-    <p>delivery<input type="radio" name="delivery_pickup_status" value="fordelivery" required/> </p>
-    <p>pickup<input type="radio" name="delivery_pickup_status" value="forpickup" required/> </p>
+    <!-- reveals a textbox if radio button for check is checked -->
     <div id="ifYes" style="visibility:hidden">
         <p>Check Number:<input type="text" name="check"/></p>
     </div>
+    <!-- added pickup/ delivery selection-->
+    <p>PICKUP/DELIVERY:</p>
+    <p>delivery<input type="radio" name="delivery_pickup_status" value="fordelivery" required/> </p>
+    <p>pickup<input type="radio" name="delivery_pickup_status" value="forpickup" required/> </p>
+
     <input type="Submit" value="Submit">
 </form>
 <a href="MainMenu.jsp">Go Back to Main Menu</a>

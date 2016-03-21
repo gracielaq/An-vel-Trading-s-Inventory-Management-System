@@ -6,8 +6,8 @@
 <%!%>
 <%
     ArrayList<SoldBean> productsForSelling = new ArrayList<SoldBean>();
-    if(request.getAttribute("productsForDelivery")!=null){
-        productsForSelling=(ArrayList)request.getAttribute("productsForDelivery");
+    if (request.getAttribute("productsForDelivery") != null) {
+        productsForSelling = (ArrayList) request.getAttribute("productsForDelivery");
     }
 %>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<form action="Delivery.html"   id="deliveryform" onsubmit="return validatePlate()" method="post">
+<form action="Delivery.html" id="deliveryform" onsubmit="return validatePlate()" method="post">
     <p>Driver:<input type="text" name="driver" required="required"></p>
     <p>Helper:<input type="text" name="helper" required="required"></p>
     <p>Plate No. of Delivery Truck:<input type="text" onblur="validatePlate();" placeholder="(e.g. ABC 1234)" id="plate"
@@ -42,37 +42,33 @@
 
 
     <p>CHOOSE PRODUCTS YOU WANT TO ORDER:</p>
+    <%if (productsForSelling.isEmpty()) {%>
+    <p>THERE ARE NO PRODUCTS AVAILABLE FOR DELIVERY</p>
     <%
-        for(int x=0;x<productsForSelling.size();x++){
+    } else {
+        for (int x = 0; x < productsForSelling.size(); x++) {
     %>
-    <p><%=productsForSelling.get(x).getProduct_name()%>--<%=productsForSelling.get(x).getQuantity()%><input type="checkbox" value="<%=productsForSelling.get(x).getProduct_code()%>"/></p>
-    <%}
-    %>
-<%--
-    <%while (rs.next()) {%>
-    <p>
-        <input type="checkbox" class="products" name="productsOrdered[]"
-               value="<%=rs.getString("product_code")%>"/><%=rs.getString("product_name")%>
-    </p>
+    <p><%=productsForSelling.get(x).getProduct_name()%>--<%=productsForSelling.get(x).getQuantity()%><input
+            type="checkbox" value="<%=productsForSelling.get(x).getProduct_code()%>"/></p>
     <%
+            }
         }
     %>
-
---%>
-
-
-    <!--
-    <p>Coding of Truck: <select name="Days">
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-         <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-    </select></p>-->
     <p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
     <p>Product code:<input type="text" name="product_code" required="required"></p>
 
+
+    <%if(productsForSelling.isEmpty()){%>
+    <!-- IF NO AVAILABLE ITEMS -->
+    <input type=submit disabled>
+    <%
+        }else{
+    %>
+
     <input type=submit>
+    <%
+        }
+    %>
 </form>
 
 <script type="text/javascript">
