@@ -66,6 +66,20 @@ public class SQLOperations implements SQLCommands {
         }
         return rs;
     }
+    
+    public static ResultSet getAllDelivered(Connection connection) {
+
+        ResultSet rs = null;
+        try {
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(GET_ALL_DELIVERED);
+        } catch (SQLException sqle) {
+            System.out.println("SQLException - getALLDelivered: "
+                    + sqle.getMessage());
+            return rs;
+        }
+        return rs;
+    }
 
     // to do!!
     public static boolean addSoldProduct(String product_code, SoldBean soldBean,

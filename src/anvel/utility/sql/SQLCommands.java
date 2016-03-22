@@ -81,6 +81,7 @@ public interface SQLCommands {
 	String GET_ALL_PRODUCTS = "select * from product";
 	String GET_ALL_OLD_PRODUCTS = "select * from Product_old";
 	String GET_ALL_ACCOUNTS = "select * from accounts";
+	String GET_ALL_DELIVERED = "select * from DeliveryDB";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 
 	String ADD_PRODUCT = "insert into Product(product_code,product_name, supplier, delivery_date,date_received, "
