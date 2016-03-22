@@ -3,8 +3,7 @@ package anvel.controller;
 import anvel.model.BeanFactory;
 import anvel.model.DeliveryBean;
 import anvel.model.SoldBean;
-import anvel.utility.sql.SQLOperations;
-import com.sun.xml.internal.ws.util.ReadAllStream;
+import anvel.utility.sql.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,13 +16,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-/**
- * Created by Jude on 3/21/2016.
- */
 @WebServlet("/DeliveryPageLastPart.html")
 
 public class DeliveryLastServlet extends HttpServlet {
-    Connection connection;
+
+	private static final long serialVersionUID = 1L;
+	Connection connection;
 
     public void init() throws ServletException {
         connection = SQLOperations.getConnection();

@@ -18,9 +18,6 @@ import anvel.utility.Security;
 import anvel.utility.sql.SQLOperations;
 import anvel.utility.EmailUtility;
 
-/**
- * Servlet implementation class PWRetrieval
- */
 @WebServlet("/retrievepw.html")
 public class PWRetrieval extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,10 +36,10 @@ public class PWRetrieval extends HttpServlet {
 	     pass = context.getInitParameter("pass");
         connection = SQLOperations.getConnection();
         if(connection!=null){
-            System.out.println("AddAccount-Connected!");
+            System.out.println("RetrievePass-Connected!");
         }
         else{
-            System.out.println("AddAccount- not connected!");
+            System.out.println("RetrievePass- not connected!");
         }
 	}
 	
@@ -77,8 +74,8 @@ public class PWRetrieval extends HttpServlet {
 				
 					String resultMessage = "";
 			
-					System.out.println("ed"+email);
-					System.out.println("p"+password);
+					System.out.println("email add: "+email);
+					System.out.println("password "+password);
 		            EmailUtility.sendEmail(host, port, user, pass, email, subject,
 		                    content);
 		            resultMessage = "The e-mail was sent successfully";
