@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet(urlPatterns={"/Notifications"}, asyncSupported = true)
 public class NotificationServlet extends HttpServlet {
 
-    private List<AsyncContext> contexts = new LinkedList<>();
+    private static List<AsyncContext> contexts = new LinkedList<>();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

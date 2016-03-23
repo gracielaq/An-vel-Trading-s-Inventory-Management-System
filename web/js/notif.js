@@ -7,10 +7,13 @@ function postMessage() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "Notifications?t="+new Date(), false);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    var nameText = escape(document.getElementById("name").value);
+    var nameText = escape(document.getElementById("status").value);
     var messageText = escape(document.getElementById("message").value);
     document.getElementById("message").value = "";
-    xmlhttp.send("name="+nameText+"&message="+messageText);
+    xmlhttp.send("status="+"${productBean.product_name}"+"&message="+"SOLD");
+    if(parseInt("${productBean.quantity}")<=5){
+        xmlhttp.send("status="+"${productBean.product_name}"+"&message="+"KOKONTI NA LANG HUY!!");
+    }
 }
 var messagesWaiting = false;
 function getMessages(){
