@@ -107,7 +107,7 @@ public interface SQLCommands {
 			+ "from Product where product_code=?;";
 	String DELETE_PRODUCT = "delete from Product where product_code=?";
 	
-	String TRANSFER_PRODUCT_OLD="insert into Product (dproduct_code,product_name, supplier ,delivery_date,date_received, delivery_charge,DR_SI,"
+	String TRANSFER_PRODUCT_OLD="insert into Product (product_code,product_name, supplier ,delivery_date,date_received, delivery_charge,DR_SI,"
 			+ "quantity,size,product_description,unit_price,discount_add,total_amount,mode_of_payment,check_no,category,status "
 			+ "from Product_old where product_code=?;";
 	String DELETE_PRODUCT_OLD = "delete from Product_old where product_code=?";

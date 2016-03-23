@@ -47,6 +47,8 @@ public class DeliveryContinuationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
+
+
     public static SoldBean findSoldProduct(String number, Connection connection){
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM SELL WHERE sell_no=?");

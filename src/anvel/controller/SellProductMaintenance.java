@@ -74,7 +74,7 @@ public class SellProductMaintenance extends HttpServlet {
 
 
 
-            while (rs.next()) {
+            if (rs.next()) {
                 int oldQty = rs.getInt("quantity");
                 int newQty = oldQty - quantity;
                 try {
@@ -94,14 +94,15 @@ public class SellProductMaintenance extends HttpServlet {
                 if (connection != null) {
                     if (SQLOperations.addSoldProduct(product_code, soldbean, connection)) {
                         SQLOperations.updateProduct(productbean, product_code, connection);
-                        System.out.println("item successfully inserted");
-                        request.setAttribute("productbean", soldbean);
-                        //TODO
+                        System.out.println("item successfully sold");
+                        request.setAttribute("soldBean", soldbean);
+                        request.setAttribute("productBean",productbean);
+
                         getServletContext().getRequestDispatcher(
                                 "/sellProductStatus.jsp?status=true").forward(request,
                                 response);
                     } else {
-                        //TODO
+
                         getServletContext().getRequestDispatcher(
                                 "/sellProductStatus.jsp?status=false").forward(request,
                                 response);

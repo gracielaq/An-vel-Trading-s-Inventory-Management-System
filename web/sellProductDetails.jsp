@@ -63,5 +63,7 @@
     <input type="Submit" value="Submit">
 </form>
 <a href="MainMenu.jsp">Go Back to Main Menu</a>
+
+</form>
 </body>
 </html>
