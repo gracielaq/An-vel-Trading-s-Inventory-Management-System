@@ -36,6 +36,9 @@ if(sesh.getAttribute("isAdmin").equals("staff")){ %>
 		<input type="Submit" value="Reports">
 	</form>
 
+<form action="logout.html">
+		<input type="Submit" value="Logout">
+	</form>
 
 	<h2> Current NOTIFICATIONS </h2>
 	<div id="content">
