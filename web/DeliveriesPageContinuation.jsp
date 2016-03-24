@@ -1,7 +1,12 @@
 <%@ page import="anvel.model.SoldBean" %>
 <%@ page import="java.util.ArrayList" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+         <%@ page session = "false" %>
+     <% if (request.getSession(false) == null) {
+	response.sendRedirect("index.jsp");
+	return;} %>
 <%--<jsp:useBean id="rs" type="java.sql.ResultSet" scope="request"/>--%>
 <%!%>
 <%

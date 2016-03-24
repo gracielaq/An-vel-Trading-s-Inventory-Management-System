@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page session = "false" %>
+     <% if (request.getSession(false) == null) {
+	response.sendRedirect("index.jsp");
+	return;} %>
 <jsp:useBean id="productrecords" type="java.sql.ResultSet" scope="request"/>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

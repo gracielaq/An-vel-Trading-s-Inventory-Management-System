@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-
+<%@ page session = "false" %>
+     <% if (request.getSession(false) == null) {
+	response.sendRedirect("index.jsp");
+	return;} %>
 <!DOCTYPE html>
 <html>
 
@@ -76,8 +79,12 @@ if(sesh.getAttribute("isAdmin").equals("admin")||sesh.getAttribute("isAdmin").eq
 	 </div>
 	 <input type="submit" value="Submit"  />
 </form>
-<a href="MainMenu.jsp">back to Main Menu</a>
-
+<%if (sesh.getAttribute("isAdmin").equals("admin")) {%>
+	<a href="MainMenu.jsp">back to Main Menu</a>
+<%} %>
+<%if (sesh.getAttribute("isAdmin").equals("staff")) {%>
+	<a href="MainMenuStaffView.jsp">back to Main Menu</a>
+<%} %>
 </body>
 <%} else{%>
 <h1> you are not allowed in this section </h1>
