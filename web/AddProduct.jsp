@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Add Product</title>
@@ -32,7 +34,9 @@
     </script>
 </head>
 <body>
-
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin").equals("admin")||sesh.getAttribute("isAdmin").equals("staff")){ %>
 <form action="AddProduct.html" method="post">
 
 <h1>Add Product</h1>
@@ -75,4 +79,8 @@
 <a href="MainMenu.jsp">back to Main Menu</a>
 
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Accounts</title>
 </head>
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 <body>
 	<form action="SearchProducts.html">
 	SEARCH:<input type="text" name="searchQuery"/>
@@ -44,4 +47,8 @@
 	</table></div>
 	<a href="MainMenu.jsp">Back to main menu</a>
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

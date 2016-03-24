@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page session = "false" %>
+<% if (request.getSession(false) == null) {
+	response.sendRedirect("index.jsp");
+	return;}%>
 <jsp:useBean id="productrecords" type="java.sql.ResultSet" scope="request"/>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,6 +22,8 @@
         } );
     </script>
 </head>
+<%HttpSession session=request.getSession();
+if(session.getAttribute("isAdmin").equals("true")){ %>
 <body>
 
 
@@ -104,4 +110,8 @@
 
 
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

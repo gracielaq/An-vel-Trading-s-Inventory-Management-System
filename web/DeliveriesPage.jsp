@@ -1,6 +1,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="anvel.model.SoldBean" %>
-<%@ page import="java.util.Iterator" %><%--
+<%@ page import="java.util.Iterator" %>
+<%@ page session = "false" %>
+<% if (request.getSession(false) == null) {
+	response.sendRedirect("index.jsp");
+	return;}%><%--
+
   Created by IntelliJ IDEA.
   User: Jude
   Date: 3/21/2016
@@ -16,7 +21,8 @@
     }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin")!=null){ %>
 <head>
     <title>DELIVERY PAGE</title>
     <script src="js/jquery-1.12.0.min.js"></script>
@@ -81,7 +87,10 @@
 </form>
 <p id="checkedNumbers"></p>
 </body>
-
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>
 <script type="text/javascript">
     function updateCheckedNumbers() {

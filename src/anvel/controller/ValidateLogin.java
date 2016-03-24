@@ -2,6 +2,7 @@ package anvel.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import anvel.model.AccountBean;
 import anvel.utility.sql.SQLOperations;
@@ -39,21 +41,45 @@ public class ValidateLogin extends HttpServlet {
 			String username=request.getParameter("username");
 			String password=request.getParameter("password");
 			
-			if(SQLOperations.loginCheck(username, password, connection)){
-				System.out.println("successful connection!");
-					
-				AccountBean admin = 
-				  SQLOperations.searchAdmin(username, connection);
-				request.setAttribute("Admin", admin);
+			try{
+				ResultSet rs=SQLOperations.isAdmin(username, connection);
+				HttpSession session=request.getSession();
+			
 				
-				getServletContext().getRequestDispatcher("/MainMenu.jsp").forward(request, response);
+				if(SQLOperations.loginCheck(username, password, connection) && rs.getBoolean("isAdmin")==true){
+					
+					System.out.println("successful connection!");
+				
+					session.setAttribute("isAdmin", "admin"); 
+
+					AccountBean admin = 
+					  SQLOperations.searchAdmin(username, connection);
+					request.setAttribute("Admin", admin);
+					
+					getServletContext().getRequestDispatcher("/MainMenu.jsp").forward(request, response);
+				}
+				else if(SQLOperations.loginCheck(username, password, connection) && rs.getBoolean("isAdmin")==false){
+					System.out.println("successful connection!");
+					session.setAttribute("isAdmin", "staff"); 
+					AccountBean admin = 
+					  SQLOperations.searchAdmin(username, connection);
+					request.setAttribute("Admin", admin);
+					
+					getServletContext().getRequestDispatcher("/MainMenuStaffView.jsp").forward(request, response);
+				}
+				else{
+					request.setAttribute("error","Invalid Username or Password");
+					System.out.println("Invalid username or password");
+					RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
+					rd.forward(request, response);
+				}
+			
 			}
-			else{
-				request.setAttribute("error","Invalid Username or Password");
-				System.out.println("Invalid username or password");
-				RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
-				rd.forward(request, response);
+			catch(Exception e){
+				e.printStackTrace();
 			}
+			
+			
 			
 		}
 		else

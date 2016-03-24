@@ -113,4 +113,6 @@ public interface SQLCommands {
 	String DELETE_PRODUCT_OLD = "delete from Product_old where product_code=?";
 	String ADD_DELIVERY = "insert into DeliveryDB(Driver,Helper,PlateNum,CodingDay,DeliveryDate) values (?,?,?,?,?)";
 	
+	
+	String IS_ADMIN="select isAdmin from accounts where username=?";
 }

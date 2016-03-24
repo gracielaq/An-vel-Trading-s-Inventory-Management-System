@@ -8,6 +8,9 @@
 <title>View Old Products</title>
 </head>
 <body>
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin")!=null){ %>
 	<form action="SearchProducts.html">
 	SEARCH:<input type="text" name="searchQuery"/>
 	<input type="submit"/>
@@ -67,5 +70,9 @@
 		
 	</table></div>
 	<a href="MainMenu.jsp">Back to Main Menu</a>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </body>
 </html>

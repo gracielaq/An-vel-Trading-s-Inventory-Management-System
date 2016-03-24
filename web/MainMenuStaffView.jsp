@@ -2,22 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script type="text/javascript" src="/js/notif.js"></script>
-<%
-HttpSession sesh=request.getSession();
-if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Main Menu</title>
 </head>
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin").equals("staff")){ %>
 <body>
 	<form action="AddProduct.jsp" method="post">
 		<input type="Submit" value="Add Product">
-	</form>
-	
-	<form action="AddAccount.jsp" method="post">
-		<input type="Submit" value="Add Account">
 	</form>
 	
 	<form action="SellProducts.html" method="post">
@@ -28,10 +24,6 @@ if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 		<input type="Submit" value="View Products">
 	</form>
 	
-	<form action="EditView.html" method="post">
-		<input type="Submit" value="Edit Products">
-	</form>
-	
 	<form action="DeliveryPage.html">
 		<input type="Submit" value="Delivery">
 	</form>
@@ -40,9 +32,7 @@ if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 		<input type="Submit" value="Reports">
 	</form>
 
-	<form action="index.jsp">
-		<input type="Submit" value="Logout">
-	</form>
+
 	<h2> Current NOTIFICATIONS </h2>
 	<div id="content">
 		<% if (application.getAttribute("messages") != null) {%>
@@ -78,9 +68,10 @@ if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 		}
 		setInterval(getMessages, 500);
 	</script>
+
+</body>
 <%} else{%>
 <h1> you are not allowed in this section </h1>
 <a href="index.jsp">Please log-in.</a>
 <%}%>
-</body>
 </html>

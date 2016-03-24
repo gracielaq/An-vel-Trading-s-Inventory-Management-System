@@ -41,18 +41,6 @@ public class SQLOperations implements SQLCommands {
         return (connection != null) ? connection : getDBConnection();
     }
 
-	/*
-     * FOR SELL: CREATE TABLE `Sell` ( `product_code` int(11) NOT NULL,
-	 * `unit_price` double NOT NULL, `quantity` int(11) NOT NULL,
-	 * `product_description` varchar(999) DEFAULT NULL, `discount` double
-	 * DEFAULT NULL, `total_amount` double DEFAULT NULL, `note_quantity` int(11)
-	 * DEFAULT NULL, `note_description` varchar(999) DEFAULT NULL,
-	 * `customer_name` varchar(200) NOT NULL, `tin` varchar(200) NOT NULL,
-	 * `address` varchar(200) NOT NULL, `date` datetime NOT NULL,
-	 * `mode_of_payment` varchar(45) NOT NULL, PRIMARY KEY (`product_code`) )
-	 * ENGINE=InnoDB DEFAULT CHARSET=latin1;
-	 */
-
     public static ResultSet getAllSold(Connection connection) {
 
         ResultSet rs = null;
@@ -120,40 +108,6 @@ public class SQLOperations implements SQLCommands {
 
     }
  
-	/*
-	 * public static ResultSet searchProducts(String search,Connection
-	 * connection,String[] sortby){ ResultSet rs=null; try { String query =
-	 * SEARCH_STRING; if(sortby!=null){ query+=" order by"; for(int
-	 * x=0;x<sortby.length;x++){
-	 * if(sortby[x].equals("product_code"))query+=" product_code asc ";
-	 * if(sortby[x].equals("quantity"))query+=" quantity asc ";
-	 * if(sortby[x].equals("manufacturer"))query+=" manufacturer asc ";
-	 * if(sortby[x].equals("item"))query+=" item asc ";
-	 * if(x<sortby.length-1)query+=","; } System.out.print(query); }
-	 * PreparedStatement pstmt = connection.prepareStatement(query);
-	 * pstmt.setString(1,"%"+search+"%"); pstmt.setString(2,"%"+search+"%");
-	 * pstmt.setString(3,"%"+search+"%"); pstmt.setString(4,"%"+search+"%");
-	 * pstmt.setString(5,"%"+search+"%");
-	 * 
-	 * rs = pstmt.executeQuery(); } catch (SQLException e) {
-	 * System.out.print("Searchproducts error-"); e.printStackTrace(); }
-	 * 
-	 * return rs;
-	 * 
-	 * }
-	 */
-
-    // FOR PRODUCTS DB
-	/*
-	 * CREATE TABLE `product` ( `product_code` int(11) NOT NULL, `delivery_date`
-	 * datetime NOT NULL, `date_received` datetime NOT NULL, `delivery_charge`
-	 * varchar(45) NOT NULL, `DR_SI` varchar(100) NOT NULL, `quantity` int(11)
-	 * NOT NULL, `product_description` varchar(999) DEFAULT NULL, `unit_price`
-	 * double NOT NULL, `discount` double DEFAULT NULL, `total_amount` double
-	 * DEFAULT NULL, `mode_of_payment` varchar(45) NOT NULL, `supplier`
-	 * varchar(200) NOT NULL, PRIMARY KEY (`product_code`) ) ENGINE=InnoDB
-	 * DEFAULT CHARSET=utf8;
-	 */
     public static ResultSet getAllProducts(Connection connection) {
         try {
             PreparedStatement statement = connection
@@ -201,6 +155,28 @@ public class SQLOperations implements SQLCommands {
 		}return login;
 		
 	}
+    
+    public static ResultSet isAdmin(String username, Connection connection)
+  	{
+  		
+  		ResultSet rs = null;
+  		
+  		try{
+  			PreparedStatement pstmt = connection.prepareStatement(IS_ADMIN);
+  			pstmt.setString(1, username);
+  			rs=pstmt.executeQuery();
+  			rs=pstmt.getResultSet();
+  			rs.next();
+  			return rs;
+  			}
+  		catch(SQLException e)
+  		{
+  			System.out.println("IsAdmin probs");
+  			e.printStackTrace();
+  		}return null;
+  		
+  	}
+    
     public static ResultSet getUser(String username, Connection connection)
 	{
 		ResultSet rs = null;

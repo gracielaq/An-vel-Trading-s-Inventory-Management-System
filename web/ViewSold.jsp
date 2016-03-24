@@ -12,7 +12,9 @@
     <title>View Sold Products</title>
 </head>
 <body>
-
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin")!=null){ %>
 <h1>SOLD PRODUCTS</h1>
 <div style="height:200px;overflow:auto;">
     <table border="1" width="100%" cellpadding="3" cellspacing="3">
@@ -59,6 +61,9 @@
         <% } %>
 
     </table></div>
-
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </body>
 </html>

@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page session = "false" %>
 <html>
 <head>
     <title>Edit Product</title>
 </head>
+<%HttpSession session=request.getSession();
+if(session.getAttribute("isAdmin").equals("admin")){ %>
 <body>
 <!-- private int product_code, quantity, DR_SI, check_no;
     private double unit_price, discount_add, total_amount, delivery_charge;
@@ -46,4 +48,8 @@
    	<a href="EditView.html">Go Back</a>
 </form>
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

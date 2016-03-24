@@ -4,6 +4,9 @@
     <title>DELETE PRODUCT</title>
 </head>
 <body>
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 <h1>Are you sure you want to delete this product?</h1>
 <p>Product Code: ${productBean.product_code}</p>
 <p>Product Name: ${productBean.product_name}</p>
@@ -17,4 +20,8 @@
 <input type="submit"/>
 </form>
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

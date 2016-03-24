@@ -12,6 +12,8 @@
 %>
 <!DOCTYPE html>
 <html>
+<%HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin")!=null){ %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Delivery</title>
@@ -106,4 +108,8 @@
     }
 </script>
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

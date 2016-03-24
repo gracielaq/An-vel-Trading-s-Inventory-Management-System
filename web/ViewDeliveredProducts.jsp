@@ -19,7 +19,9 @@
     </script>
 </head>
 <body>
-
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin")!=null){ %>
 
 <h1>PRODUCTS</h1>
 	<div >
@@ -72,4 +74,8 @@
 
 
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>

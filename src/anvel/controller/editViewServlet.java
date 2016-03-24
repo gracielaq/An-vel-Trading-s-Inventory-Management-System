@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/EditView.html")
@@ -36,7 +37,9 @@ public class editViewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ResultSet rs = SQLOperations.getAllProducts(connection);
 		request.setAttribute("productrecords",rs);
-		getServletContext().getRequestDispatcher("/ViewEditProduct.jsp").forward(request,response);
+
+			getServletContext().getRequestDispatcher("/ViewEditProduct.jsp").forward(request,response);
+	
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,9 @@
 <title>Add Account</title>
 </head>
 <body>
+<%
+HttpSession sesh=request.getSession();
+if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 <form action="addAccount.html" method="post"> 
 	<p>First Name:<input type="text" name="firstName" required="required"/></p>
 	<p>Last Name:<input type="text" name="lastName" required="required"/></p>
@@ -32,4 +36,8 @@
     }
 </script>
 </body>
+<%} else{%>
+<h1> you are not allowed in this section </h1>
+<a href="index.jsp">Please log-in.</a>
+<%}%>
 </html>
