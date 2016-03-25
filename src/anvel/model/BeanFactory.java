@@ -96,7 +96,7 @@ public class BeanFactory {
         if(quantity<=0){
             pb.setStatus("OUT OF STOCK");
         } else
-        if(quantity<=5) {
+        if(quantity<=20) {
             pb.setStatus("CRITICAL");
         } else{
             pb.setStatus("OK");
