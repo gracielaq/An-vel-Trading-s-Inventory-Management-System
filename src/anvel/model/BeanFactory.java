@@ -92,8 +92,17 @@ public class BeanFactory {
         pb.setTotal_amount(total_amount);
         pb.setMode_of_payment(mode_of_payment);
         pb.setCheck_no(check_no);
-        pb.setStatus(status);
-        
+
+        if(quantity<=0){
+            pb.setStatus("OUT OF STOCK");
+        } else
+        if(quantity<=5) {
+            pb.setStatus("CRITICAL");
+        } else{
+            pb.setStatus("OK");
+        }
+
+
         return pb;
     }
 
