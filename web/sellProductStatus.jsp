@@ -14,7 +14,7 @@
 	<%
 	if (request.getParameter("status").equals("true")) { %>
 		<h2>Successfully sold product! </h2>
-
+		<a href="DeliveryPage.html"> Deliver Products</a>
 	<% } else { %>
 	  <h1>Failed to sell. :(</h1>		
 	<% } %>
