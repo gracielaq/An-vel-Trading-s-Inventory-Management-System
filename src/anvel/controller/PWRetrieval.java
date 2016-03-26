@@ -55,31 +55,46 @@ public class PWRetrieval extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username =  request.getParameter("username");
 		String email = request.getParameter("email");
+		String oldpass=request.getParameter("oldpass");
+		String newpass=request.getParameter("newpass");
 		String directory = "result.jsp";
 		String password, firstName, lastName;
 		System.out.println(SQLOperations.checkUser(username, connection));
 		if(SQLOperations.checkUser(username, connection)){
 			ResultSet rs = SQLOperations.getUser(username, connection);
-			
 			try {
 				while(rs.next())
 				{
 					password = Security.decrypt(rs.getString("password"));
-					firstName = rs.getString("firstname");
-					lastName = rs.getString("lastname");
-					String isAdmin = rs.getString("isadmin");
+					if (password.equals(oldpass)){
+						if(SQLOperations.updatePass(username, newpass, connection)>=1){
+							password=newpass;
+							firstName = rs.getString("firstname");
+							lastName = rs.getString("lastname");
+							String isAdmin = rs.getString("isadmin");
+					
+							String subject = "Password Retrieval";
+							String content = "Good Day "+firstName + " "+lastName + "! BOBO mo naman kinakalimutan mo password mo. Pero eto na, bigay ko na sayo. Baka magiyak ka pa e. Your password is " + password;
+					
+							String resultMessage = "";
 				
-					String subject = "Password Retrieval";
-					String content = "Good Day "+firstName + " "+lastName + "! BOBO mo naman kinakalimutan mo password mo. Pero eto na, bigay ko na sayo. Baka magiyak ka pa e. Your password is " + password;
-				
-					String resultMessage = "";
-			
-					System.out.println("email add: "+email);
-					System.out.println("password "+password);
-		            EmailUtility.sendEmail(host, port, user, pass, email, subject,
-		                    content);
-		            resultMessage = "The e-mail was sent successfully";
-		            System.out.print(resultMessage);
+							System.out.println("email add: "+email);
+							System.out.println("password "+password);
+							EmailUtility.sendEmail(host, port, user, pass, email, subject,
+									content);
+							resultMessage = "The e-mail was sent successfully";
+							System.out.print(resultMessage);
+			            }
+						else{
+							directory += "?message='Update Failed'";
+							getServletContext().getRequestDispatcher(directory).forward(request,response);
+						}
+					}
+					else{
+						directory += "?message='password incorrect'";
+						getServletContext().getRequestDispatcher(directory).forward(request,response);
+					}
+					
 				
 				}
 			 } catch (Exception ex) {

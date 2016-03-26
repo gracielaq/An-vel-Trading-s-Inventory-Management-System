@@ -259,7 +259,30 @@ public class SQLOperations implements SQLCommands {
         }
         return updated;
     }
+    public static int updatePass( String username, String newpass, Connection connection) {
 
+    	int updated = 0;
+    	try {
+    		connection.setAutoCommit(false);
+    		PreparedStatement pstmt = connection.prepareStatement(UPDATE_PASS);
+    		pstmt.setString(1, newpass);
+    		pstmt.setString(2, username);
+    		updated = pstmt.executeUpdate();
+    		connection.commit();
+    	} catch (SQLException sqle) {
+    		System.out.println("SQLException - updatePass: "
+    				+ sqle.getMessage());
+
+    		try {
+    			connection.rollback();
+    		} catch (SQLException sql) {
+    			System.err.println("Error on Update Connection Rollback - "
+    					+ sql.getMessage());
+    		}
+    			return updated;
+    	}
+    	return updated;
+    }
     public static boolean addProduct(ProductBean product, Connection connection) {
         try {
 			/*

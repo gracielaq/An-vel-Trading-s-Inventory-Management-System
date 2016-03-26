@@ -34,6 +34,7 @@ public interface SQLCommands {
 	 */
 	String CHECK_USER="select username, email, password from accounts where username=?";
 	String SELECT_USER="select username, email, password, firstname, lastname, isadmin from accounts where username=?";
+	String UPDATE_PASS="update accounts set password=? where username=?";
 	String GET_ALL_SOLD_PRODUCTS = "select * from sell";
 	String SEARCH_SOLD_PRODUCT = "select * from sell where product_code=?";
 	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?," + "quantity=?," + "product_description=?, product_name=?"
