@@ -138,7 +138,7 @@ public class BeanFactory {
     }
 
     public static DeliveryBean getDeliveryBeanInstance(int batch_no, String Driver, String Helper, String sell_no, String plateNum
-    		, java.sql.Date DeliveryDate) {
+    		, java.sql.Date DeliveryDate, String destination, String items, String trucking, int quantity) {
 
         DeliveryBean db = new DeliveryBean();
         db.setBatch_no(batch_no);
@@ -147,6 +147,12 @@ public class BeanFactory {
         db.setSell_no(sell_no);
         db.setPlateNum(plateNum);
         db.setDeliveryDate(DeliveryDate);
+        db.setDestination(destination);
+        db.setItems(items);
+        db.setTrucking(trucking);
+        db.setQuantity(quantity);
+
+
 
 
         switch(plateNum.charAt(plateNum.length()-1)){
