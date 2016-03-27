@@ -28,6 +28,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/apache-tomcat-8.0.24/lib/servlet-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/gracielaquiambao/Documents/ICS_114/LabWorks/An-vel Trading&apos;s Inventory Management System/itextpdf-5.2.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
