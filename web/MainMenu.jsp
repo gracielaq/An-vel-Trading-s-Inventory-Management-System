@@ -40,7 +40,7 @@ if(sesh.getAttribute("isAdmin").equals("admin")){ %>
 		<input type="Submit" value="Delivery">
 	</form>
 	
-	<form action="Reports.html" method="post">
+	<form action="Reports.jsp" method="post">
 		<input type="Submit" value="Reports">
 	</form>
 

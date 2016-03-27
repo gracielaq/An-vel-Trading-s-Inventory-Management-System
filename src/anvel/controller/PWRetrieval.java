@@ -68,7 +68,7 @@ public class PWRetrieval extends HttpServlet {
 					password = Security.decrypt(rs.getString("password"));
 					if (password.equals(oldpass)){
 						password=Security.encrypt(newpass);
-						if(SQLOperations.updatePass(username, newpass, connection)>=1){
+						if(SQLOperations.updatePass(username, password, connection)>=1){
 							
 							firstName = rs.getString("firstname");
 							lastName = rs.getString("lastname");
