@@ -38,7 +38,7 @@ if(sesh.getAttribute("isAdmin")!=null){ %>
 </head>
 <h1>SELECT ITEMS FOR DELIVERY</h1>
 <body>
-<form action="DeliveryPagePart2.html">
+<form action="DeliveryPagePart2.html" onsubmit="return updateCheckedNumbers()">
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -95,6 +95,11 @@ if(sesh.getAttribute("isAdmin")!=null){ %>
 <script type="text/javascript">
     function updateCheckedNumbers() {
         var p = document.getElementById('checkedNumbers')
-        p.innerHTML = "items selected:" + document.querySelectorAll('input[type="checkbox"]:checked').length
+        p.innerHTML = "items selected:" + document.querySelectorAll('input[type="checkbox"]:checked').length;
+        if(document.querySelectorAll('input[type="checkbox"]:checked').length<1){
+            window.alert("YOU MUST SELECT AT LEAST ONE PRODUCT")
+            return false;
+        }
+        else return true
     }
 </script>
