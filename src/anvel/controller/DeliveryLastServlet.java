@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 public class DeliveryLastServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	Connection connection;
+    private static final long serialVersionUID = 1L;
+    Connection connection;
 
     public void init() throws ServletException {
         connection = SQLOperations.getConnection();
@@ -34,10 +34,15 @@ public class DeliveryLastServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //getting input ng mga form input
         int batch_no = getCurrentBatchno(connection);
         String driver = request.getParameter("driver");
         String helper = request.getParameter("helper");
         String plateNum = request.getParameter("plateNum").toUpperCase();
+        String trucking = request.getParameter("trucking");
+
+        //getting input ng date
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date DeliveryDate;
         try {
@@ -50,8 +55,7 @@ public class DeliveryLastServlet extends HttpServlet {
 
         //get all selected na checkbox
         String[] tempSellNoArray = request.getParameterValues("sell_no");
-
-        DeliveryBean deliveryBean = BeanFactory.getDeliveryBeanInstance(batch_no, driver, helper, "", plateNum, DeliveryDate);
+        DeliveryBean deliveryBean = new DeliveryBean();
 
         //initialize arraylist at ilagay na ang mga bean ng mga nakuhang soldproducts
         ArrayList<SoldBean> selectedProducts = new ArrayList<>();
@@ -59,19 +63,26 @@ public class DeliveryLastServlet extends HttpServlet {
         String directory = "/deliveryStatus.jsp";
 
         try {
-            for (String x : tempSellNoArray) {
-                //lalagay na ang mga kada transactions sa db
+            for (String sell_no : tempSellNoArray) {
+                SoldBean soldBean = SellProductMaintenance.findSoldBean(sell_no, connection);
 
-                insertDeliveryBean(BeanFactory.getDeliveryBeanInstance(batch_no, driver, helper, x, plateNum, DeliveryDate)
+                //for readability
+                String destination = soldBean.getAddress();
+                String product_name = soldBean.getProduct_name();
+                int quantity = soldBean.getQuantity();
+
+
+                //lalagay na ang mga kada transactions sa db
+                insertDeliveryBean(BeanFactory.getDeliveryBeanInstance(batch_no, driver, helper, sell_no, plateNum, DeliveryDate, destination, product_name, trucking, quantity)
                         , connection);
                 //lalagay sa arraylist for output
-                selectedProducts.add(DeliveryContinuationServlet.findSoldProduct(x, connection));
+                selectedProducts.add(DeliveryContinuationServlet.findSoldProduct(sell_no, connection));
                 //update na delivery status sa sell
-                updateDeliveredStatus(Integer.parseInt(x), connection);
+                updateDeliveredStatus(Integer.parseInt(sell_no), connection);
             }
 
             //meaning nalagyan lahat
-            directory+="?status=success";
+            directory += "?status=success";
         } catch (Exception e) {
             directory += "?status=failed";
             e.printStackTrace();
@@ -79,8 +90,7 @@ public class DeliveryLastServlet extends HttpServlet {
 
         request.setAttribute("selectedProducts", selectedProducts);
         request.setAttribute("deliveryBean", deliveryBean);
-
-        getServletContext().getRequestDispatcher(directory).forward(request,response);
+        getServletContext().getRequestDispatcher(directory).forward(request, response);
 
 
     }
@@ -120,8 +130,8 @@ public class DeliveryLastServlet extends HttpServlet {
     }
 
     public static void insertDeliveryBean(DeliveryBean deliveryBean, Connection connection) throws SQLException {
-        String query = "INSERT INTO `deliverydb` (`batch_no`,`Driver`,`Helper`,`PlateNum`,`CodingDay`,`DeliveryDate`,`sell_no`)" +
-                "VALUES (?, ?, ?, ?, ?,?,?)";
+        String query = "INSERT INTO `deliverydb` (`batch_no`,`Driver`,`Helper`,`PlateNum`,`CodingDay`,`DeliveryDate`,`sell_no`, destination, items,trucking, quantity)" +
+                "VALUES (?, ?, ?, ?, ?,?,?,?,?,?,?)";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, deliveryBean.getBatch_no());
@@ -131,10 +141,15 @@ public class DeliveryLastServlet extends HttpServlet {
         preparedStatement.setString(5, deliveryBean.getCodingDay());
         preparedStatement.setString(6, "" + deliveryBean.getDeliveryDate());
         preparedStatement.setString(7, deliveryBean.getSell_no());
+        preparedStatement.setString(8, deliveryBean.getDestination());
+        preparedStatement.setString(9, deliveryBean.getItems());
+        preparedStatement.setString(10, deliveryBean.getTrucking());
+        preparedStatement.setInt(11, deliveryBean.getQuantity());
+
+
         preparedStatement.execute();
         System.out.println("added " + deliveryBean.getSell_no() + "to deliverydb");
-
-
     }
+
 
 }
