@@ -25,21 +25,40 @@ public class SellProductMaintenance extends HttpServlet {
     private static final long serialVersionUID = 1L;
     Connection connection;
 
+    public static SoldBean findSoldBean(String sell_no, Connection connection) {
+        try {
+            String query = "Select * from SELL where sell_no=?";
+            PreparedStatement pstmt = connection
+                    .prepareStatement(query);
+            pstmt.setString(1, sell_no);
+            ResultSet rs = pstmt.executeQuery();
+
+            SoldBean soldbean = BeanFactory.getSoldBeanInstance(rs.getString("product_code"), rs.getString("product_name"), rs.getDouble("unit_price"), rs.getInt("quantity")
+                    , rs.getString("product_description"), rs.getDouble("discount_sell"), rs.getInt("note_quantity"), rs.getString("note_description")
+                    , rs.getString("customer_name"), rs.getString("tin"), rs.getString("address"), rs.getDate("date"), rs.getString("mode_of_payment")
+                    , rs.getInt("check_no"), rs.getString("size"), rs.getString("product_delivery_status"), rs.getInt("sell_no"), rs.getString("category"));
+            return soldbean;
+
+        } catch (Exception e) {
+
+            System.out.println("findSoldBean error - " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public void init() throws ServletException {
         connection = SQLOperations.getConnection();
-        if(connection!=null){
+        if (connection != null) {
             System.out.println("NULL CONNECTION");
-        }
-        else{
+        } else {
             System.out.println("SELL PRODUCT MAINTENANCE - CONNECTED!!");
         }
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -64,14 +83,12 @@ public class SellProductMaintenance extends HttpServlet {
             int check_no = 0;
 
 
-
             //getting the ResultSet from the database with the respective product code
             String query = "Select * from product where product_code=?";
             PreparedStatement pstmt = connection
                     .prepareStatement(query);
             pstmt.setString(1, product_code);
             ResultSet rs = pstmt.executeQuery();
-
 
 
             if (rs.next()) {
@@ -82,13 +99,15 @@ public class SellProductMaintenance extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+
                 ProductBean productbean = BeanFactory.getProductBeanInstance(product_code, rs.getString("product_name"), rs.getDate("delivery_date"),
                         rs.getDate("date_received"), rs.getInt("DR_SI"), newQty, rs.getDouble("delivery_charge"), rs.getString("supplier"), rs.getString("category"), rs.getString("product_description"),
                         rs.getString("size"), rs.getDouble("unit_price"), rs.getDouble("discount_add"), rs.getDouble("total_amount"), rs.getString("mode_of_payment"), rs.getInt("check_no"), rs.getString("status"));
 
 
                 SoldBean soldbean = BeanFactory.getSoldBeanInstance(product_code, rs.getString("product_name"), unit_price, quantity, product_description, discount_sell,
-                        note_quantity, note_description, customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"),product_delivery_status, 0, rs.getString("category"));
+                        note_quantity, note_description, customer_name, tin, address, date, mode_of_payment, check_no, rs.getString("size"), product_delivery_status, 0, rs.getString("category"));
 
 
                 if (connection != null) {
@@ -96,7 +115,7 @@ public class SellProductMaintenance extends HttpServlet {
                         SQLOperations.updateProduct(productbean, product_code, connection);
                         System.out.println("item successfully sold");
                         request.setAttribute("soldBean", soldbean);
-                        request.setAttribute("productBean",productbean);
+                        request.setAttribute("productBean", productbean);
 
                         getServletContext().getRequestDispatcher(
                                 "/sellProductStatus.jsp?status=true").forward(request,
@@ -115,7 +134,7 @@ public class SellProductMaintenance extends HttpServlet {
 
             e.printStackTrace();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
+
             e1.printStackTrace();
         }
 
