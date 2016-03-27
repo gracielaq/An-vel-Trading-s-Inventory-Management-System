@@ -49,6 +49,7 @@ if(sesh.getAttribute("isAdmin")!=null){ %>
     <p id="plateValid"></p>
     <p>Delivery Date:<input type="date" name="deliveryDate" required="required"></p>
    <!-- <p>Product code:<input type="text" name="product_code" required="required"></p>-->
+    <p>trucking <input name="trucking" required/></p>
 
     <p>PRODUCTS ORDERED</p>
     <table cellspacing="0" width="30%" border="10">
