@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import anvel.model.AccountBean;
+import anvel.utility.Security;
 import anvel.utility.sql.SQLOperations;
 
 
@@ -37,6 +38,7 @@ public class ValidateLogin extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		if(request.getParameter("username")!=null &&request.getParameter("password")!=null){
 			String username=request.getParameter("username");
 			String password=request.getParameter("password");

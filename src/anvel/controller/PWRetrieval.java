@@ -67,14 +67,16 @@ public class PWRetrieval extends HttpServlet {
 				{
 					password = Security.decrypt(rs.getString("password"));
 					if (password.equals(oldpass)){
+						password=Security.encrypt(newpass);
 						if(SQLOperations.updatePass(username, newpass, connection)>=1){
-							password=newpass;
+							
 							firstName = rs.getString("firstname");
 							lastName = rs.getString("lastname");
 							String isAdmin = rs.getString("isadmin");
 					
 							String subject = "Password Retrieval";
-							String content = "Good Day "+firstName + " "+lastName + "! BOBO mo naman kinakalimutan mo password mo. Pero eto na, bigay ko na sayo. Baka magiyak ka pa e. Your password is " + password;
+							String content = "Good Day "+firstName + " "+lastName + "! BOBO mo naman kinakalimutan mo password mo. Pero eto na, bigay ko na sayo. "
+									+ "Baka magiyak ka pa e. Your password is " + Security.decrypt(password);
 					
 							String resultMessage = "";
 				
