@@ -35,6 +35,7 @@
 <form action="SellProductMaintenance.html" method="post">
     <p>Product Code: ${productBean.product_code}</p>
     <input type="hidden" name="product_code" value="${productBean.product_code}"/>
+    <p>Product Name: ${productBean.product_name}</p>
     <p>Quantity:<input type="number" name="quantity" value="${productBean.quantity}" onblur="recalculateSum()" id="qty"
                        max="${productBean.quantity}"/></p>
     <p>Unit Price:<input value="${productBean.unit_price}" name="unit_price" onclick="recalculateSum()" onblur="recalculateSum()" id="prc"></p>
