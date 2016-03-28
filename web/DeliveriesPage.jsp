@@ -17,7 +17,7 @@
 <%
     ArrayList<SoldBean> productsForSelling = new ArrayList<SoldBean>();
     if (request.getAttribute("productsForDelivery") != null) {
-        productsForSelling = (ArrayList) request.getAttribute("productsForDelivery");
+        productsForSelling = (ArrayList<SoldBean>) request.getAttribute("productsForDelivery");
     }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

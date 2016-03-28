@@ -37,13 +37,13 @@
             <td><input type="button" onclick="postMessage();" value="SHOUT" /></td>
         </tr>
     </table>
-</form>-->
+</form>
 <h2> Current Shouts </h2>
 <div id="content">
-    <% if (application.getAttribute("messages") != null) {%>
+    <%-- if (application.getAttribute("messages") != null) {%>
     <%= application.getAttribute("messages")%>
-    <% }%>
-</div>
+    <% }--%>
+</div>-->
 
 <script>
     function postMessage() {

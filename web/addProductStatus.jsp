@@ -11,7 +11,7 @@
 	if (request.getParameter("status").equals("true")) { %>
 		<h2>Successfully added product! </h2>
 		<br/>
-		<p>Product: ${productbean.product_description}</p>
+		<p>Product: ${productbean.product_name}</p>
 		<p>Quantity: ${productbean.quantity}</p>
 		<p>Unit Price: ${productbean.unit_price}</p>
 		<p>Supplier: ${productbean.supplier}</p> 
